@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PRIMOZAYN CONSULTING — Précis. Autoritaire. Inclusif.</title>
+<meta name="description" content="Cabinet de conseil en transformation digitale, accessibilité WCAG et architecture UX/UI. Précis. Autoritaire. Inclusif."/>
+<meta name="theme-color" content="#1b2e5e"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary":"#011848","primary-container":"#1b2e5e","secondary":"#415c9f","secondary-container":"#9ab4fe","on-primary":"#ffffff","on-primary-container":"#8597cd","on-secondary":"#ffffff","on-secondary-container":"#284486","surface":"#fbf8fd","surface-container":"#efedf2","surface-container-low":"#f5f3f8","surface-container-lowest":"#ffffff","on-surface":"#1b1b1f","on-surface-variant":"#45464f","outline":"#757680","outline-variant":"#c5c6d0","accent":"#4a90d9","accent-dark":"#3a80c9","error":"#ba1a1a"},borderRadius:{"sm":"4px","base":"8px","card":"16px","full":"9999px"},spacing:{"xs":"4px","sm":"8px","md":"16px","lg":"24px","xl":"32px","xxl":"64px","gutter":"24px","container-max":"1280px"},fontFamily:{sans:["Inter","sans-serif"],headline:["Plus Jakarta Sans","sans-serif"]}}}}
+</script>
+<style>
+/* ── TOKEN SYSTEM ── */
+:root{
+  --c-primary:#011848;--c-primary-container:#1b2e5e;
+  --c-secondary:#415c9f;--c-secondary-container:#9ab4fe;
+  --c-accent:#4a90d9;--c-accent-dk:#3a80c9;
+  --c-surface:#fbf8fd;--c-surface-low:#f5f3f8;
+  --c-surface-container:#efedf2;--c-surface-lowest:#ffffff;
+  --c-on-primary:#ffffff;--c-on-surface:#1b1b1f;
+  --c-on-surface-var:#45464f;--c-outline:#757680;--c-outline-var:#c5c6d0;
+  --font-head:'Plus Jakarta Sans',sans-serif;--font-body:'Inter',sans-serif;
+  --sp-xs:4px;--sp-sm:8px;--sp-md:16px;--sp-lg:24px;
+  --sp-xl:32px;--sp-xxl:64px;--container:1280px;
+  --r-sm:4px;--r-base:8px;--r-card:16px;--r-full:9999px;
+  --sh-sm:0 1px 3px rgba(1,24,72,.06);
+  --sh-md:0 4px 24px rgba(1,24,72,.08);
+  --sh-lg:0 8px 32px rgba(1,24,72,.14);
+  --z-nav:50;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--c-surface);color:var(--c-on-surface);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--c-secondary-container);color:#284486}
+img{display:block;max-width:100%}
+
+/* ── FOCUS RING (single pattern) ── */
+:focus-visible{outline:3px solid var(--c-accent);outline-offset:2px;border-radius:var(--r-base)}
+
+/* ── TYPOGRAPHY SCALE ── */
+.t-h1{font-family:var(--font-head);font-size:clamp(2.5rem,5vw,3.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em}
+.t-h2{font-family:var(--font-head);font-size:clamp(1.75rem,3vw,2.25rem);font-weight:600;line-height:1.3}
+.t-h3{font-family:var(--font-head);font-size:1.5rem;font-weight:500;line-height:1.4}
+.t-body-lg{font-size:1.125rem;font-weight:400;line-height:1.6}
+.t-body-md{font-size:1rem;font-weight:400;line-height:1.6}
+.t-label{font-size:.875rem;font-weight:600;letter-spacing:.05em;line-height:1}
+
+/* ── LAYOUT UTILS ── */
+.container{max-width:var(--container);margin-inline:auto;padding-inline:var(--sp-lg)}
+@media(min-width:768px){.container{padding-inline:var(--sp-xxl)}}
+section{padding-block:var(--sp-xxl)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-sm);font-family:var(--font-body);font-weight:600;font-size:.875rem;letter-spacing:.05em;border:none;cursor:pointer;border-radius:var(--r-base);transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+.btn:active{transform:scale(.97)!important}
+.btn-primary{background:var(--c-accent);color:#fff;padding:var(--sp-md) var(--sp-xl)}
+.btn-primary:hover{background:var(--c-accent-dk);transform:scale(1.05);box-shadow:var(--sh-md)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5);padding:var(--sp-md) var(--sp-xl)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);transform:scale(1.03)}
+.btn-navy{background:var(--c-primary-container);color:var(--c-on-primary);padding:var(--sp-sm) var(--sp-lg)}
+.btn-navy:hover{filter:brightness(1.15);transform:scale(1.05)}
+
+/* ── CARD ── */
+.card{background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border:1px solid rgba(197,198,208,.3);border-radius:var(--r-card);box-shadow:var(--sh-md);transition:transform .25s cubic-bezier(.3,0,.2,1),box-shadow .25s ease}
+.card:hover{transform:translateY(-7px) scale(1.018);box-shadow:var(--sh-lg)}
+.card-featured{border:2px solid var(--c-secondary);position:relative}
+
+/* ── ENTRANCE ANIMATIONS ── */
+[data-reveal]{opacity:0;filter:blur(12px);transform:translateY(28px);transition:opacity .7s ease,filter .7s ease,transform .7s ease}
+[data-reveal].is-visible{opacity:1;filter:blur(0);transform:translateY(0)}
+[data-reveal][data-delay="1"]{transition-delay:.1s}
+[data-reveal][data-delay="2"]{transition-delay:.2s}
+[data-reveal][data-delay="3"]{transition-delay:.3s}
+[data-reveal][data-delay="4"]{transition-delay:.4s}
+
+/* ── WORD ANIMATION ── */
+.word-wrap{display:inline-block;overflow:hidden;vertical-align:bottom}
+.word{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(40px);animation:wordIn .6s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes wordIn{to{opacity:1;filter:blur(0);transform:translateY(0)}}
+
+/* ── COUNTER ── */
+.stat-num{display:inline-block}
+
+/* ── REDUCED MOTION ── */
+@media(prefers-reduced-motion:reduce){
+  [data-reveal]{opacity:1;filter:none;transform:none;transition:none}
+  .word{opacity:1;filter:none;transform:none;animation:none}
+  .btn{transition:none}
+  .card{transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* ══════════════════════════════════
+   NAV
+══════════════════════════════════ */
+#site-nav{
+  position:fixed;top:0;width:100%;z-index:var(--z-nav);
+  background:rgba(27,46,94,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  transition:background .3s ease,box-shadow .3s ease;
+}
+#site-nav.scrolled{background:rgba(27,46,94,.96);box-shadow:0 2px 20px rgba(1,24,72,.3)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:80px;max-width:var(--container);margin-inline:auto;padding-inline:var(--sp-lg)}
+@media(min-width:768px){.nav-inner{padding-inline:var(--sp-xxl)}}
+.nav-logo{font-family:var(--font-head);font-size:1.1rem;font-weight:900;letter-spacing:-.03em;color:var(--c-on-primary);text-decoration:none;white-space:nowrap}
+.nav-links{display:none;gap:var(--sp-xs)}
+@media(min-width:768px){.nav-links{display:flex;align-items:center}}
+.nav-link{font-family:var(--font-body);font-size:.875rem;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.7);text-decoration:none;padding:var(--sp-sm) var(--sp-md);border-radius:var(--r-base);transition:color .2s,background .2s}
+.nav-link:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-link.active{color:#fff;border-bottom:2px solid var(--c-accent)}
+.nav-lang{display:flex;align-items:center;background:rgba(255,255,255,.1);border-radius:var(--r-full);padding:3px;gap:2px}
+.nav-lang button{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.6);background:transparent;border:none;padding:4px 10px;border-radius:var(--r-full);cursor:pointer;transition:all .2s}
+.nav-lang button[aria-pressed="true"]{background:rgba(255,255,255,.2);color:#fff}
+.nav-actions{display:none;align-items:center;gap:var(--sp-md)}
+@media(min-width:768px){.nav-actions{display:flex}}
+.nav-hamburger{display:flex;align-items:center;justify-content:center;background:transparent;border:none;color:#fff;cursor:pointer;padding:var(--sp-sm);border-radius:var(--r-base)}
+@media(min-width:768px){.nav-hamburger{display:none}}
+.mobile-menu{display:none;flex-direction:column;background:rgba(11,24,72,.97);backdrop-filter:blur(20px);padding:var(--sp-lg);gap:var(--sp-sm);border-top:1px solid rgba(255,255,255,.08)}
+.mobile-menu.open{display:flex}
+.mobile-menu a,.mobile-menu button{color:rgba(255,255,255,.8);font-size:1rem;font-weight:600;text-decoration:none;padding:var(--sp-sm) var(--sp-md);border-radius:var(--r-base)}
+.mobile-menu a:hover{background:rgba(255,255,255,.08);color:#fff}
+
+/* ══════════════════════════════════
+   HERO
+══════════════════════════════════ */
+#hero{position:relative;min-height:100svh;display:flex;align-items:center;padding-top:80px;overflow:hidden}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(1,24,72,.78) 0%,rgba(27,46,94,.72) 60%,rgba(46,74,140,.65) 100%);z-index:1}
+.hero-content{position:relative;z-index:2;max-width:var(--container);margin-inline:auto;padding-inline:var(--sp-lg);width:100%}
+@media(min-width:768px){.hero-content{padding-inline:var(--sp-xxl)}}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:var(--sp-sm);font-family:var(--font-body);font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8);border-left:2px solid var(--c-accent);padding-left:var(--sp-md);margin-bottom:var(--sp-lg)}
+.hero-title{color:#fff;max-width:780px;margin-bottom:var(--sp-xl)}
+.hero-sub{color:rgba(255,255,255,.88);font-size:1.125rem;line-height:1.7;max-width:600px;margin-bottom:var(--sp-xxl)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:var(--sp-md)}
+.hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--sp-md);margin-top:80px}
+.stat-card{background:rgba(255,255,255,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-card);padding:var(--sp-lg);transition:background .3s}
+.stat-card:hover{background:rgba(255,255,255,.13)}
+.stat-card .material-symbols-outlined{font-size:32px;color:var(--c-accent);margin-bottom:var(--sp-sm);display:block}
+.stat-card h3{font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:6px}
+.stat-card p{font-size:.875rem;color:rgba(255,255,255,.7);line-height:1.5}
+</style>
+</head>
+<body>
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-white focus:text-primary t-label" style="border-radius:0">Aller au contenu principal</a>
+
+<!-- ══ NAV ══ -->
+<header id="site-nav" role="banner">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="PRIMOZAYN CONSULTING — accueil">PRIMOZAYN CONSULTING</a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#processus" class="nav-link">Processus</a>
+      <a href="#expertise" class="nav-link">Expertise</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="nav-lang" role="group" aria-label="Sélection de langue">
+        <button aria-pressed="true" id="lang-fr">FR</button>
+        <button aria-pressed="false" id="lang-en">EN</button>
+      </div>
+      <a href="#contact" class="btn btn-primary" style="font-size:.8rem;padding:10px 20px">Demander un devis</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Navigation mobile">
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#processus" class="nav-link">Processus</a>
+    <a href="#expertise" class="nav-link">Expertise</a>
+    <a href="#contact" class="nav-link">Contact</a>
+    <a href="#contact" class="btn btn-primary" style="margin-top:8px">Demander un devis</a>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<main id="main">
+<section id="hero" aria-label="Section héros">
+  <video class="hero-video" autoplay muted loop playsinline aria-hidden="true" preload="auto">
+    <source src="animation.mp4" type="video/mp4"/>
+  </video>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" data-reveal>Consulting · Design · Accessibilité</div>
+    <h1 class="t-h1 hero-title" id="hero-title" aria-label="Votre interface mérite d'être repensée."></h1>
+    <p class="hero-sub t-body-lg" data-reveal data-delay="2">
+      We deliver authoritative, precise, and inclusive digital transformations. Our rigorous approach ensures your platform not only meets WCAG standards but exceeds executive expectations.
+    </p>
+    <div class="hero-ctas" data-reveal data-delay="3">
+      <a href="#services" class="btn btn-primary">
+        Voir nos services
+        <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
+      </a>
+      <a href="#contact" class="btn btn-ghost">Audit gratuit</a>
+    </div>
+    <div class="hero-stats" data-stagger>
+      <div class="stat-card">
+        <span class="material-symbols-outlined">verified_user</span>
+        <h3>WCAG 2.1 AA</h3>
+        <p>Rigorous accessibility standards applied to every pixel.</p>
+      </div>
+      <div class="stat-card">
+        <span class="material-symbols-outlined">architecture</span>
+        <h3>Architecture Moderne</h3>
+        <p>Scalable, stable grid systems for optimal information flow.</p>
+      </div>
+      <div class="stat-card">
+        <span class="material-symbols-outlined">trending_up</span>
+        <h3>Executive Alignment</h3>
+        <p>Designs crafted to project digital mastery and authority.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section id="services" aria-labelledby="services-title" style="background:var(--c-surface-container);position:relative;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;top:-20%;right:-10%;width:50%;height:50%;border-radius:50%;background:rgba(178,197,255,.25);filter:blur(100px);pointer-events:none"></div>
+  <div aria-hidden="true" style="position:absolute;top:40%;left:-10%;width:40%;height:40%;border-radius:50%;background:rgba(179,197,254,.15);filter:blur(80px);pointer-events:none"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="text-align:center;margin-bottom:var(--sp-xxl)" data-reveal>
+      <h2 class="t-h2" id="services-title" style="color:var(--c-primary);margin-bottom:var(--sp-md)">Nos Services</h2>
+      <p class="t-body-lg" style="color:var(--c-on-surface-var);max-width:560px;margin-inline:auto">Des solutions expertes conçues pour allier excellence technique, conformité stricte et expérience utilisateur sans compromis.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-lg)" data-stagger>
+      <!-- Card 1 -->
+      <article class="card" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service: Refonte UX/UI">
+        <div style="width:48px;height:48px;border-radius:var(--r-card);background:var(--c-surface-container);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg);transition:background .3s" class="card-icon">
+          <span class="material-symbols-outlined" style="color:var(--c-primary);font-variation-settings:'FILL' 1">design_services</span>
+        </div>
+        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Refonte UX/UI</h3>
+        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Modernisation complète de vos interfaces avec une approche centrée utilisateur, garantissant une architecture de l'information claire et une navigation fluide.</p>
+        <a href="#contact" class="t-label" style="color:var(--c-secondary);display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--c-primary)'" onmouseout="this.style.color='var(--c-secondary)'">
+          En savoir plus <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+        </a>
+      </article>
+      <!-- Card 2 featured -->
+      <article class="card card-featured" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service phare: Audit Accessibilité Digitale">
+        <div style="position:absolute;top:-14px;right:var(--sp-lg);background:var(--c-secondary);color:#fff;padding:4px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;letter-spacing:.05em;display:flex;align-items:center;gap:4px">
+          <span class="material-symbols-outlined" style="font-size:15px;font-variation-settings:'FILL' 1">verified</span>Expertise Phare
+        </div>
+        <div style="width:48px;height:48px;border-radius:var(--r-card);background:#dae2ff;display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg)">
+          <span class="material-symbols-outlined" style="color:var(--c-secondary);font-variation-settings:'FILL' 1">accessibility_new</span>
+        </div>
+        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Audit Accessibilité Digitale</h3>
+        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Évaluation rigoureuse et mise en conformité WCAG 2.1 AA. Nous transformons les contraintes d'accessibilité en vecteurs d'excellence esthétique et fonctionnelle.</p>
+        <a href="#contact" class="t-label" style="color:var(--c-secondary);display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--c-primary)'" onmouseout="this.style.color='var(--c-secondary)'">
+          Voir la méthodologie <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+        </a>
+      </article>
+      <!-- Card 3 -->
+      <article class="card" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service: Conseil et Accompagnement">
+        <div style="width:48px;height:48px;border-radius:var(--r-card);background:var(--c-surface-container);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg);transition:background .3s">
+          <span class="material-symbols-outlined" style="color:var(--c-primary);font-variation-settings:'FILL' 1">forum</span>
+        </div>
+        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Conseil &amp; Accompagnement</h3>
+        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Stratégie digitale sur-mesure pour les comités de direction et product owners. Un pilotage précis pour sécuriser vos investissements digitaux.</p>
+        <a href="#contact" class="t-label" style="color:var(--c-secondary);display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--c-primary)'" onmouseout="this.style.color='var(--c-secondary)'">
+          En savoir plus <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROCESSUS ══ -->
+<section id="processus" aria-labelledby="processus-title" style="background:var(--c-surface-lowest,#fff)">
+  <div class="container">
+    <div style="text-align:center;max-width:700px;margin-inline:auto;margin-bottom:var(--sp-xxl)" data-reveal>
+      <h2 class="t-h2" id="processus-title" style="color:var(--c-on-surface);margin-bottom:var(--sp-md)">Notre Processus</h2>
+      <p class="t-body-lg" style="color:var(--c-on-surface-var)">Une méthodologie rigoureuse, éprouvée et transparente pour transformer vos défis complexes en solutions digitales élégantes et accessibles.</p>
+    </div>
+    <div style="position:relative">
+      <div aria-hidden="true" style="display:none" class="timeline-line"></div>
+      <style>.timeline-line{display:block!important;position:absolute;top:40px;left:0;width:100%;height:2px;background:repeating-linear-gradient(90deg,var(--c-outline-var) 0,var(--c-outline-var) 8px,transparent 8px,transparent 16px);z-index:0}@media(max-width:1023px){.timeline-line{display:none!important}}</style>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-xl);position:relative;z-index:1" data-stagger>
+        <!-- Step 1 -->
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center" class="process-step" tabindex="0">
+          <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);transition:transform .3s;flex-shrink:0" class="step-circle">
+            <span class="t-h2" style="color:#fff;font-size:1.5rem">01</span>
+          </div>
+          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%">
+            <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">stethoscope</span>
+            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Diagnostic</h3>
+            <p class="t-body-md" style="color:var(--c-on-surface-var)">Analyse approfondie de votre écosystème, identification des points de friction et évaluation de l'accessibilité initiale.</p>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center" class="process-step" tabindex="0">
+          <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);transition:transform .3s;flex-shrink:0" class="step-circle">
+            <span class="t-h2" style="color:#fff;font-size:1.5rem">02</span>
+          </div>
+          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%">
+            <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">account_tree</span>
+            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Stratégie</h3>
+            <p class="t-body-md" style="color:var(--c-on-surface-var)">Définition de l'architecture de l'information, parcours utilisateurs et feuille de route technique pour un impact maximal.</p>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center" class="process-step" tabindex="0">
+          <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);transition:transform .3s;flex-shrink:0" class="step-circle">
+            <span class="t-h2" style="color:#fff;font-size:1.5rem">03</span>
+          </div>
+          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%">
+            <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">design_services</span>
+            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Design</h3>
+            <p class="t-body-md" style="color:var(--c-on-surface-var)">Conception d'interfaces modernes, conformes aux normes WCAG, alliant esthétique corporate et clarté d'information.</p>
+          </div>
+        </div>
+        <!-- Step 4 -->
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center" class="process-step" tabindex="0">
+          <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);transition:transform .3s;flex-shrink:0" class="step-circle">
+            <span class="t-h2" style="color:#fff;font-size:1.5rem">04</span>
+          </div>
+          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%">
+            <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">rocket_launch</span>
+            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Livraison</h3>
+            <p class="t-body-md" style="color:var(--c-on-surface-var)">Déploiement rigoureux, tests d'assurance qualité exhaustifs et transfert de compétences pour une autonomie totale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:var(--sp-xxl)" data-reveal>
+      <a href="#contact" class="btn btn-primary">Démarrer un projet <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise" style="background:var(--c-surface-low)">
+<div class="container">
+<div style="text-align:center;margin-bottom:var(--sp-xxl)" data-reveal>
+<h2 class="t-h2" id="expertise-title" style="color:var(--c-primary);margin-bottom:var(--sp-md)">Notre Valeur Ajoutée</h2>
+<p class="t-body-lg" style="color:var(--c-on-surface-var);max-width:600px;margin-inline:auto">Une approche rigoureuse alliant excellence technique, conformité stricte et communication fluide pour les leaders de l'industrie.</p>
+</div>
+
+<!-- Row 1 -->
+<div style="display:grid;grid-template-columns:1fr;gap:var(--sp-xxl);margin-bottom:var(--sp-xxl)">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-xl);align-items:center" data-reveal>
+<div>
+<span style="display:inline-flex;align-items:center;gap:6px;background:var(--c-secondary-container);color:#284486;padding:6px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">analytics</span>10+ Ans d'Expertise</span>
+<div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-sm)">
+<span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px" aria-hidden="true">architecture</span>
+<h3 class="t-h3" style="color:var(--c-on-surface)">Expertise Technique &amp; Design</h3>
+</div>
+<p class="t-body-lg" style="color:var(--c-on-surface-var)">Nous fusionnons l'ingénierie logicielle de pointe avec des méthodologies de design rigoureuses. Notre approche garantit des architectures systèmes évolutives et des interfaces d'une clarté absolue.</p>
+</div>
+<div style="border-radius:var(--r-card);overflow:hidden;border:1px solid var(--c-outline-var);height:320px">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGeNCWzFYyiRHN3aTGxkE56DRaA100ZMtpOWvQIay8FuHUKYuexsLnyl5sFTmTG4627M4AESygK7z0C1uPN5lubikHvhf5nEX7axa0vaq2cgrwKjsuMqjrf4zsYKhN49K2CI9dq3CIfxJjwwWGnC-Q2C8c0BSg6-6-GonKPRcfe4blG-cWmSumtiyLj23_chAbc8sdc304ESBmINSUKU5ff0v6B33YCstnkQvI4qhca5uNl2tQqmrjuLOtrZ3rsJkqy4N-b6_Qkema" alt="Professionnels analysant des interfaces numériques complexes en laboratoire corporate." style="width:100%;height:100%;object-fit:cover"/>
+</div>
+</div>
+
+<!-- Row 2 -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-xl);align-items:center" data-reveal>
+<div style="order:2">
+<div style="border-radius:var(--r-card);overflow:hidden;border:1px solid var(--c-outline-var);height:320px">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlV3S8tL_bLPuREkY2AXNcaQKlrMmu3z0Dhqg6Q4BBwU_AR-EfHYCAH8mVMihTZQsU74iKPkYR9-Q8qec1aLw7Ld6UqKSR2ENcrAlSLIkFoK1XVVXYW9pEH4akWaN9-PU2IdBoNEwTAKAw0p9sOWOg3X88XbDyCTUPKO4B3_K8evhWwqoZLVz2sF7Ozpyz0G05dL3GiWF2P_q_tQ4WAjolS8m-ClziKK14j4-0gYS6kmYSUwANAq_X9V7DhjBxRbj2IGlKxVvuCtKr" alt="Audit d'accessibilité numérique sur un clavier spécialisé avec grilles de contraste visibles." style="width:100%;height:100%;object-fit:cover"/>
+</div>
+</div>
+<div style="order:1">
+<span style="display:inline-flex;align-items:center;gap:6px;background:var(--c-secondary-container);color:#284486;padding:6px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">verified</span>Garantie WCAG 2.1 AA</span>
+<div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-sm)">
+<span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px" aria-hidden="true">accessibility_new</span>
+<h3 class="t-h3" style="color:var(--c-on-surface)">Spécialistes de l'Accessibilité</h3>
+</div>
+<p class="t-body-lg" style="color:var(--c-on-surface-var)">L'inclusion numérique est notre norme, pas une option. Nous intégrons les critères d'accessibilité dès la conception architecturale, assurant que vos plateformes sont universellement utilisables.</p>
+</div>
+</div>
+
+<!-- Row 3 -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-xl);align-items:center" data-reveal>
+<div>
+<span style="display:inline-flex;align-items:center;gap:6px;background:var(--c-secondary-container);color:#284486;padding:6px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">public</span>Portée Internationale</span>
+<div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-sm)">
+<span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px" aria-hidden="true">forum</span>
+<h3 class="t-h3" style="color:var(--c-on-surface)">Bilingue Français / Anglais</h3>
+</div>
+<p class="t-body-lg" style="color:var(--c-on-surface-var)">Nous facilitons la collaboration transparente à l'échelle mondiale. Notre maîtrise native des deux langues garantit que les exigences techniques complexes sont traduites sans perte de nuance.</p>
+</div>
+<div style="border-radius:var(--r-card);overflow:hidden;border:1px solid var(--c-outline-var);height:320px">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8zNfMTaXpF2llrNmdfrCoKQ_0Krey7Dl6BMYUTi9VQGOvflSbGz3hARSpbm7nzjhEu1PMfSu5kxqTmy7AIwHctgod2iixYVUujBNLHWbqSF_dxPdUp03MLbQb-Q6TzJfip2SLhzPqUHJUwQFeWPMTmszBNwzySpCtgt-EKU-boC6mBSUw8Qz06e7xXRFSYzyEG6wDFoLM9ZAKQLFoc2cVbGv8fnl55xx52r6Ge4UGLJ9AgwmoSEMMGMtCJVW_vuXYzUj4w2_mb7Hb" alt="Consultants internationaux dans une salle de réunion moderne discutant de stratégie bilingue." style="width:100%;height:100%;object-fit:cover"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--c-primary);position:relative;overflow:hidden" aria-labelledby="contact-title">
+<div aria-hidden="true" style="position:absolute;top:-30%;right:-15%;width:60%;height:60%;border-radius:50%;background:rgba(74,144,217,.12);filter:blur(80px);pointer-events:none"></div>
+<div class="container" style="position:relative;z-index:1">
+<div style="margin-bottom:var(--sp-xl)" data-reveal>
+<h2 class="t-h1" id="contact-title" style="color:#fff;margin-bottom:var(--sp-md)">Initier le Dialogue.</h2>
+<p class="t-body-lg" style="color:rgba(255,255,255,.8);max-width:560px">Engage with our experts to redefine your digital architecture. Precision and authority begin with a single conversation.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--sp-xl)">
+<!-- Form -->
+<div style="background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-card);padding:var(--sp-xl)" data-reveal>
+<form id="contact-form" novalidate>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md);margin-bottom:var(--sp-md)">
+<div>
+<label for="nom" class="t-label" style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Nom complet</label>
+<input type="text" id="nom" name="nom" required autocomplete="name" placeholder="Jean Dupont" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem;transition:border .2s" class="form-field"/>
+</div>
+<div>
+<label for="email" class="t-label" style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Adresse Email</label>
+<input type="email" id="email" name="email" required autocomplete="email" placeholder="jean@entreprise.fr" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem;transition:border .2s" class="form-field"/>
+</div>
+</div>
+<div style="margin-bottom:var(--sp-md)">
+<label for="projet" class="t-label" style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Type de Projet</label>
+<select id="projet" name="projet" required style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem;appearance:none;cursor:pointer" class="form-field">
+<option value="" disabled selected style="color:#333">Sélectionnez une expertise</option>
+<option value="audit" style="color:#333">Audit d'Accessibilité (WCAG)</option>
+<option value="architecture" style="color:#333">Architecture Système</option>
+<option value="transformation" style="color:#333">Transformation Digitale</option>
+<option value="autre" style="color:#333">Autre demande</option>
+</select>
+</div>
+<div style="margin-bottom:var(--sp-lg)">
+<label for="message" class="t-label" style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Votre Message</label>
+<textarea id="message" name="message" required rows="5" placeholder="Décrivez vos objectifs et contraintes..." style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem;resize:vertical;transition:border .2s" class="form-field"></textarea>
+</div>
+<div style="display:flex;justify-content:flex-end">
+<button type="submit" class="btn btn-primary" id="submit-btn">
+Envoyer la demande
+<span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">send</span>
+</button>
+</div>
+<div id="form-success" style="display:none;margin-top:var(--sp-md);padding:var(--sp-md);background:rgba(74,144,217,.2);border:1px solid rgba(74,144,217,.4);border-radius:var(--r-base);color:#fff;font-size:.9rem" role="alert">
+✅ Message envoyé avec succès. Nous vous répondrons sous 24h.
+</div>
+</form>
+</div>
+<!-- Info -->
+<div style="display:flex;flex-direction:column;gap:var(--sp-md)" data-reveal data-delay="2">
+<div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-card);padding:var(--sp-lg)">
+<h3 class="t-h3" style="color:#fff;margin-bottom:var(--sp-md)">Contact Direct</h3>
+<div style="display:flex;align-items:center;gap:var(--sp-md);margin-bottom:var(--sp-md)">
+<div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+<span class="material-symbols-outlined" style="font-size:20px;font-variation-settings:'FILL' 1">mail</span>
+</div>
+<a href="mailto:contact@primozayn.fr" style="color:rgba(255,255,255,.9);text-decoration:none;font-size:1rem" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">contact@primozayn.fr</a>
+</div>
+<div style="display:flex;align-items:center;gap:var(--sp-md)">
+<div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+<span class="material-symbols-outlined" style="font-size:20px;font-variation-settings:'FILL' 1">call</span>
+</div>
+<a href="tel:+33100000000" style="color:rgba(255,255,255,.9);text-decoration:none;font-size:1rem">+33 (0) 1 00 00 00 00</a>
+</div>
+</div>
+<div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-card);padding:var(--sp-lg)">
+<div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-sm)">
+<span class="material-symbols-outlined" style="color:var(--c-accent);font-variation-settings:'FILL' 1">location_on</span>
+<span class="t-label" style="color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.08em">Siège Social</span>
+</div>
+<p style="color:rgba(255,255,255,.85);font-size:1rem;line-height:1.6">8 Avenue des Champs-Élysées<br/>75008 Paris, France</p>
+</div>
+<a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-card);padding:var(--sp-lg);display:flex;align-items:center;justify-content:space-between;text-decoration:none;transition:background .2s,border .2s" onmouseover="this.style.background='rgba(255,255,255,.14)';this.style.borderColor='rgba(74,144,217,.5)'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.borderColor='rgba(255,255,255,.12)'">
+<div style="display:flex;align-items:center;gap:var(--sp-md)">
+<span class="material-symbols-outlined" style="color:#0a66c2;font-size:32px;font-variation-settings:'FILL' 1">public</span>
+<div>
+<span class="t-label" style="color:#fff;display:block;margin-bottom:2px">Réseau Professionnel</span>
+<span style="color:rgba(255,255,255,.7);font-size:.9rem">Suivez-nous sur LinkedIn</span>
+</div>
+</div>
+<span class="material-symbols-outlined" style="color:rgba(255,255,255,.5)">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0a1628;border-top:1px solid rgba(255,255,255,.06)" role="contentinfo">
+<div class="container" style="padding-block:var(--sp-xxl)">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--sp-xl);margin-bottom:var(--sp-xxl)">
+<div style="grid-column:span 2" class="footer-brand">
+<span style="font-family:var(--font-head);font-size:1.1rem;font-weight:900;color:#fff;display:block;margin-bottom:var(--sp-md)">PRIMOZAYN CONSULTING</span>
+<p style="color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.6;max-width:260px">Precise. Authoritative. Inclusive.</p>
+</div>
+<div>
+<h4 class="t-label" style="color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--sp-md)">Légal</h4>
+<ul style="list-style:none;display:flex;flex-direction:column;gap:var(--sp-sm)">
+<li><a href="#" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Politique de Confidentialité</a></li>
+<li><a href="#" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Conditions d'Utilisation</a></li>
+</ul>
+</div>
+<div>
+<h4 class="t-label" style="color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--sp-md)">Engagement</h4>
+<ul style="list-style:none;display:flex;flex-direction:column;gap:var(--sp-sm)">
+<li><a href="#" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Déclaration d'Accessibilité</a></li>
+<li><a href="#" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Bureaux Mondiaux</a></li>
+</ul>
+</div>
+<div>
+<h4 class="t-label" style="color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--sp-md)">Rejoindre</h4>
+<ul style="list-style:none;display:flex;flex-direction:column;gap:var(--sp-sm)">
+<li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">LinkedIn</a></li>
+</ul>
+</div>
+</div>
+<div style="border-top:1px solid rgba(255,255,255,.06);padding-top:var(--sp-xl);text-align:center">
+<p style="color:rgba(255,255,255,.3);font-size:.85rem">© 2024 PRIMOZAYN CONSULTING. All rights reserved. Precise. Authoritative. Inclusive.</p>
+</div>
+</div>
+</footer>
+</main>
+<style>
+.form-field:focus{outline:3px solid var(--c-accent);outline-offset:2px;border-color:transparent!important}
+.form-field::placeholder{color:rgba(255,255,255,.35)}
+.process-step:hover .step-circle,.process-step:focus .step-circle{transform:scale(1.08)}
+@media(max-width:639px){
+  .hero-ctas{flex-direction:column}
+  .hero-stats{grid-template-columns:1fr}
+  [style*="grid-column:span 2"]{grid-column:span 1}
+}
+@media(min-width:640px) and (max-width:1023px){
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+<script>
+(function(){
+  /* ── NAV SCROLL ── */
+  const nav=document.getElementById('site-nav');
+  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>60);
+  window.addEventListener('scroll',onScroll,{passive:true});
+
+  /* ── ACTIVE NAV LINK ── */
+  const sections=document.querySelectorAll('section[id]');
+  const navLinks=document.querySelectorAll('.nav-link');
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id));
+      }
+    });
+  },{threshold:.4});
+  sections.forEach(s=>io.observe(s));
+
+  /* ── HAMBURGER ── */
+  const ham=document.getElementById('hamburger');
+  const mob=document.getElementById('mobile-menu');
+  ham.addEventListener('click',()=>{
+    const open=mob.classList.toggle('open');
+    ham.setAttribute('aria-expanded',open);
+    ham.querySelector('.material-symbols-outlined').textContent=open?'close':'menu';
+  });
+  mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    mob.classList.remove('open');
+    ham.setAttribute('aria-expanded','false');
+    ham.querySelector('.material-symbols-outlined').textContent='menu';
+  }));
+
+  /* ── HERO WORD ANIMATION ── */
+  function splitWords(el,text){
+    const words=text.split(' ');
+    el.innerHTML=words.map((w,i)=>`<span class="word-wrap"><span class="word" style="animation-delay:${i*100}ms">${w}</span></span>`).join(' ');
+  }
+  const heroTitle=document.getElementById('hero-title');
+  if(heroTitle)splitWords(heroTitle,'Votre interface mérite d\'être repensée.');
+
+  /* ── INTERSECTION OBSERVER: reveal ── */
+  const prefersReduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(!prefersReduced){
+    const revealObs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');revealObs.unobserve(e.target);}});
+    },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('[data-reveal]').forEach(el=>revealObs.observe(el));
+
+    /* stagger children */
+    document.querySelectorAll('[data-stagger]').forEach(parent=>{
+      Array.from(parent.children).forEach((child,i)=>{
+        child.setAttribute('data-reveal','');
+        child.setAttribute('data-delay',Math.min(i+1,4));
+        revealObs.observe(child);
+      });
+    });
+  } else {
+    document.querySelectorAll('[data-reveal],[data-stagger] > *').forEach(el=>el.classList.add('is-visible'));
+  }
+
+  /* ── LANG TOGGLE ── */
+  document.getElementById('lang-fr').addEventListener('click',function(){
+    this.setAttribute('aria-pressed','true');
+    document.getElementById('lang-en').setAttribute('aria-pressed','false');
+  });
+  document.getElementById('lang-en').addEventListener('click',function(){
+    this.setAttribute('aria-pressed','true');
+    document.getElementById('lang-fr').setAttribute('aria-pressed','false');
+  });
+
+  /* ── CONTACT FORM ── */
+  const form=document.getElementById('contact-form');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      const btn=document.getElementById('submit-btn');
+      btn.disabled=true;
+      btn.textContent='Envoi en cours...';
+      setTimeout(()=>{
+        document.getElementById('form-success').style.display='block';
+        btn.disabled=false;
+        btn.innerHTML='Envoyer la demande <span class="material-symbols-outlined" style="font-size:18px">send</span>';
+        form.reset();
+      },1200);
+    });
+  }
+
+  /* ── SMOOTH SCROLL for all anchor links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',function(e){
+      const target=document.querySelector(this.getAttribute('href'));
+      if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  });
+})();
+</script>
+</body>
+</html>

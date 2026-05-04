@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PRIMOZAYN CONSULTING</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#9ab4fe",
+                        "error": "#ba1a1a",
+                        "primary": "#011848",
+                        "on-primary-container": "#8597cd",
+                        "inverse-primary": "#b3c5fe",
+                        "tertiary-container": "#4d2700",
+                        "outline": "#757680",
+                        "on-surface": "#1b1b1f",
+                        "on-secondary-container": "#284486",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f2f0f5",
+                        "primary-fixed-dim": "#b3c5fe",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#c5c6d0",
+                        "on-primary-fixed": "#011848",
+                        "on-secondary-fixed": "#001848",
+                        "inverse-surface": "#303034",
+                        "secondary": "#415c9f",
+                        "tertiary": "#2f1500",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#dae2ff",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-dim": "#dbd9de",
+                        "surface-variant": "#e4e2e6",
+                        "surface-tint": "#4b5d8f",
+                        "surface-container-low": "#f5f3f8",
+                        "tertiary-fixed-dim": "#f9b985",
+                        "surface-container-high": "#e9e7ec",
+                        "on-secondary-fixed-variant": "#274485",
+                        "on-primary-fixed-variant": "#334576",
+                        "surface-container-highest": "#e4e2e6",
+                        "on-tertiary-fixed-variant": "#683c13",
+                        "on-tertiary-fixed": "#2e1500",
+                        "primary-container": "#1b2e5e",
+                        "on-tertiary-container": "#c68c5c",
+                        "on-surface-variant": "#45464f",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#b2c5ff",
+                        "surface-container": "#efedf2",
+                        "background": "#fbf8fd",
+                        "surface-bright": "#fbf8fd",
+                        "tertiary-fixed": "#ffdcc2",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#fbf8fd",
+                        "on-background": "#1b1b1f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "base": "8px",
+                        "sm": "8px",
+                        "container-max": "1280px",
+                        "xxl": "64px"
+                    },
+                    "fontFamily": {
+                        "label": ["Inter"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "h3": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h1": ["56px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h2": ["36px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm transition-all duration-300 ease-in-out">
+<nav class="flex justify-between items-center px-6 md:px-12 h-20 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="text-xl font-black tracking-tighter text-slate-900 dark:text-white font-h3 text-h3">PRIMOZAYN CONSULTING</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-sky-600 dark:text-sky-400 border-b-2 border-sky-600 dark:border-sky-400 pb-1 font-['Plus_Jakarta_Sans'] font-medium tracking-tight text-label font-label" href="#">Services</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-300 transition-colors font-['Plus_Jakarta_Sans'] font-medium tracking-tight text-label font-label" href="#">Process</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-300 transition-colors font-['Plus_Jakarta_Sans'] font-medium tracking-tight text-label font-label" href="#">Expertise</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-300 transition-colors font-['Plus_Jakarta_Sans'] font-medium tracking-tight text-label font-label" href="#">Contact</a>
+</div>
+<div class="hidden md:flex items-center">
+<button class="bg-[#4A90D9] text-white px-6 py-3 rounded-lg text-label font-label font-bold hover:bg-opacity-90 focus:ring-3 focus:ring-[#4A90D9] focus:ring-offset-2 transition-all">
+                    Get a Quote
+                </button>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-slate-600 hover:text-sky-500 focus:outline-none">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+</header>
+<!-- Main Content -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-20">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img alt="" class="w-full h-full object-cover object-center" data-alt="A sophisticated corporate office interior featuring sleek modern design. The environment is illuminated by natural light pouring through large glass windows, casting soft reflections on polished surfaces. The color palette emphasizes deep navy blues, crisp whites, and subtle technical sky blue accents, aligning perfectly with a high-end French consulting aesthetic. The mood is authoritative, precise, and highly professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCucOf0AgsFi4zOh98Pt8RJCCUClFGNDjMo8HKhX5-qbGN9CzAwOP8ywDraAmgn_l0j8uZuc413eTaMM0eUdOKGfMlVi3X2ZD0AfMu74PRsXHk6JalysOsvxYZbAbhstUkQjiVvEnmP1DZRO-2gybp4SJi-Fcu5ysMewmzt_hYMyAuFNZt87RFba4x3Y1LI2fp5-WkGcdzs7eJedqqeba_nyi40QzGjng1wm3QdOK6SiCgGvgmCWlwEm9kwUAJQnwVyQJZSGDVKb0ig"/>
+<!-- Gradient Overlay: Navy #1B2E5E to Blue Steel #2E4A8C at 70% opacity -->
+<div class="absolute inset-0 bg-gradient-to-br from-[#1B2E5E]/70 to-[#2E4A8C]/70"></div>
+</div>
+<!-- Content Container -->
+<div class="relative z-10 w-full max-w-container-max mx-auto px-6 md:px-12 xl:px-gutter">
+<div class="max-w-3xl">
+<!-- Eyebrow -->
+<span class="inline-block mb-6 text-on-primary font-label text-label tracking-widest uppercase opacity-90 border-l-2 border-on-primary pl-4">
+                        Consulting · Design · Accessibilité
+                    </span>
+<!-- H1 -->
+<h1 class="text-on-primary font-h1 text-h1 mb-8">
+                        Votre interface mérite d'être repensée.
+                    </h1>
+<!-- Subtitle -->
+<p class="text-on-primary/90 font-body-lg text-body-lg mb-12 max-w-2xl leading-relaxed">
+                        We deliver authoritative, precise, and inclusive digital transformations. Our rigorous approach ensures your platform not only meets WCAG standards but exceeds executive expectations with a sophisticated, modern architecture.
+                    </p>
+<!-- CTAs -->
+<div class="flex flex-col sm:flex-row gap-4">
+<!-- Primary CTA -->
+<button class="bg-[#4A90D9] text-white px-8 py-4 rounded-DEFAULT font-label text-label font-bold focus:outline-none focus:ring-[3px] focus:ring-[#4A90D9] focus:ring-offset-2 focus:ring-offset-primary-container transition-all hover:bg-opacity-90 flex items-center justify-center gap-2">
+                            Voir nos services
+                            <span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Secondary CTA -->
+<button class="bg-transparent border border-white/50 text-white hover:bg-white/10 px-8 py-4 rounded-DEFAULT font-label text-label font-bold focus:outline-none focus:ring-[3px] focus:ring-[#4A90D9] focus:ring-offset-2 focus:ring-offset-primary-container transition-all flex items-center justify-center">
+                            Audit gratuit
+                        </button>
+</div>
+</div>
+<!-- Trust Badges / Quick Stats (Bento-style preview) -->
+<div class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-6 opacity-0 animate-[fadeIn_1s_ease-out_1s_forwards]" style="animation: fadeIn 1s ease-out 1s forwards; @keyframes fadeIn { to { opacity: 1; } }">
+<div class="bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20">
+<span class="material-symbols-outlined text-[#4A90D9] mb-4 text-3xl" data-icon="verified_user">verified_user</span>
+<h3 class="text-white font-h3 text-h3 text-xl mb-2">WCAG 2.1 AA Compliant</h3>
+<p class="text-white/80 font-body-md text-body-md text-sm">Rigorous accessibility standards applied to every pixel.</p>
+</div>
+<div class="bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20">
+<span class="material-symbols-outlined text-[#4A90D9] mb-4 text-3xl" data-icon="architecture">architecture</span>
+<h3 class="text-white font-h3 text-h3 text-xl mb-2">Modern Architecture</h3>
+<p class="text-white/80 font-body-md text-body-md text-sm">Scalable, stable grid systems for optimal information flow.</p>
+</div>
+<div class="bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20">
+<span class="material-symbols-outlined text-[#4A90D9] mb-4 text-3xl" data-icon="trending_up">trending_up</span>
+<h3 class="text-white font-h3 text-h3 text-xl mb-2">Executive Alignment</h3>
+<p class="text-white/80 font-body-md text-body-md text-sm">Designs crafted to project digital mastery and authority.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 tonal-shift">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-6 md:px-12 py-16 max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-2 lg:col-span-1">
+<span class="text-lg font-bold text-slate-900 dark:text-white mb-4 block font-['Plus_Jakarta_Sans']">PRIMOZAYN CONSULTING</span>
+<p class="text-slate-500 dark:text-slate-400 font-['Plus_Jakarta_Sans'] text-sm leading-relaxed mb-6">
+                    © 2024 PRIMOZAYN CONSULTING. All rights reserved. Precise. Authoritative. Inclusive.
+                </p>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-4 font-['Plus_Jakarta_Sans'] text-sm">Legal</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-300 underline-offset-4 hover:underline focus:outline-none focus:ring-3 focus:ring-sky-500 font-['Plus_Jakarta_Sans'] text-sm" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-300 underline-offset-4 hover:underline focus:outline-none focus:ring-3 focus:ring-sky-500 font-['Plus_Jakarta_Sans'] text-sm" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-4 font-['Plus_Jakarta_Sans'] text-sm">Commitment</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-300 underline-offset-4 hover:underline focus:outline-none focus:ring-3 focus:ring-sky-500 font-['Plus_Jakarta_Sans'] text-sm" href="#">Accessibility Statement</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-4 font-['Plus_Jakarta_Sans'] text-sm">Connect</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-300 underline-offset-4 hover:underline focus:outline-none focus:ring-3 focus:ring-sky-500 font-['Plus_Jakarta_Sans'] text-sm" href="#">Global Offices</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-300 underline-offset-4 hover:underline focus:outline-none focus:ring-3 focus:ring-sky-500 font-['Plus_Jakarta_Sans'] text-sm" href="#">LinkedIn</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>
