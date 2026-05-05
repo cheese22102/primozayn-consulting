@@ -34,6 +34,19 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary":"#011848","pr
   --z-nav:50;
 }
 
+:root.dark {
+  --c-primary: #5288d6; --c-primary-container: #1b2641;
+  --c-secondary: #94a3b8; --c-secondary-container: #1e293b;
+  --c-accent: #5288d6; --c-accent-dk: #3a70b8;
+  --c-surface: #040507; --c-surface-low: #000000;
+  --c-surface-container: #0d121e; --c-surface-lowest: #000000;
+  --c-on-primary: #ffffff; --c-on-surface: #ffffff;
+  --c-on-surface-var: #a0abc0; --c-outline: #2d3748; --c-outline-var: #1a202c;
+  --sh-sm: 0 1px 3px rgba(0,0,0,0.8);
+  --sh-md: 0 4px 24px rgba(0,0,0,0.9);
+  --sh-lg: 0 8px 32px rgba(0,0,0,1);
+}
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--font-body);background:var(--c-surface);color:var(--c-on-surface);-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -63,13 +76,23 @@ section{padding-block:var(--sp-xxl)}
 .btn-primary:hover{background:var(--c-accent-dk);transform:scale(1.05);box-shadow:var(--sh-md)}
 .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5);padding:var(--sp-md) var(--sp-xl)}
 .btn-ghost:hover{background:rgba(255,255,255,.1);transform:scale(1.03)}
+.dark .btn-ghost{border-color:rgba(255,255,255,.2)}
+.dark .btn-ghost:hover{background:rgba(255,255,255,.05)}
 .btn-navy{background:var(--c-primary-container);color:var(--c-on-primary);padding:var(--sp-sm) var(--sp-lg)}
 .btn-navy:hover{filter:brightness(1.15);transform:scale(1.05)}
 
 /* ── CARD ── */
-.card{background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border:1px solid rgba(197,198,208,.3);border-radius:var(--r-card);box-shadow:var(--sh-md);transition:transform .25s cubic-bezier(.3,0,.2,1),box-shadow .25s ease}
+.card{background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border:1px solid rgba(197,198,208,.3);border-radius:var(--r-card);box-shadow:var(--sh-md);transition:transform .25s cubic-bezier(.3,0,.2,1),box-shadow .25s ease, background .3s, border-color .3s}
 .card:hover{transform:translateY(-7px) scale(1.018);box-shadow:var(--sh-lg)}
 .card-featured{border:2px solid var(--c-secondary);position:relative}
+
+/* Dark mode specific overrides */
+.dark .card { background: rgba(13,18,30,.6); border-color: rgba(255,255,255,.05); box-shadow: 0 4px 20px rgba(0,0,0,.6); }
+.dark .card:hover { background: rgba(27,38,65,.6); border-color: rgba(255,255,255,.1); box-shadow: 0 8px 32px rgba(0,0,0,.9); }
+.dark .card-featured { border-color: var(--c-accent-dk); }
+.dark #hero .btn-primary { background: rgba(13,18,30,.8); border: 1px solid rgba(82,136,214,.4); color: #fff; backdrop-filter: blur(10px); }
+.dark #hero .btn-primary:hover { background: rgba(82,136,214,.3); border-color: rgba(82,136,214,.8); }
+.dark #contact { background: var(--c-surface-low) !important; border-top: 1px solid rgba(255,255,255,.05); }
 
 /* ── ENTRANCE ANIMATIONS ── */
 [data-reveal]{opacity:0;filter:blur(12px);transform:translateY(28px);transition:opacity .7s ease,filter .7s ease,transform .7s ease}
@@ -105,7 +128,9 @@ section{padding-block:var(--sp-xxl)}
   border-bottom:1px solid rgba(255,255,255,.08);
   transition:background .3s ease,box-shadow .3s ease;
 }
+.dark #site-nav{background:rgba(4,5,7,.82)}
 #site-nav.scrolled{background:rgba(27,46,94,.96);box-shadow:0 2px 20px rgba(1,24,72,.3)}
+.dark #site-nav.scrolled{background:rgba(4,5,7,.96);box-shadow:0 2px 20px rgba(0,0,0,.5)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:80px;max-width:var(--container);margin-inline:auto;padding-inline:var(--sp-lg)}
 @media(min-width:768px){.nav-inner{padding-inline:var(--sp-xxl)}}
 .nav-logo{font-family:var(--font-head);font-size:1.1rem;font-weight:900;letter-spacing:-.03em;color:var(--c-on-primary);text-decoration:none;white-space:nowrap}
@@ -119,19 +144,39 @@ section{padding-block:var(--sp-xxl)}
 .nav-lang button[aria-pressed="true"]{background:rgba(255,255,255,.2);color:#fff}
 .nav-actions{display:none;align-items:center;gap:var(--sp-md)}
 @media(min-width:768px){.nav-actions{display:flex}}
+.theme-toggle{background:transparent;border:none;color:rgba(255,255,255,.8);cursor:pointer;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;transition:background .2s,color .2s}
+.theme-toggle:hover{background:rgba(255,255,255,.1);color:#fff}
+.theme-toggle-mobile{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.9);padding:10px 16px;border-radius:var(--r-base);cursor:pointer;width:100%;margin-top:16px;font-family:var(--font-body);font-size:.9rem;font-weight:600;transition:background .2s}
+.theme-toggle-mobile:hover{background:rgba(255,255,255,.1)}
 .nav-hamburger{display:flex;align-items:center;justify-content:center;background:transparent;border:none;color:#fff;cursor:pointer;padding:var(--sp-sm);border-radius:var(--r-base)}
 @media(min-width:768px){.nav-hamburger{display:none}}
-.mobile-menu{display:none;flex-direction:column;background:rgba(11,24,72,.97);backdrop-filter:blur(20px);padding:var(--sp-lg);gap:var(--sp-sm);border-top:1px solid rgba(255,255,255,.08)}
+.nav-cta{background:var(--c-accent);color:#fff;border:1px solid rgba(255,255,255,.1);box-shadow:0 2px 8px rgba(0,0,0,.15);transition:all .2s ease}
+.nav-cta:hover{background:var(--c-accent-dk);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.3);color:#fff}
+.mobile-menu{display:none;flex-direction:column;background:rgba(27,46,94,.98);backdrop-filter:blur(20px);padding:var(--sp-lg);gap:var(--sp-sm);border-top:1px solid rgba(255,255,255,.08);position:absolute;top:100%;left:0;width:100%}
+.dark .mobile-menu{background:rgba(4,5,7,.98)}
 .mobile-menu.open{display:flex}
 .mobile-menu a,.mobile-menu button{color:rgba(255,255,255,.8);font-size:1rem;font-weight:600;text-decoration:none;padding:var(--sp-sm) var(--sp-md);border-radius:var(--r-base)}
 .mobile-menu a:hover{background:rgba(255,255,255,.08);color:#fff}
+
+/* ══════════════════════════════════
+   FOOTER
+══════════════════════════════════ */
+.site-footer {
+  background: rgba(27,46,94,1);
+  border-top: 1px solid rgba(255,255,255,.08);
+  transition: background .3s ease;
+}
+.dark .site-footer {
+  background: rgba(4,5,7,1);
+}
 
 /* ══════════════════════════════════
    HERO
 ══════════════════════════════════ */
 #hero{position:relative;min-height:100svh;display:flex;align-items:center;padding-top:80px;overflow:hidden}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(1,24,72,.78) 0%,rgba(27,46,94,.72) 60%,rgba(46,74,140,.65) 100%);z-index:1}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(1,24,72,.78) 0%,rgba(27,46,94,.72) 60%,rgba(46,74,140,.65) 100%);z-index:1;transition:background .3s ease}
+.dark .hero-overlay{background:linear-gradient(135deg,rgba(4,5,7,.85) 0%,rgba(13,18,30,.8) 60%,rgba(27,38,65,.75) 100%)}
 .hero-content{position:relative;z-index:2;max-width:var(--container);margin-inline:auto;padding-inline:var(--sp-lg);width:100%}
 @media(min-width:768px){.hero-content{padding-inline:var(--sp-xxl)}}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:var(--sp-sm);font-family:var(--font-body);font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8);border-left:2px solid var(--c-accent);padding-left:var(--sp-md);margin-bottom:var(--sp-lg)}
@@ -139,12 +184,39 @@ section{padding-block:var(--sp-xxl)}
 .hero-sub{color:rgba(255,255,255,.88);font-size:1.125rem;line-height:1.7;max-width:600px;margin-bottom:var(--sp-xxl)}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:var(--sp-md)}
 .hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--sp-md);margin-top:80px}
-.stat-card{background:rgba(255,255,255,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-card);padding:var(--sp-lg);transition:background .3s}
+.stat-card{background:rgba(255,255,255,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-card);padding:var(--sp-lg);transition:background .3s, border-color .3s}
 .stat-card:hover{background:rgba(255,255,255,.13)}
+.dark .stat-card{background:rgba(0,0,0,.4);border-color:rgba(255,255,255,.05)}
+.dark .stat-card:hover{background:rgba(0,0,0,.6)}
 .stat-card .material-symbols-outlined{font-size:32px;color:var(--c-accent);margin-bottom:var(--sp-sm);display:block}
 .stat-card h3{font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:6px}
 .stat-card p{font-size:.875rem;color:rgba(255,255,255,.7);line-height:1.5}
-</style>
+/* ── MODAL SYSTEM ── */
+.modal-backdrop{position:fixed;inset:0;background:rgba(1,24,72,.7);backdrop-filter:blur(6px);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.modal-backdrop.open{opacity:1;pointer-events:all}
+.modal-sheet{position:fixed;bottom:0;left:0;right:0;max-height:92svh;background:var(--c-surface);border-radius:var(--r-card) var(--r-card) 0 0;z-index:201;transform:translateY(100%);transition:transform .45s cubic-bezier(.16,1,.3,1);overflow-y:auto}
+.modal-sheet.open{transform:translateY(0)}
+.modal-header{display:flex;align-items:flex-start;justify-content:space-between;padding:var(--sp-xl) var(--sp-xl) var(--sp-md);border-bottom:1px solid var(--c-outline-var);position:sticky;top:0;background:var(--c-surface);z-index:1}
+.modal-close{background:var(--c-surface-container);border:none;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--c-on-surface-var);transition:background .2s,transform .2s;flex-shrink:0}
+.modal-close:hover{background:var(--c-outline-var);transform:rotate(90deg)}
+.modal-body{padding:var(--sp-xl)}
+.modal-icon{width:64px;height:64px;border-radius:var(--r-card);background:var(--c-secondary-container);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg)}
+.modal-icon .material-symbols-outlined{font-size:36px;color:var(--c-secondary);font-variation-settings:'FILL' 1}
+.modal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-md);margin:var(--sp-xl) 0}
+.modal-feat{background:var(--c-surface-container-low,var(--c-surface-low));border:1px solid var(--c-outline-var);border-radius:var(--r-card);padding:var(--sp-lg)}
+.modal-feat .material-symbols-outlined{color:var(--c-secondary);font-size:24px;margin-bottom:var(--sp-sm);display:block}
+.modal-feat h4{font-family:var(--font-head);font-size:1rem;font-weight:600;color:var(--c-on-surface);margin-bottom:6px}
+.modal-feat p{font-size:.9rem;color:var(--c-on-surface-var);line-height:1.5}
+.tag{display:inline-flex;align-items:center;gap:4px;background:var(--c-secondary-container);color:#284486;padding:4px 12px;border-radius:var(--r-full);font-size:.8rem;font-weight:600}
+@media(min-width:768px){.modal-sheet{left:50%;right:auto;width:min(780px,92vw);transform:translateX(-50%) translateY(100%);border-radius:var(--r-card);bottom:auto;top:50%;transform:translate(-50%,calc(-50% + 40px));max-height:88svh;opacity:0;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .3s ease}.modal-sheet.open{transform:translate(-50%,-50%);opacity:1}}</style>
+<script>
+  (function(){
+    var saved = localStorage.getItem('pz-theme');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  })();
+</script>
 </head>
 <body>
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-white focus:text-primary t-label" style="border-radius:0">Aller au contenu principal</a>
@@ -154,28 +226,39 @@ section{padding-block:var(--sp-xxl)}
   <div class="nav-inner">
     <a href="#hero" class="nav-logo" aria-label="PRIMOZAYN CONSULTING — accueil">PRIMOZAYN CONSULTING</a>
     <nav class="nav-links" aria-label="Navigation principale">
-      <a href="#services" class="nav-link">Services</a>
-      <a href="#processus" class="nav-link">Processus</a>
-      <a href="#expertise" class="nav-link">Expertise</a>
-      <a href="#contact" class="nav-link">Contact</a>
+      <a href="#services" class="nav-link" data-i18n="nav-services">Services</a>
+      <a href="#processus" class="nav-link" data-i18n="nav-processus">Processus</a>
+      <a href="#expertise" class="nav-link" data-i18n="nav-expertise">Expertise</a>
+      <a href="#contact" class="nav-link" data-i18n="nav-contact">Contact</a>
     </nav>
     <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" role="switch" aria-checked="false" aria-label="Activer le mode sombre" data-i18n-aria="theme-toggle" title="Activer le mode sombre" data-i18n-title="theme-toggle">
+        <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+      </button>
       <div class="nav-lang" role="group" aria-label="Sélection de langue">
         <button aria-pressed="true" id="lang-fr">FR</button>
         <button aria-pressed="false" id="lang-en">EN</button>
       </div>
-      <a href="#contact" class="btn btn-primary" style="font-size:.8rem;padding:10px 20px">Demander un devis</a>
+      <a href="#contact" class="btn nav-cta" style="font-size:.8rem;padding:10px 20px" data-i18n="nav-cta">Demander un devis</a>
     </div>
     <button class="nav-hamburger" id="hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
       <span class="material-symbols-outlined">menu</span>
     </button>
   </div>
   <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Navigation mobile">
-    <a href="#services" class="nav-link">Services</a>
-    <a href="#processus" class="nav-link">Processus</a>
-    <a href="#expertise" class="nav-link">Expertise</a>
-    <a href="#contact" class="nav-link">Contact</a>
-    <a href="#contact" class="btn btn-primary" style="margin-top:8px">Demander un devis</a>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;justify-content:flex-start" aria-label="Sélection de langue mobile">
+      <button aria-pressed="true" id="mobile-lang-fr" style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r-base);cursor:pointer;font-family:var(--font-body);font-size:.9rem;font-weight:600;transition:all .2s;text-align:center">FR</button>
+      <button aria-pressed="false" id="mobile-lang-en" style="background:transparent;border:1px solid transparent;color:rgba(255,255,255,.6);padding:6px 12px;border-radius:var(--r-base);cursor:pointer;font-family:var(--font-body);font-size:.9rem;font-weight:600;transition:all .2s;text-align:center">EN</button>
+    </div>
+    <a href="#services" class="nav-link" data-i18n="nav-services">Services</a>
+    <a href="#processus" class="nav-link" data-i18n="nav-processus">Processus</a>
+    <a href="#expertise" class="nav-link" data-i18n="nav-expertise">Expertise</a>
+    <a href="#contact" class="nav-link" data-i18n="nav-contact">Contact</a>
+    <a href="#contact" class="btn nav-cta" style="margin-top:8px;width:100%" data-i18n="nav-cta">Demander un devis</a>
+    <button class="theme-toggle-mobile" id="mobile-theme-toggle" role="switch" aria-checked="false" aria-label="Activer le mode sombre" data-i18n-aria="theme-toggle">
+      <span class="material-symbols-outlined" id="mobile-theme-icon">dark_mode</span>
+      <span id="mobile-theme-text" data-i18n="theme-toggle-text">Mode sombre</span>
+    </button>
   </div>
 </header>
 
@@ -197,7 +280,7 @@ section{padding-block:var(--sp-xxl)}
         Voir nos services
         <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
       </a>
-      <a href="#contact" class="btn btn-ghost">Audit gratuit</a>
+      <a href="#contact" class="btn btn-ghost" id="btn-audit-gratuit" data-i18n="hero-audit-btn">Audit gratuit</a>
     </div>
     <div class="hero-stats" data-stagger>
       <div class="stat-card">
@@ -236,8 +319,8 @@ section{padding-block:var(--sp-xxl)}
         </div>
         <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Refonte UX/UI</h3>
         <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Modernisation complète de vos interfaces avec une approche centrée utilisateur, garantissant une architecture de l'information claire et une navigation fluide.</p>
-        <a href="#contact" class="t-label" style="color:var(--c-secondary);display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--c-primary)'" onmouseout="this.style.color='var(--c-secondary)'">
-          En savoir plus <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+        <a href="#" data-modal="modal-uxui" class="t-label" style="color:var(--c-secondary);display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--c-primary)'" onmouseout="this.style.color='var(--c-secondary)'">
+          <span data-i18n="service1-link">En savoir plus</span> <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
         </a>
       </article>
       <!-- Card 2 featured -->
@@ -245,13 +328,13 @@ section{padding-block:var(--sp-xxl)}
         <div style="position:absolute;top:-14px;right:var(--sp-lg);background:var(--c-secondary);color:#fff;padding:4px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;letter-spacing:.05em;display:flex;align-items:center;gap:4px">
           <span class="material-symbols-outlined" style="font-size:15px;font-variation-settings:'FILL' 1">verified</span>Expertise Phare
         </div>
-        <div style="width:48px;height:48px;border-radius:var(--r-card);background:#dae2ff;display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg)">
+        <div class="feat-icon" style="width:48px;height:48px;border-radius:var(--r-card);background:var(--c-surface-container);border:1px solid var(--c-outline-var);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg)">
           <span class="material-symbols-outlined" style="color:var(--c-secondary);font-variation-settings:'FILL' 1">accessibility_new</span>
         </div>
         <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Audit Accessibilité Digitale</h3>
         <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Évaluation rigoureuse et mise en conformité WCAG 2.1 AA. Nous transformons les contraintes d'accessibilité en vecteurs d'excellence esthétique et fonctionnelle.</p>
-        <a href="#contact" class="t-label" style="color:var(--c-secondary);display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--c-primary)'" onmouseout="this.style.color='var(--c-secondary)'">
-          Voir la méthodologie <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+        <a href="#" data-modal="modal-audit" class="t-label" style="color:var(--c-secondary);display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--c-primary)'" onmouseout="this.style.color='var(--c-secondary)'">
+          <span data-i18n="service2-link">Voir la méthodologie</span> <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
         </a>
       </article>
       <!-- Card 3 -->
@@ -261,8 +344,8 @@ section{padding-block:var(--sp-xxl)}
         </div>
         <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Conseil &amp; Accompagnement</h3>
         <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Stratégie digitale sur-mesure pour les comités de direction et product owners. Un pilotage précis pour sécuriser vos investissements digitaux.</p>
-        <a href="#contact" class="t-label" style="color:var(--c-secondary);display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--c-primary)'" onmouseout="this.style.color='var(--c-secondary)'">
-          En savoir plus <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+        <a href="#" data-modal="modal-conseil" class="t-label" style="color:var(--c-secondary);display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--c-primary)'" onmouseout="this.style.color='var(--c-secondary)'">
+          <span data-i18n="service1-link">En savoir plus</span> <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
         </a>
       </article>
     </div>
@@ -285,7 +368,7 @@ section{padding-block:var(--sp-xxl)}
           <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);transition:transform .3s;flex-shrink:0" class="step-circle">
             <span class="t-h2" style="color:#fff;font-size:1.5rem">01</span>
           </div>
-          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%">
+          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
             <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">stethoscope</span>
             <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Diagnostic</h3>
             <p class="t-body-md" style="color:var(--c-on-surface-var)">Analyse approfondie de votre écosystème, identification des points de friction et évaluation de l'accessibilité initiale.</p>
@@ -296,7 +379,7 @@ section{padding-block:var(--sp-xxl)}
           <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);transition:transform .3s;flex-shrink:0" class="step-circle">
             <span class="t-h2" style="color:#fff;font-size:1.5rem">02</span>
           </div>
-          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%">
+          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
             <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">account_tree</span>
             <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Stratégie</h3>
             <p class="t-body-md" style="color:var(--c-on-surface-var)">Définition de l'architecture de l'information, parcours utilisateurs et feuille de route technique pour un impact maximal.</p>
@@ -307,7 +390,7 @@ section{padding-block:var(--sp-xxl)}
           <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);transition:transform .3s;flex-shrink:0" class="step-circle">
             <span class="t-h2" style="color:#fff;font-size:1.5rem">03</span>
           </div>
-          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%">
+          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
             <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">design_services</span>
             <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Design</h3>
             <p class="t-body-md" style="color:var(--c-on-surface-var)">Conception d'interfaces modernes, conformes aux normes WCAG, alliant esthétique corporate et clarté d'information.</p>
@@ -318,7 +401,7 @@ section{padding-block:var(--sp-xxl)}
           <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);transition:transform .3s;flex-shrink:0" class="step-circle">
             <span class="t-h2" style="color:#fff;font-size:1.5rem">04</span>
           </div>
-          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%">
+          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
             <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">rocket_launch</span>
             <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Livraison</h3>
             <p class="t-body-md" style="color:var(--c-on-surface-var)">Déploiement rigoureux, tests d'assurance qualité exhaustifs et transfert de compétences pour une autonomie totale.</p>
@@ -347,7 +430,7 @@ section{padding-block:var(--sp-xxl)}
 <span style="display:inline-flex;align-items:center;gap:6px;background:var(--c-secondary-container);color:#284486;padding:6px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">analytics</span>10+ Ans d'Expertise</span>
 <div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-sm)">
 <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px" aria-hidden="true">architecture</span>
-<h3 class="t-h3" style="color:var(--c-on-surface)">Expertise Technique &amp; Design</h3>
+<h3 class="t-h3" style="color:var(--c-on-surface)" data-i18n="exp1-title">Expertise Technique &amp; Design</h3>
 </div>
 <p class="t-body-lg" style="color:var(--c-on-surface-var)">Nous fusionnons l'ingénierie logicielle de pointe avec des méthodologies de design rigoureuses. Notre approche garantit des architectures systèmes évolutives et des interfaces d'une clarté absolue.</p>
 </div>
@@ -367,7 +450,7 @@ section{padding-block:var(--sp-xxl)}
 <span style="display:inline-flex;align-items:center;gap:6px;background:var(--c-secondary-container);color:#284486;padding:6px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">verified</span>Garantie WCAG 2.1 AA</span>
 <div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-sm)">
 <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px" aria-hidden="true">accessibility_new</span>
-<h3 class="t-h3" style="color:var(--c-on-surface)">Spécialistes de l'Accessibilité</h3>
+<h3 class="t-h3" style="color:var(--c-on-surface)" data-i18n="exp2-title">Spécialistes de l'Accessibilité</h3>
 </div>
 <p class="t-body-lg" style="color:var(--c-on-surface-var)">L'inclusion numérique est notre norme, pas une option. Nous intégrons les critères d'accessibilité dès la conception architecturale, assurant que vos plateformes sont universellement utilisables.</p>
 </div>
@@ -376,12 +459,12 @@ section{padding-block:var(--sp-xxl)}
 <!-- Row 3 -->
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-xl);align-items:center" data-reveal>
 <div>
-<span style="display:inline-flex;align-items:center;gap:6px;background:var(--c-secondary-container);color:#284486;padding:6px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">public</span>Portée Internationale</span>
+<span style="display:inline-flex;align-items:center;gap:6px;background:var(--c-secondary-container);color:#284486;padding:6px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">public</span><span data-i18n="exp3-badge">Portée Internationale</span></span>
 <div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-sm)">
 <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px" aria-hidden="true">forum</span>
-<h3 class="t-h3" style="color:var(--c-on-surface)">Bilingue Français / Anglais</h3>
+<h3 class="t-h3" style="color:var(--c-on-surface)" data-i18n="exp3-title">Bilingue Français / Anglais</h3>
 </div>
-<p class="t-body-lg" style="color:var(--c-on-surface-var)">Nous facilitons la collaboration transparente à l'échelle mondiale. Notre maîtrise native des deux langues garantit que les exigences techniques complexes sont traduites sans perte de nuance.</p>
+<p class="t-body-lg" style="color:var(--c-on-surface-var)" data-i18n="exp3-desc">Nous facilitons la collaboration transparente à l'échelle mondiale. Notre maîtrise native des deux langues garantit que les exigences techniques complexes sont traduites sans perte de nuance.</p>
 </div>
 <div style="border-radius:var(--r-card);overflow:hidden;border:1px solid var(--c-outline-var);height:320px">
 <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8zNfMTaXpF2llrNmdfrCoKQ_0Krey7Dl6BMYUTi9VQGOvflSbGz3hARSpbm7nzjhEu1PMfSu5kxqTmy7AIwHctgod2iixYVUujBNLHWbqSF_dxPdUp03MLbQb-Q6TzJfip2SLhzPqUHJUwQFeWPMTmszBNwzySpCtgt-EKU-boC6mBSUw8Qz06e7xXRFSYzyEG6wDFoLM9ZAKQLFoc2cVbGv8fnl55xx52r6Ge4UGLJ9AgwmoSEMMGMtCJVW_vuXYzUj4w2_mb7Hb" alt="Consultants internationaux dans une salle de réunion moderne discutant de stratégie bilingue." style="width:100%;height:100%;object-fit:cover"/>
@@ -403,7 +486,7 @@ section{padding-block:var(--sp-xxl)}
 <!-- Form -->
 <div style="background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-card);padding:var(--sp-xl)" data-reveal>
 <form id="contact-form" novalidate>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md);margin-bottom:var(--sp-md)">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-md);margin-bottom:var(--sp-md)">
 <div>
 <label for="nom" class="t-label" style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Nom complet</label>
 <input type="text" id="nom" name="nom" required autocomplete="name" placeholder="Jean Dupont" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem;transition:border .2s" class="form-field"/>
@@ -478,7 +561,7 @@ Envoyer la demande
 </section>
 
 <!-- FOOTER -->
-<footer style="background:#0a1628;border-top:1px solid rgba(255,255,255,.06)" role="contentinfo">
+<footer class="site-footer" role="contentinfo">
 <div class="container" style="padding-block:var(--sp-xxl)">
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--sp-xl);margin-bottom:var(--sp-xxl)">
 <div style="grid-column:span 2" class="footer-brand">
@@ -488,15 +571,15 @@ Envoyer la demande
 <div>
 <h4 class="t-label" style="color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--sp-md)">Légal</h4>
 <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--sp-sm)">
-<li><a href="#" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Politique de Confidentialité</a></li>
-<li><a href="#" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Conditions d'Utilisation</a></li>
+<li><a href="privacy.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Politique de Confidentialité</a></li>
+<li><a href="terms.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Conditions d'Utilisation</a></li>
 </ul>
 </div>
 <div>
 <h4 class="t-label" style="color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--sp-md)">Engagement</h4>
 <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--sp-sm)">
-<li><a href="#" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Déclaration d'Accessibilité</a></li>
-<li><a href="#" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Bureaux Mondiaux</a></li>
+<li><a href="accessibility.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Déclaration d'Accessibilité</a></li>
+<li><a href="#contact" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Bureaux Mondiaux</a></li>
 </ul>
 </div>
 <div>
@@ -511,6 +594,75 @@ Envoyer la demande
 </div>
 </div>
 </footer>
+
+<!-- ══ SERVICE MODALS ══ -->
+<div class="modal-backdrop" id="modal-backdrop" aria-hidden="true"></div>
+
+<!-- Modal: Refonte UX/UI -->
+<div class="modal-sheet" id="modal-uxui" role="dialog" aria-modal="true" aria-labelledby="modal-uxui-title">
+  <div class="modal-header">
+    <div>
+      <span class="tag" style="margin-bottom:10px"><span class="material-symbols-outlined" style="font-size:15px">design_services</span><span data-i18n="modal-tag-service">Service</span></span>
+      <h2 class="t-h2" id="modal-uxui-title" style="color:var(--c-primary)" data-i18n="modal-uxui-title">Refonte UX/UI</h2>
+    </div>
+    <button class="modal-close" data-close-modal aria-label="Fermer"><span class="material-symbols-outlined">close</span></button>
+  </div>
+  <div class="modal-body">
+    <div class="modal-icon"><span class="material-symbols-outlined">design_services</span></div>
+    <p class="t-body-lg" style="color:var(--c-on-surface-var);margin-bottom:var(--sp-xl)" data-i18n="modal-uxui-desc">Nous repensons intégralement vos interfaces digitales avec une méthodologie centrée utilisateur. De l'audit initial à la livraison finale, chaque décision de design est ancrée dans des données réelles et des standards d'accessibilité rigoureux.</p>
+    <div class="modal-grid">
+      <div class="modal-feat"><span class="material-symbols-outlined">search</span><h4 data-i18n="modal-uxui-f1-title">Audit UX Initial</h4><p data-i18n="modal-uxui-f1-desc">Analyse heuristique complète, tests utilisateurs et cartographie des parcours existants.</p></div>
+      <div class="modal-feat"><span class="material-symbols-outlined">dashboard_customize</span><h4 data-i18n="modal-uxui-f2-title">Design System</h4><p data-i18n="modal-uxui-f2-desc">Création d'une bibliothèque de composants cohérente, évolutive et documentée.</p></div>
+      <div class="modal-feat"><span class="material-symbols-outlined">devices</span><h4 data-i18n="modal-uxui-f3-title">Responsive First</h4><p data-i18n="modal-uxui-f3-desc">Prototypes validés sur mobile, tablette et desktop avec tests de performance.</p></div>
+      <div class="modal-feat"><span class="material-symbols-outlined">handshake</span><h4 data-i18n="modal-uxui-f4-title">Transfert de Compétences</h4><p data-i18n="modal-uxui-f4-desc">Formation de vos équipes et documentation exhaustive pour une autonomie durable.</p></div>
+    </div>
+    <a href="#contact" class="btn btn-primary" data-close-modal data-i18n="modal-cta">Demander un devis pour ce service</a>
+  </div>
+</div>
+
+<!-- Modal: Audit Accessibilité -->
+<div class="modal-sheet" id="modal-audit" role="dialog" aria-modal="true" aria-labelledby="modal-audit-title">
+  <div class="modal-header">
+    <div>
+      <span class="tag" style="margin-bottom:10px;background:#dae2ff;color:var(--c-secondary)"><span class="material-symbols-outlined" style="font-size:15px;font-variation-settings:'FILL' 1">verified</span><span data-i18n="modal-tag-flagship">Expertise Phare</span></span>
+      <h2 class="t-h2" id="modal-audit-title" style="color:var(--c-primary)" data-i18n="modal-audit-title">Audit Accessibilité Digitale</h2>
+    </div>
+    <button class="modal-close" data-close-modal aria-label="Fermer"><span class="material-symbols-outlined">close</span></button>
+  </div>
+  <div class="modal-body">
+    <div class="modal-icon"><span class="material-symbols-outlined">accessibility_new</span></div>
+    <p class="t-body-lg" style="color:var(--c-on-surface-var);margin-bottom:var(--sp-xl)" data-i18n="modal-audit-desc">Notre méthodologie d'audit WCAG 2.1 AA est la plus rigoureuse du marché. Nous combinons tests automatisés, audits manuels par experts et tests avec utilisateurs en situation de handicap pour produire un rapport d'impact actionnable en 72h.</p>
+    <div class="modal-grid">
+      <div class="modal-feat"><span class="material-symbols-outlined">fact_check</span><h4 data-i18n="modal-audit-f1-title">Audit WCAG 2.1 AA</h4><p data-i18n="modal-audit-f1-desc">Évaluation des 50 critères de succès applicables à votre contexte spécifique.</p></div>
+      <div class="modal-feat"><span class="material-symbols-outlined">record_voice_over</span><h4 data-i18n="modal-audit-f2-title">Tests Lecteurs d'Écran</h4><p data-i18n="modal-audit-f2-desc">NVDA, JAWS, VoiceOver — tests cross-platform avec protocoles standardisés.</p></div>
+      <div class="modal-feat"><span class="material-symbols-outlined">contrast</span><h4 data-i18n="modal-audit-f3-title">Contraste & Couleur</h4><p data-i18n="modal-audit-f3-desc">Vérification des ratios APCA, daltonisme et conditions de basse luminosité.</p></div>
+      <div class="modal-feat"><span class="material-symbols-outlined">assignment_turned_in</span><h4 data-i18n="modal-audit-f4-title">Rapport Exécutif</h4><p data-i18n="modal-audit-f4-desc">Livrable en 72h : niveau de conformité, criticité par critère, feuille de route corrective.</p></div>
+    </div>
+    <a href="#contact" class="btn btn-primary" data-select-audit data-close-modal data-i18n="modal-audit-cta">Demander un audit gratuit</a>
+  </div>
+</div>
+
+<!-- Modal: Conseil & Accompagnement -->
+<div class="modal-sheet" id="modal-conseil" role="dialog" aria-modal="true" aria-labelledby="modal-conseil-title">
+  <div class="modal-header">
+    <div>
+      <span class="tag" style="margin-bottom:10px"><span class="material-symbols-outlined" style="font-size:15px">forum</span><span data-i18n="modal-tag-service">Service</span></span>
+      <h2 class="t-h2" id="modal-conseil-title" style="color:var(--c-primary)" data-i18n="modal-conseil-title">Conseil & Accompagnement</h2>
+    </div>
+    <button class="modal-close" data-close-modal aria-label="Fermer"><span class="material-symbols-outlined">close</span></button>
+  </div>
+  <div class="modal-body">
+    <div class="modal-icon"><span class="material-symbols-outlined">forum</span></div>
+    <p class="t-body-lg" style="color:var(--c-on-surface-var);margin-bottom:var(--sp-xl)" data-i18n="modal-conseil-desc">Nous accompagnons les comités de direction, CTO et product owners dans la définition et l'exécution de leur stratégie digitale. Notre approche combine vision stratégique à long terme et pilotage opérationnel rigoureux pour sécuriser chaque investissement.</p>
+    <div class="modal-grid">
+      <div class="modal-feat"><span class="material-symbols-outlined">map</span><h4 data-i18n="modal-conseil-f1-title">Roadmap Stratégique</h4><p data-i18n="modal-conseil-f1-desc">Définition d'une feuille de route digitale alignée sur vos objectifs business et contraintes techniques.</p></div>
+      <div class="modal-feat"><span class="material-symbols-outlined">groups</span><h4 data-i18n="modal-conseil-f2-title">Coaching Exécutif</h4><p data-i18n="modal-conseil-f2-desc">Sessions de travail individuelles avec C-suite pour aligner vision digitale et culture d'entreprise.</p></div>
+      <div class="modal-feat"><span class="material-symbols-outlined">monitoring</span><h4 data-i18n="modal-conseil-f3-title">Pilotage OKR</h4><p data-i18n="modal-conseil-f3-desc">Mise en place d'indicateurs de performance clés et tableaux de bord décisionnels.</p></div>
+      <div class="modal-feat"><span class="material-symbols-outlined">school</span><h4 data-i18n="modal-conseil-f4-title">Formation Équipes</h4><p data-i18n="modal-conseil-f4-desc">Montée en compétences de vos équipes produit, design et développement.</p></div>
+    </div>
+    <a href="#contact" class="btn btn-primary" data-close-modal data-i18n="modal-cta">Demander un devis pour ce service</a>
+  </div>
+</div>
 </main>
 <style>
 .form-field:focus{outline:3px solid var(--c-accent);outline-offset:2px;border-color:transparent!important}
@@ -586,15 +738,430 @@ Envoyer la demande
     document.querySelectorAll('[data-reveal],[data-stagger] > *').forEach(el=>el.classList.add('is-visible'));
   }
 
-  /* ── LANG TOGGLE ── */
-  document.getElementById('lang-fr').addEventListener('click',function(){
-    this.setAttribute('aria-pressed','true');
-    document.getElementById('lang-en').setAttribute('aria-pressed','false');
+  /* ══════════════════════════════════
+     i18n SYSTEM
+  ══════════════════════════════════ */
+  const T = {
+    fr:{
+      'nav-services':'Services','nav-processus':'Processus','nav-expertise':'Expertise','nav-contact':'Contact','nav-cta':'Demander un devis',
+      'hero-eyebrow':'Consulting \u00b7 Design \u00b7 Accessibilit\u00e9',
+      'hero-title':"Votre interface m\u00e9rite d\u2019\u00eatre repens\u00e9e.",
+      'hero-sub':'Nous livrons des transformations digitales autorit\u00e9, pr\u00e9cises et inclusives. Notre approche rigoureuse garantit que votre plateforme d\u00e9passe les normes WCAG et les attentes des dirigeants.',
+      'hero-cta-primary':'Voir nos services','hero-audit-btn':'Audit gratuit',
+      'stat1-title':'WCAG 2.1 AA','stat1-desc':"Des normes d\u2019accessibilit\u00e9 rigoureuses appliqu\u00e9es \u00e0 chaque pixel de votre plateforme.",
+      'stat2-title':'Architecture Moderne','stat2-desc':"Syst\u00e8mes de grilles stables et \u00e9volutifs pour un flux d\u2019information optimal.",
+      'stat3-title':'Alignement Ex\u00e9cutif','stat3-desc':"Des designs con\u00e7us pour projeter ma\u00eetrise et autorit\u00e9 num\u00e9riques.",
+      'services-title':'Nos Services','services-sub':"Des solutions expertes con\u00e7ues pour allier excellence technique, conformit\u00e9 stricte et exp\u00e9rience utilisateur sans compromis.",
+      'service1-title':'Refonte UX/UI','service1-desc':"Modernisation compl\u00e8te de vos interfaces avec une approche centr\u00e9e utilisateur, garantissant une architecture de l\u2019information claire et une navigation fluide.",'service1-link':'En savoir plus',
+      'service2-badge':'Expertise Phare','service2-title':'Audit Accessibilit\u00e9 Digitale','service2-desc':"\u00c9valuation rigoureuse et mise en conformit\u00e9 WCAG 2.1 AA. Nous transformons les contraintes d\u2019accessibilit\u00e9 en vecteurs d\u2019excellence esth\u00e9tique et fonctionnelle.",'service2-link':'Voir la m\u00e9thodologie',
+      'service3-title':'Conseil \u0026 Accompagnement','service3-desc':"Strat\u00e9gie digitale sur-mesure pour les comit\u00e9s de direction et product owners. Un pilotage pr\u00e9cis pour s\u00e9curiser vos investissements digitaux.",'service3-link':'En savoir plus',
+      'processus-title':'Notre Processus','processus-sub':"Une m\u00e9thodologie rigoureuse, \u00e9prouv\u00e9e et transparente pour transformer vos d\u00e9fis complexes en solutions digitales \u00e9l\u00e9gantes et accessibles.",
+      'step1-title':'Diagnostic','step1-desc':"Analyse approfondie de votre \u00e9cosyst\u00e8me, identification des points de friction et \u00e9valuation de l\u2019accessibilit\u00e9 initiale.",
+      'step2-title':'Strat\u00e9gie','step2-desc':"D\u00e9finition de l\u2019architecture de l\u2019information, parcours utilisateurs et feuille de route technique pour un impact maximal.",
+      'step3-title':'Design','step3-desc':"Conception d\u2019interfaces modernes, conformes aux normes WCAG, alliant esth\u00e9tique corporate et clart\u00e9 d\u2019information.",
+      'step4-title':'Livraison','step4-desc':"D\u00e9ploiement rigoureux, tests d\u2019assurance qualit\u00e9 exhaustifs et transfert de comp\u00e9tences pour une autonomie totale.",
+      'processus-cta':'D\u00e9marrer un projet',
+      'expertise-title':'Notre Valeur Ajout\u00e9e','expertise-sub':"Une approche rigoureuse alliant excellence technique, conformit\u00e9 stricte et communication fluide pour les leaders de l\u2019industrie.",
+      'exp1-badge':'10+ Ans d\u2019Expertise','exp1-title':'Expertise Technique \u0026 Design','exp1-desc':"Nous fusionnons l\u2019ing\u00e9nierie logicielle de pointe avec des m\u00e9thodologies de design rigoureuses. Notre approche garantit des architectures syst\u00e8mes \u00e9volutives et des interfaces d\u2019une clart\u00e9 absolue.",
+      'exp2-badge':'Garantie WCAG 2.1 AA','exp2-title':"Sp\u00e9cialistes de l\u2019Accessibilit\u00e9",'exp2-desc':"L\u2019inclusion num\u00e9rique est notre norme, pas une option. Nous int\u00e9grons les crit\u00e8res d\u2019accessibilit\u00e9 d\u00e8s la conception architecturale, assurant que vos plateformes sont universellement utilisables.",
+      'exp3-badge':'Port\u00e9e Internationale','exp3-title':'Bilingue Fran\u00e7ais / Anglais','exp3-desc':"Nous facilitons la collaboration transparente \u00e0 l\u2019\u00e9chelle mondiale. Notre ma\u00eetrise native des deux langues garantit que les exigences techniques complexes sont traduites sans perte de nuance.",
+      'contact-title':'Initier le Dialogue.','contact-sub':"Engagez nos experts pour red\u00e9finir votre architecture digitale. La pr\u00e9cision et l\u2019autorit\u00e9 commencent par une seule conversation.",
+      'form-name':'Nom complet','form-email':'Adresse Email','form-type':'Type de Projet','form-msg':'Votre Message',
+      'form-placeholder-name':'Jean Dupont','form-placeholder-email':'jean@entreprise.fr',
+      'form-placeholder-type':'S\u00e9lectionnez une expertise','form-placeholder-msg':"D\u00e9crivez vos objectifs et contraintes...",
+      'form-opt-audit':"Audit d\u2019Accessibilit\u00e9 (WCAG)",'form-opt-arch':'Architecture Syst\u00e8me','form-opt-trans':'Transformation Digitale','form-opt-other':'Autre demande',
+      'form-submit':'Envoyer la demande','form-success':"\u2705 Message envoy\u00e9 avec succ\u00e8s. Nous vous r\u00e9pondrons sous 24h.",
+      'contact-direct':'Contact Direct','contact-address':'Si\u00e8ge Social',
+      'contact-linkedin-title':'R\u00e9seau Professionnel','contact-linkedin-sub':'Suivez-nous sur LinkedIn',
+      'footer-brand':'Pr\u00e9cis. Autoritaire. Inclusif.',
+      'footer-legal':'L\u00e9gal','footer-engagement':'Engagement','footer-join':'Rejoindre',
+      'footer-privacy':'Politique de Confidentialit\u00e9','footer-terms':"Conditions d\u2019Utilisation",
+      'footer-a11y':"D\u00e9claration d\u2019Accessibilit\u00e9",'footer-offices':'Bureaux Mondiaux','footer-linkedin':'LinkedIn',
+      'footer-copy':"\u00a9 2024 PRIMOZAYN CONSULTING. Tous droits r\u00e9serv\u00e9s. Pr\u00e9cis. Autoritaire. Inclusif.",
+      'theme-toggle':'Activer le mode sombre','theme-toggle-text':'Mode sombre',
+      'modal-tag-service':'Service','modal-tag-flagship':'Expertise Phare',
+      'modal-uxui-title':'Refonte UX/UI','modal-uxui-desc':"Nous repensons int\u00e9gralement vos interfaces digitales avec une m\u00e9thodologie centr\u00e9e utilisateur. De l\u2019audit initial \u00e0 la livraison finale, chaque d\u00e9cision de design est ancr\u00e9e dans des donn\u00e9es r\u00e9elles et des standards d\u2019accessibilit\u00e9 rigoureux.",
+      'modal-uxui-f1-title':'Audit UX Initial','modal-uxui-f1-desc':'Analyse heuristique compl\u00e8te, tests utilisateurs et cartographie des parcours existants.',
+      'modal-uxui-f2-title':'Design System','modal-uxui-f2-desc':"Cr\u00e9ation d\u2019une biblioth\u00e8que de composants coh\u00e9rente, \u00e9volutive et document\u00e9e.",
+      'modal-uxui-f3-title':'Responsive First','modal-uxui-f3-desc':'Prototypes valid\u00e9s sur mobile, tablette et desktop avec tests de performance.',
+      'modal-uxui-f4-title':'Transfert de Comp\u00e9tences','modal-uxui-f4-desc':'Formation de vos \u00e9quipes et documentation exhaustive pour une autonomie durable.',
+      'modal-audit-title':'Audit Accessibilit\u00e9 Digitale','modal-audit-desc':"Notre m\u00e9thodologie d\u2019audit WCAG 2.1 AA est la plus rigoureuse du march\u00e9. Nous combinons tests automatis\u00e9s, audits manuels par experts et tests avec utilisateurs en situation de handicap pour produire un rapport d\u2019impact actionnable en 72h.",
+      'modal-audit-f1-title':'Audit WCAG 2.1 AA','modal-audit-f1-desc':"\u00c9valuation des 50 crit\u00e8res de succ\u00e8s applicables \u00e0 votre contexte sp\u00e9cifique.",
+      'modal-audit-f2-title':"Tests Lecteurs d\u2019\u00c9cran",'modal-audit-f2-desc':'NVDA, JAWS, VoiceOver \u2014 tests cross-platform avec protocoles standardis\u00e9s.',
+      'modal-audit-f3-title':'Contraste \u0026 Couleur','modal-audit-f3-desc':'V\u00e9rification des ratios APCA, daltonisme et conditions de basse luminosit\u00e9.',
+      'modal-audit-f4-title':'Rapport Ex\u00e9cutif','modal-audit-f4-desc':'Livrable en 72h : niveau de conformit\u00e9, criticit\u00e9 par crit\u00e8re, feuille de route corrective.',
+      'modal-conseil-title':'Conseil \u0026 Accompagnement','modal-conseil-desc':"Nous accompagnons les comit\u00e9s de direction, CTO et product owners dans la d\u00e9finition et l\u2019ex\u00e9cution de leur strat\u00e9gie digitale.",
+      'modal-conseil-f1-title':'Roadmap Strat\u00e9gique','modal-conseil-f1-desc':"D\u00e9finition d\u2019une feuille de route digitale align\u00e9e sur vos objectifs business et contraintes techniques.",
+      'modal-conseil-f2-title':'Coaching Ex\u00e9cutif','modal-conseil-f2-desc':"Sessions de travail individuelles avec C-suite pour aligner vision digitale et culture d\u2019entreprise.",
+      'modal-conseil-f3-title':'Pilotage OKR','modal-conseil-f3-desc':"Mise en place d\u2019indicateurs de performance cl\u00e9s et tableaux de bord d\u00e9cisionnels.",
+      'modal-conseil-f4-title':'\u00c9quipes \u0026 Formation','modal-conseil-f4-desc':'Mont\u00e9e en comp\u00e9tences de vos \u00e9quipes produit, design et d\u00e9veloppement.',
+      'modal-cta':'Demander un devis pour ce service','modal-audit-cta':'Demander un audit gratuit'
+    },
+    en:{
+      'nav-services':'Services','nav-processus':'Process','nav-expertise':'Expertise','nav-contact':'Contact','nav-cta':'Request a Quote',
+      'hero-eyebrow':'Consulting \u00b7 Design \u00b7 Accessibility',
+      'hero-title':'Your interface deserves to be reimagined.',
+      'hero-sub':'We deliver authoritative, precise, and inclusive digital transformations. Our rigorous approach ensures your platform exceeds WCAG standards and executive expectations.',
+      'hero-cta-primary':'Our Services','hero-audit-btn':'Free Audit',
+      'stat1-title':'WCAG 2.1 AA','stat1-desc':'Rigorous accessibility standards applied to every pixel of your platform.',
+      'stat2-title':'Modern Architecture','stat2-desc':'Scalable, stable grid systems engineered for optimal information flow.',
+      'stat3-title':'Executive Alignment','stat3-desc':'Designs crafted to project digital mastery and organisational authority.',
+      'services-title':'Our Services','services-sub':'Expert solutions designed to combine technical excellence, strict compliance, and an uncompromising user experience.',
+      'service1-title':'UX/UI Redesign','service1-desc':'Complete modernisation of your interfaces with a user-centred approach, ensuring clear information architecture and fluid navigation.','service1-link':'Learn more',
+      'service2-badge':'Core Expertise','service2-title':'Digital Accessibility Audit','service2-desc':'Rigorous evaluation and WCAG 2.1 AA compliance. We transform accessibility constraints into vectors of aesthetic and functional excellence.','service2-link':'View methodology',
+      'service3-title':'Advisory & Support','service3-desc':'Custom digital strategy for executive committees and product owners. Precise steering to secure your digital investments.','service3-link':'Learn more',
+      'processus-title':'Our Process','processus-sub':'A rigorous, proven, and transparent methodology to transform your complex challenges into elegant, accessible digital solutions.',
+      'step1-title':'Diagnosis','step1-desc':'In-depth analysis of your ecosystem, friction point identification, and initial accessibility evaluation.',
+      'step2-title':'Strategy','step2-desc':'Definition of information architecture, user journeys, and technical roadmap for maximum impact.',
+      'step3-title':'Design','step3-desc':'Design of modern, WCAG-compliant interfaces combining corporate aesthetics with absolute information clarity.',
+      'step4-title':'Delivery','step4-desc':'Rigorous deployment, exhaustive quality assurance testing, and skills transfer for complete autonomy.',
+      'processus-cta':'Start a Project',
+      'expertise-title':'Our Added Value','expertise-sub':'A rigorous approach combining technical excellence, strict compliance, and seamless communication for industry leaders.',
+      'exp1-badge':'10+ Years of Expertise','exp1-title':'Technical & Design Expertise','exp1-desc':'We fuse cutting-edge software engineering with rigorous design methodologies. Our approach guarantees scalable system architectures and interfaces of absolute clarity.',
+      'exp2-badge':'WCAG 2.1 AA Guarantee','exp2-title':'Accessibility Specialists','exp2-desc':'Digital inclusion is our standard, not an option. We integrate accessibility criteria from the architectural design stage, ensuring your platforms are universally usable.',
+      'exp3-badge':'International Reach','exp3-title':'Bilingual French / English','exp3-desc':'We facilitate seamless collaboration at a global scale. Our native command of both languages ensures complex technical requirements are translated without loss of nuance.',
+      'contact-title':'Start the Conversation.','contact-sub':'Engage with our experts to redefine your digital architecture. Precision and authority begin with a single conversation.',
+      'form-name':'Full Name','form-email':'Email Address','form-type':'Project Type','form-msg':'Your Message',
+      'form-placeholder-name':'John Smith','form-placeholder-email':'john@company.com',
+      'form-placeholder-type':'Select an expertise','form-placeholder-msg':'Describe your objectives and constraints...',
+      'form-opt-audit':'Accessibility Audit (WCAG)','form-opt-arch':'System Architecture','form-opt-trans':'Digital Transformation','form-opt-other':'Other request',
+      'form-submit':'Send Request','form-success':'\u2705 Message sent successfully. We will reply within 24 hours.',
+      'contact-direct':'Direct Contact','contact-address':'Headquarters',
+      'contact-linkedin-title':'Professional Network','contact-linkedin-sub':'Follow us on LinkedIn',
+      'footer-brand':'Precise. Authoritative. Inclusive.',
+      'footer-legal':'Legal','footer-engagement':'Commitment','footer-join':'Connect',
+      'footer-privacy':'Privacy Policy','footer-terms':'Terms of Service',
+      'footer-a11y':'Accessibility Statement','footer-offices':'Global Offices','footer-linkedin':'LinkedIn',
+      'footer-copy':'\u00a9 2024 PRIMOZAYN CONSULTING. All rights reserved. Precise. Authoritative. Inclusive.',
+      'theme-toggle':'Toggle dark mode','theme-toggle-text':'Dark Mode',
+      'modal-tag-service':'Service','modal-tag-flagship':'Core Expertise',
+      'modal-uxui-title':'UX/UI Redesign','modal-uxui-desc':'We fully reimagine your digital interfaces with a user-centred methodology. From the initial audit to final delivery, every design decision is grounded in real data and rigorous accessibility standards.',
+      'modal-uxui-f1-title':'UX Audit','modal-uxui-f1-desc':'Complete heuristic analysis, user testing, and mapping of existing journeys.',
+      'modal-uxui-f2-title':'Design System','modal-uxui-f2-desc':'Creation of a consistent, scalable, and documented component library.',
+      'modal-uxui-f3-title':'Responsive First','modal-uxui-f3-desc':'Prototypes validated on mobile, tablet and desktop with performance testing.',
+      'modal-uxui-f4-title':'Knowledge Transfer','modal-uxui-f4-desc':'Team training and exhaustive documentation for lasting autonomy.',
+      'modal-audit-title':'Digital Accessibility Audit','modal-audit-desc':'Our WCAG 2.1 AA audit methodology is the most rigorous on the market. We combine automated testing, expert manual audits, and testing with users with disabilities to deliver an actionable impact report within 72h.',
+      'modal-audit-f1-title':'WCAG 2.1 AA Audit','modal-audit-f1-desc':'Evaluation of all applicable success criteria for your specific context.',
+      'modal-audit-f2-title':'Screen Reader Tests','modal-audit-f2-desc':'NVDA, JAWS, VoiceOver \u2014 cross-platform testing with standardised protocols.',
+      'modal-audit-f3-title':'Contrast & Colour','modal-audit-f3-desc':'APCA ratio verification, colour blindness simulation, and low-light condition testing.',
+      'modal-audit-f4-title':'Executive Report','modal-audit-f4-desc':'72h deliverable: compliance level, severity per criterion, corrective roadmap.',
+      'modal-conseil-title':'Advisory & Support','modal-conseil-desc':'We support executive committees, CTOs and product owners in defining and executing their digital strategy. Our approach combines long-term strategic vision with rigorous operational management.',
+      'modal-conseil-f1-title':'Strategic Roadmap','modal-conseil-f1-desc':'Definition of a digital roadmap aligned with your business objectives and technical constraints.',
+      'modal-conseil-f2-title':'Executive Coaching','modal-conseil-f2-desc':'Individual working sessions with C-suite to align digital vision and company culture.',
+      'modal-conseil-f3-title':'OKR Management','modal-conseil-f3-desc':'Implementation of key performance indicators and executive decision dashboards.',
+      'modal-conseil-f4-title':'Team Training','modal-conseil-f4-desc':'Skills development for your product, design and development teams.',
+      'modal-cta':'Request a quote for this service','modal-audit-cta':'Request a free audit'
+    }
+  };
+
+
+  let currentLang = localStorage.getItem('pz-lang') || 'fr';
+
+
+  function applyLang(lang) {
+    const t = T[lang];
+    currentLang = lang;
+    localStorage.setItem('pz-lang', lang);
+    document.documentElement.lang = lang;
+    document.title = lang==='fr'
+      ? 'PRIMOZAYN CONSULTING \u2014 Pr\u00e9cis. Autoritaire. Inclusif.'
+      : 'PRIMOZAYN CONSULTING \u2014 Precise. Authoritative. Inclusive.';
+    document.getElementById('lang-fr').setAttribute('aria-pressed', String(lang==='fr'));
+    document.getElementById('lang-en').setAttribute('aria-pressed', String(lang==='en'));
+    const mobFr = document.getElementById('mobile-lang-fr');
+    if (mobFr) {
+      mobFr.setAttribute('aria-pressed', String(lang==='fr'));
+      mobFr.style.background = lang==='fr' ? 'rgba(255,255,255,.2)' : 'transparent';
+      mobFr.style.borderColor = lang==='fr' ? 'rgba(255,255,255,.3)' : 'transparent';
+      mobFr.style.color = lang==='fr' ? '#fff' : 'rgba(255,255,255,.6)';
+    }
+    const mobEn = document.getElementById('mobile-lang-en');
+    if (mobEn) {
+      mobEn.setAttribute('aria-pressed', String(lang==='en'));
+      mobEn.style.background = lang==='en' ? 'rgba(255,255,255,.2)' : 'transparent';
+      mobEn.style.borderColor = lang==='en' ? 'rgba(255,255,255,.3)' : 'transparent';
+      mobEn.style.color = lang==='en' ? '#fff' : 'rgba(255,255,255,.6)';
+    }
+
+    // Helper: set textContent (pure text elements)
+    const $t = (sel, key) => { const el=document.querySelector(sel); if(el&&t[key]!==undefined) el.textContent=t[key]; };
+    // Helper: set first TEXT NODE only (preserves icon siblings)
+    const $tn = (sel, key, suffix) => {
+      document.querySelectorAll(sel).forEach(el=>{
+        const tn=Array.from(el.childNodes).find(n=>n.nodeType===3&&n.textContent.trim());
+        if(tn&&t[key]!==undefined) tn.textContent=' '+t[key]+(suffix||' ');
+      });
+    };
+    // Helper: all matching elements with data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k=el.getAttribute('data-i18n');
+      if(t[k]!==undefined) el.textContent=t[k];
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(el=>{
+      const k=el.getAttribute('data-i18n-aria');
+      if(t[k]!==undefined) el.setAttribute('aria-label', t[k]);
+    });
+    document.querySelectorAll('[data-i18n-title]').forEach(el=>{
+      const k=el.getAttribute('data-i18n-title');
+      if(t[k]!==undefined) el.setAttribute('title', t[k]);
+    });
+
+    /* HERO */
+    $t('.hero-eyebrow', 'hero-eyebrow');
+    $t('.hero-sub', 'hero-sub');
+    // Hero title word-by-word
+    const ht=document.getElementById('hero-title');
+    if(ht&&t['hero-title']){
+      const txt=t['hero-title'];
+      ht.setAttribute('aria-label',txt);
+      ht.innerHTML=txt.split(' ').map((w,i)=>`<span class="word-wrap"><span class="word" style="animation-delay:${i*100}ms">${w}</span></span>`).join(' ');
+    }
+    // Hero primary CTA (has icon child — update text node only)
+    const heroCta=document.querySelector('#hero .hero-ctas a:first-child');
+    if(heroCta){
+      const tn=Array.from(heroCta.childNodes).find(n=>n.nodeType===3&&n.textContent.trim());
+      if(tn&&t['hero-cta-primary']) tn.textContent='\n        '+t['hero-cta-primary']+'\n        ';
+    }
+    // Stat cards
+    document.querySelectorAll('.stat-card').forEach((c,i)=>{
+      const h=c.querySelector('h3'), p=c.querySelector('p');
+      const k=i+1;
+      if(h&&t['stat'+k+'-title']) h.textContent=t['stat'+k+'-title'];
+      if(p&&t['stat'+k+'-desc'])  p.textContent=t['stat'+k+'-desc'];
+    });
+
+    /* SERVICES */
+    $t('#services-title','services-title');
+    const svcSub=document.querySelector('#services .container > div:first-child p');
+    if(svcSub&&t['services-sub']) svcSub.textContent=t['services-sub'];
+    document.querySelectorAll('#services article').forEach((card,i)=>{
+      const k=i+1;
+      const h=card.querySelector('h3');
+      const p=card.querySelector('p.t-body-md');
+      const a=card.querySelector('a[data-modal]');
+      if(h&&t['service'+k+'-title']) h.textContent=t['service'+k+'-title'];
+      if(p&&t['service'+k+'-desc'])  p.textContent=t['service'+k+'-desc'];
+      if(a&&t['service'+k+'-link']){
+        const tn=Array.from(a.childNodes).find(n=>n.nodeType===3&&n.textContent.trim());
+        if(tn) tn.textContent='\n          '+t['service'+k+'-link']+' ';
+      }
+      // Badge for card 2 (featured)
+      if(i===1){
+        const badge=card.querySelector('[style*="top:-14px"]');
+        if(badge&&t['service2-badge']){
+          const tn=Array.from(badge.childNodes).find(n=>n.nodeType===3&&n.textContent.trim());
+          if(tn) tn.textContent=t['service2-badge'];
+        }
+      }
+    });
+
+    /* PROCESSUS */
+    $t('#processus-title','processus-title');
+    const procSub=document.querySelector('#processus .container > div:first-child p');
+    if(procSub&&t['processus-sub']) procSub.textContent=t['processus-sub'];
+    document.querySelectorAll('.process-step').forEach((step,i)=>{
+      const k=i+1;
+      const h=step.querySelector('h3');
+      const p=step.querySelector('p.t-body-md');
+      if(h&&t['step'+k+'-title']) h.textContent=t['step'+k+'-title'];
+      if(p&&t['step'+k+'-desc'])  p.textContent=t['step'+k+'-desc'];
+    });
+    // Processus CTA
+    const procCta=document.querySelector('#processus [data-reveal] .btn-primary');
+    if(procCta){
+      const tn=Array.from(procCta.childNodes).find(n=>n.nodeType===3&&n.textContent.trim());
+      if(tn&&t['processus-cta']) tn.textContent=t['processus-cta']+' ';
+    }
+
+    /* EXPERTISE */
+    $t('#expertise-title','expertise-title');
+    const expSub=document.querySelector('#expertise .container > div:first-child p');
+    if(expSub&&t['expertise-sub']) expSub.textContent=t['expertise-sub'];
+    // Get all 3 expertise text blocks (each has badge, h3, p)
+    // Expertise: find each [data-reveal] row, pick the text-content div (not the image div)
+    const expRows=Array.from(document.querySelectorAll('#expertise [data-reveal]')).filter(el=>el.querySelector('h3'));
+    const expKeys=[['exp1-badge','exp1-title','exp1-desc'],['exp2-badge','exp2-title','exp2-desc'],['exp3-badge','exp3-title','exp3-desc']];
+    expRows.forEach((row,i)=>{
+      if(i>=3) return;
+      const [bk,tk,dk]=expKeys[i];
+      // Text block: the child div that contains h3 (not the image div)
+      const textDiv=Array.from(row.children).find(c=>c.querySelector('h3'));
+      if(!textDiv) return;
+      const badge=textDiv.querySelector('span[style*="background:var(--c-secondary-container)"]');
+      const h=textDiv.querySelector('h3'), p=textDiv.querySelector('p.t-body-lg');
+      if(badge&&t[bk]){
+        const tn=Array.from(badge.childNodes).find(n=>n.nodeType===3&&n.textContent.trim());
+        if(tn) tn.textContent=t[bk];
+      }
+      if(h&&t[tk]) h.textContent=t[tk];
+      if(p&&t[dk]) p.textContent=t[dk];
+    });
+
+    /* CONTACT */
+    $t('#contact-title','contact-title');
+    const contSub=document.querySelector('#contact .container > div:first-child p');
+    if(contSub&&t['contact-sub']) contSub.textContent=t['contact-sub'];
+    // Form labels
+    const labelMap=[['label[for="nom"]','form-name'],['label[for="email"]','form-email'],['label[for="projet"]','form-type'],['label[for="message"]','form-msg']];
+    labelMap.forEach(([sel,key])=>{ const el=document.querySelector(sel); if(el&&t[key]) el.textContent=t[key]; });
+    // Select options
+    const sel=document.getElementById('projet');
+    if(sel){
+      if(sel.options[0]&&t['form-placeholder-type']) sel.options[0].text=t['form-placeholder-type'];
+      if(sel.options[1]&&t['form-opt-audit']) sel.options[1].text=t['form-opt-audit'];
+      if(sel.options[2]&&t['form-opt-arch'])  sel.options[2].text=t['form-opt-arch'];
+      if(sel.options[3]&&t['form-opt-trans']) sel.options[3].text=t['form-opt-trans'];
+      if(sel.options[4]&&t['form-opt-other']) sel.options[4].text=t['form-opt-other'];
+    }
+    // Submit button
+    const submitBtn=document.getElementById('submit-btn');
+    if(submitBtn){
+      const tn=Array.from(submitBtn.childNodes).find(n=>n.nodeType===3&&n.textContent.trim());
+      if(tn&&t['form-submit']) tn.textContent='\n'+t['form-submit']+'\n';
+    }
+    // Success message
+    const succ=document.getElementById('form-success');
+    if(succ&&t['form-success']) succ.textContent=t['form-success'];
+    // Contact Direct heading
+    const cd=document.querySelector('#contact h3');
+    if(cd&&t['contact-direct']) cd.textContent=t['contact-direct'];
+    // Address label
+    const addrLabel=document.querySelector('#contact .t-label[style*="letter-spacing:.08em"]');
+    if(addrLabel&&t['contact-address']) addrLabel.textContent=t['contact-address'];
+    // LinkedIn card text
+    const liTitle=document.querySelector('#contact .t-label[style*="color:#fff"]');
+    if(liTitle&&t['contact-linkedin-title']) liTitle.textContent=t['contact-linkedin-title'];
+    const liSub=document.querySelector('#contact span[style*="rgba(255,255,255,.7)"][style*="font-size:.9rem"]');
+    if(liSub&&t['contact-linkedin-sub']) liSub.textContent=t['contact-linkedin-sub'];
+    // Placeholders
+    const pn=document.getElementById('nom'); if(pn&&t['form-placeholder-name']) pn.placeholder=t['form-placeholder-name'];
+    const pe=document.getElementById('email'); if(pe&&t['form-placeholder-email']) pe.placeholder=t['form-placeholder-email'];
+    const pm=document.getElementById('message'); if(pm&&t['form-placeholder-msg']) pm.placeholder=t['form-placeholder-msg'];
+
+    /* FOOTER */
+    const ftBrand=document.querySelector('footer p[style*="max-width:260px"]');
+    if(ftBrand&&t['footer-brand']) ftBrand.textContent=t['footer-brand'];
+    document.querySelectorAll('footer h4').forEach((h,i)=>{
+      const keys=['footer-legal','footer-engagement','footer-join'];
+      if(t[keys[i]]) h.textContent=t[keys[i]];
+    });
+    // Footer links by text content mapping
+    const ftLinkMap={
+      'Politique de Confidentialit\u00e9':'footer-privacy','Privacy Policy':'footer-privacy',
+      "Conditions d\u2019Utilisation":'footer-terms',"Conditions d'Utilisation":'footer-terms','Terms of Service':'footer-terms',
+      "D\u00e9claration d\u2019Accessibilit\u00e9":'footer-a11y',"D\u00e9claration d'Accessibilit\u00e9":'footer-a11y','Accessibility Statement':'footer-a11y',
+      'Bureaux Mondiaux':'footer-offices','Global Offices':'footer-offices',
+      'LinkedIn':'footer-linkedin'
+    };
+    document.querySelectorAll('footer a').forEach(a=>{
+      const txt=a.textContent.trim();
+      const key=ftLinkMap[txt];
+      if(key&&t[key]) a.textContent=t[key];
+    });
+    // Footer copyright
+    const ftCopy=document.querySelector('footer [style*="rgba(255,255,255,.3)"]');
+    if(ftCopy&&t['footer-copy']) ftCopy.textContent=t['footer-copy'];
+  }
+
+
+
+  /* ── LANG TOGGLE (replace old stub) ── */
+  document.getElementById('lang-fr').addEventListener('click', () => applyLang('fr'));
+  document.getElementById('lang-en').addEventListener('click', () => applyLang('en'));
+  document.getElementById('mobile-lang-fr').addEventListener('click', () => applyLang('fr'));
+  document.getElementById('mobile-lang-en').addEventListener('click', () => applyLang('en'));
+
+  /* ── MODAL SYSTEM ── */
+  const backdrop = document.getElementById('modal-backdrop');
+  let activeModal = null;
+  let lastFocused = null;
+
+  function openModal(id) {
+    if (activeModal) closeModal();
+    const m = document.getElementById(id);
+    if (!m) return;
+    lastFocused = document.activeElement;
+    activeModal = m;
+    backdrop.classList.add('open');
+    m.classList.add('open');
+    backdrop.removeAttribute('aria-hidden');
+    document.body.style.overflow = 'hidden';
+    // focus first focusable
+    const focusable = m.querySelector('button,a,[tabindex]');
+    if (focusable) setTimeout(() => focusable.focus(), 50);
+  }
+
+  function closeModal() {
+    if (!activeModal) return;
+    activeModal.classList.remove('open');
+    backdrop.classList.remove('open');
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+    activeModal = null;
+  }
+
+  // Open triggers: [data-modal]
+  document.addEventListener('click', e => {
+    const trigger = e.target.closest('[data-modal]');
+    if (trigger) { e.preventDefault(); openModal(trigger.getAttribute('data-modal')); return; }
+    // Close triggers: [data-close-modal]
+    const closer = e.target.closest('[data-close-modal]');
+    if (closer) {
+      closeModal();
+      // if it's also a link, let smooth scroll handle it
+      if (closer.tagName === 'A') {
+        const href = closer.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          setTimeout(() => {
+            const t = document.querySelector(href);
+            if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 300);
+        }
+      }
+      // pre-select audit option
+      if (closer.hasAttribute('data-select-audit')) {
+        setTimeout(() => {
+          const sel = document.getElementById('projet');
+          if (sel) { sel.value = 'audit'; sel.dispatchEvent(new Event('change')); }
+        }, 400);
+      }
+      return;
+    }
+    // Click backdrop
+    if (e.target === backdrop) closeModal();
   });
-  document.getElementById('lang-en').addEventListener('click',function(){
-    this.setAttribute('aria-pressed','true');
-    document.getElementById('lang-fr').setAttribute('aria-pressed','false');
+
+  // ESC key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && activeModal) closeModal();
+    // Trap focus inside modal
+    if (activeModal && e.key === 'Tab') {
+      const focusable = Array.from(activeModal.querySelectorAll('button,a,input,select,textarea,[tabindex]:not([tabindex="-1"])'));
+      if (!focusable.length) return;
+      const first = focusable[0], last = focusable[focusable.length-1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
   });
+
+  /* ── "Audit gratuit" hero button — pre-selects audit ── */
+  const auditBtn = document.getElementById('btn-audit-gratuit');
+  if (auditBtn) {
+    auditBtn.addEventListener('click', e => {
+      sessionStorage.setItem('pz-preselect','audit');
+    });
+  }
+  // On page load: apply preselect if flagged
+  const preselect = sessionStorage.getItem('pz-preselect');
+  if (preselect) {
+    sessionStorage.removeItem('pz-preselect');
+    const sel = document.getElementById('projet');
+    if (sel) setTimeout(() => { sel.value = preselect; sel.dispatchEvent(new Event('change')); }, 800);
+  }
+
+  /* ── INIT LANG ── */
+  applyLang(currentLang);
 
   /* ── CONTACT FORM ── */
   const form=document.getElementById('contact-form');
@@ -613,14 +1180,71 @@ Envoyer la demande
     });
   }
 
-  /* ── SMOOTH SCROLL for all anchor links ── */
+  /* ── SMOOTH SCROLL for section anchor links only ── */
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',function(e){
-      const target=document.querySelector(this.getAttribute('href'));
+      const href=this.getAttribute('href');
+      if(!href||href==='#')return;
+      const target=document.querySelector(href);
       if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});}
     });
+  });
+  /* ── THEME TOGGLE ── */
+  const desktopThemeToggle = document.getElementById('theme-toggle');
+  const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+  const themeIcons = document.querySelectorAll('#theme-icon, #mobile-theme-icon');
+
+  function updateThemeUI() {
+    const isDark = document.documentElement.classList.contains('dark');
+    if (desktopThemeToggle) desktopThemeToggle.setAttribute('aria-checked', isDark);
+    if (mobileThemeToggle) mobileThemeToggle.setAttribute('aria-checked', isDark);
+    themeIcons.forEach(icon => icon.textContent = isDark ? 'light_mode' : 'dark_mode');
+  }
+
+  function toggleTheme() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('pz-theme', isDark ? 'dark' : 'light');
+    updateThemeUI();
+  }
+
+  if (desktopThemeToggle) desktopThemeToggle.addEventListener('click', toggleTheme);
+  if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+  updateThemeUI();
+
+  /* Scroll Reveal Animations */
+  const revealObs = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  
+  document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
+  
+  // Stagger children if needed
+  document.querySelectorAll('[data-stagger] > *').forEach((child, i) => {
+    child.setAttribute('data-reveal', '');
+    child.style.transitionDelay = (i * 0.1) + 's';
+    revealObs.observe(child);
   });
 })();
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
