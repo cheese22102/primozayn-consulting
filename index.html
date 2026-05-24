@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>PRIMOZAYN CONSULTING — Précis. Autoritaire. Inclusif.</title>
-<meta name="description" content="Cabinet de conseil en transformation digitale, accessibilité WCAG et architecture UX/UI. Précis. Autoritaire. Inclusif."/>
+<title>PRIMOZAYN CONSULTING — Développement Web, Android & Accessibilité RGAA</title>
+<meta name="description" content="Agence digitale spécialisée en développement web & Android, refonte UX/UI et mise en conformité accessibilité RGAA. Services en français, arabe et anglais."/>
 <meta name="theme-color" content="#1b2e5e"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
 <script>
@@ -18,7 +18,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary":"#011848","pr
 /* ── TOKEN SYSTEM ── */
 :root{
   --c-primary:#011848;--c-primary-container:#1b2e5e;
-  --c-secondary:#415c9f;--c-secondary-container:#9ab4fe;
+  --c-secondary:#415c9f;--c-secondary-container:#9ab4fe;--c-on-secondary-container:#284486;
   --c-accent:#4a90d9;--c-accent-dk:#3a80c9;
   --c-surface:#fbf8fd;--c-surface-low:#f5f3f8;
   --c-surface-container:#efedf2;--c-surface-lowest:#ffffff;
@@ -36,7 +36,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary":"#011848","pr
 
 :root.dark {
   --c-primary: #5288d6; --c-primary-container: #1b2641;
-  --c-secondary: #94a3b8; --c-secondary-container: #1e293b;
+  --c-secondary: #94a3b8; --c-secondary-container: #1e293b; --c-on-secondary-container: #9ab4fe;
   --c-accent: #5288d6; --c-accent-dk: #3a70b8;
   --c-surface: #040507; --c-surface-low: #000000;
   --c-surface-container: #0d121e; --c-surface-lowest: #000000;
@@ -48,7 +48,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary":"#011848","pr
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}
 body{font-family:var(--font-body);background:var(--c-surface);color:var(--c-on-surface);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--c-secondary-container);color:#284486}
 img{display:block;max-width:100%}
@@ -70,54 +70,33 @@ img{display:block;max-width:100%}
 section{padding-block:var(--sp-xxl)}
 
 /* ── BUTTONS ── */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-sm);font-family:var(--font-body);font-weight:600;font-size:.875rem;letter-spacing:.05em;border:none;cursor:pointer;border-radius:var(--r-base);transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
-.btn:active{transform:scale(.97)!important}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-sm);font-family:var(--font-body);font-weight:600;font-size:.875rem;letter-spacing:.05em;border:none;cursor:pointer;border-radius:var(--r-base)}
 .btn-primary{background:var(--c-accent);color:#fff;padding:var(--sp-md) var(--sp-xl)}
-.btn-primary:hover{background:var(--c-accent-dk);transform:scale(1.05);box-shadow:var(--sh-md)}
+.btn-primary:hover{background:var(--c-accent-dk);box-shadow:var(--sh-md)}
 .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5);padding:var(--sp-md) var(--sp-xl)}
-.btn-ghost:hover{background:rgba(255,255,255,.1);transform:scale(1.03)}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
 .dark .btn-ghost{border-color:rgba(255,255,255,.2)}
 .dark .btn-ghost:hover{background:rgba(255,255,255,.05)}
 .btn-navy{background:var(--c-primary-container);color:var(--c-on-primary);padding:var(--sp-sm) var(--sp-lg)}
-.btn-navy:hover{filter:brightness(1.15);transform:scale(1.05)}
+.btn-navy:hover{filter:brightness(1.15)}
 
 /* ── CARD ── */
-.card{background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border:1px solid rgba(197,198,208,.3);border-radius:var(--r-card);box-shadow:var(--sh-md);transition:transform .25s cubic-bezier(.3,0,.2,1),box-shadow .25s ease, background .3s, border-color .3s}
-.card:hover{transform:translateY(-7px) scale(1.018);box-shadow:var(--sh-lg)}
+.card{background:rgba(255,255,255,.96);backdrop-filter:blur(20px);border:1.5px solid #d1d5db;border-radius:var(--r-card);box-shadow:0 15px 35px rgba(1,24,72,.06), 0 3px 10px rgba(1,24,72,.02);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s cubic-bezier(0.16,1,0.3,1),border-color 0.4s ease}
+.card:hover{transform:translateY(-6px);box-shadow:0 25px 45px rgba(1,24,72,.12), 0 5px 15px rgba(1,24,72,.04);border-color:rgba(74,144,217,.5)}
 .card-featured{border:2px solid var(--c-secondary);position:relative}
+.card-featured:hover{border-color:var(--c-secondary);box-shadow:0 25px 45px rgba(1,24,72,.15), 0 5px 15px rgba(1,24,72,.04)}
 
 /* Dark mode specific overrides */
-.dark .card { background: rgba(13,18,30,.6); border-color: rgba(255,255,255,.05); box-shadow: 0 4px 20px rgba(0,0,0,.6); }
-.dark .card:hover { background: rgba(27,38,65,.6); border-color: rgba(255,255,255,.1); box-shadow: 0 8px 32px rgba(0,0,0,.9); }
+.dark .card { background: rgba(13,18,30,.85); border-color: rgba(255,255,255,.1); box-shadow: 0 15px 35px rgba(0,0,0,.4); }
+.dark .card:hover { border-color: rgba(82,136,214,.4); box-shadow: 0 25px 50px rgba(0,0,0,.6), 0 0 15px rgba(82,136,214,.15); }
 .dark .card-featured { border-color: var(--c-accent-dk); }
+.dark .card-featured:hover { border-color: var(--c-accent); }
 .dark #hero .btn-primary { background: rgba(13,18,30,.8); border: 1px solid rgba(82,136,214,.4); color: #fff; backdrop-filter: blur(10px); }
 .dark #hero .btn-primary:hover { background: rgba(82,136,214,.3); border-color: rgba(82,136,214,.8); }
 .dark #contact { background: var(--c-surface-low) !important; border-top: 1px solid rgba(255,255,255,.05); }
 
-/* ── ENTRANCE ANIMATIONS ── */
-[data-reveal]{opacity:0;filter:blur(12px);transform:translateY(28px);transition:opacity .7s ease,filter .7s ease,transform .7s ease}
-[data-reveal].is-visible{opacity:1;filter:blur(0);transform:translateY(0)}
-[data-reveal][data-delay="1"]{transition-delay:.1s}
-[data-reveal][data-delay="2"]{transition-delay:.2s}
-[data-reveal][data-delay="3"]{transition-delay:.3s}
-[data-reveal][data-delay="4"]{transition-delay:.4s}
-
-/* ── WORD ANIMATION ── */
-.word-wrap{display:inline-block;overflow:hidden;vertical-align:bottom}
-.word{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(40px);animation:wordIn .6s cubic-bezier(.16,1,.3,1) forwards}
-@keyframes wordIn{to{opacity:1;filter:blur(0);transform:translateY(0)}}
-
 /* ── COUNTER ── */
 .stat-num{display:inline-block}
-
-/* ── REDUCED MOTION ── */
-@media(prefers-reduced-motion:reduce){
-  [data-reveal]{opacity:1;filter:none;transform:none;transition:none}
-  .word{opacity:1;filter:none;transform:none;animation:none}
-  .btn{transition:none}
-  .card{transition:none}
-  html{scroll-behavior:auto}
-}
 
 /* ══════════════════════════════════
    NAV
@@ -126,32 +105,31 @@ section{padding-block:var(--sp-xxl)}
   position:fixed;top:0;width:100%;z-index:var(--z-nav);
   background:rgba(27,46,94,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,.08);
-  transition:background .3s ease,box-shadow .3s ease;
 }
 .dark #site-nav{background:rgba(4,5,7,.82)}
 #site-nav.scrolled{background:rgba(27,46,94,.96);box-shadow:0 2px 20px rgba(1,24,72,.3)}
 .dark #site-nav.scrolled{background:rgba(4,5,7,.96);box-shadow:0 2px 20px rgba(0,0,0,.5)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:80px;max-width:var(--container);margin-inline:auto;padding-inline:var(--sp-lg)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;min-height:80px;height:auto;flex-wrap:wrap;gap:var(--sp-md);max-width:var(--container);margin-inline:auto;padding-inline:var(--sp-lg);padding-block:4px}
 @media(min-width:768px){.nav-inner{padding-inline:var(--sp-xxl)}}
 .nav-logo{font-family:var(--font-head);font-size:1.1rem;font-weight:900;letter-spacing:-.03em;color:var(--c-on-primary);text-decoration:none;white-space:nowrap}
+.nav-logo:hover,.nav-logo:focus-visible{opacity:.85}
 .nav-links{display:none;gap:var(--sp-xs)}
 @media(min-width:768px){.nav-links{display:flex;align-items:center}}
-.nav-link{font-family:var(--font-body);font-size:.875rem;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.7);text-decoration:none;padding:var(--sp-sm) var(--sp-md);border-radius:var(--r-base);transition:color .2s,background .2s}
+.nav-link{font-family:var(--font-body);font-size:.875rem;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.7);text-decoration:none;padding:var(--sp-sm) var(--sp-md);border-radius:var(--r-base)}
 .nav-link:hover{color:#fff;background:rgba(255,255,255,.08)}
-.nav-link.active{color:#fff;border-bottom:2px solid var(--c-accent)}
+.nav-link.active{color:#fff;box-shadow:inset 0 -2px 0 var(--c-accent)}
 .nav-lang{display:flex;align-items:center;background:rgba(255,255,255,.1);border-radius:var(--r-full);padding:3px;gap:2px}
-.nav-lang button{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.6);background:transparent;border:none;padding:4px 10px;border-radius:var(--r-full);cursor:pointer;transition:all .2s}
+.nav-lang button{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.6);background:transparent;border:none;padding:4px 10px;border-radius:var(--r-full);cursor:pointer}
 .nav-lang button[aria-pressed="true"]{background:rgba(255,255,255,.2);color:#fff}
 .nav-actions{display:none;align-items:center;gap:var(--sp-md)}
 @media(min-width:768px){.nav-actions{display:flex}}
-.theme-toggle{background:transparent;border:none;color:rgba(255,255,255,.8);cursor:pointer;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;transition:background .2s,color .2s}
+.theme-toggle{background:transparent;border:none;color:rgba(255,255,255,.8);cursor:pointer;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%}
 .theme-toggle:hover{background:rgba(255,255,255,.1);color:#fff}
-.theme-toggle-mobile{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.9);padding:10px 16px;border-radius:var(--r-base);cursor:pointer;width:100%;margin-top:16px;font-family:var(--font-body);font-size:.9rem;font-weight:600;transition:background .2s}
+.theme-toggle-mobile{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.9);padding:10px 16px;border-radius:var(--r-base);cursor:pointer;width:100%;margin-top:16px;font-family:var(--font-body);font-size:.9rem;font-weight:600}
 .theme-toggle-mobile:hover{background:rgba(255,255,255,.1)}
 .nav-hamburger{display:flex;align-items:center;justify-content:center;background:transparent;border:none;color:#fff;cursor:pointer;padding:var(--sp-sm);border-radius:var(--r-base)}
 @media(min-width:768px){.nav-hamburger{display:none}}
-.nav-cta{background:var(--c-accent);color:#fff;border:1px solid rgba(255,255,255,.1);box-shadow:0 2px 8px rgba(0,0,0,.15);transition:all .2s ease}
-.nav-cta:hover{background:var(--c-accent-dk);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.3);color:#fff}
+
 .mobile-menu{display:none;flex-direction:column;background:rgba(27,46,94,.98);backdrop-filter:blur(20px);padding:var(--sp-lg);gap:var(--sp-sm);border-top:1px solid rgba(255,255,255,.08);position:absolute;top:100%;left:0;width:100%}
 .dark .mobile-menu{background:rgba(4,5,7,.98)}
 .mobile-menu.open{display:flex}
@@ -164,18 +142,31 @@ section{padding-block:var(--sp-xxl)}
 .site-footer {
   background: rgba(27,46,94,1);
   border-top: 1px solid rgba(255,255,255,.08);
-  transition: background .3s ease;
 }
 .dark .site-footer {
   background: rgba(4,5,7,1);
+}
+.site-footer h4 {
+  color: #fff !important;
+}
+.site-footer a {
+  color: rgba(255,255,255,.75) !important;
+  text-decoration: none;
+}
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: #fff !important;
+}
+.site-footer p {
+  color: rgba(255,255,255,.6) !important;
 }
 
 /* ══════════════════════════════════
    HERO
 ══════════════════════════════════ */
-#hero{position:relative;min-height:100svh;display:flex;align-items:center;padding-top:80px;overflow:hidden}
+#hero{position:relative;z-index:1;min-height:100svh;display:flex;align-items:center;padding-top:80px;padding-bottom:60px;overflow:hidden}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(1,24,72,.78) 0%,rgba(27,46,94,.72) 60%,rgba(46,74,140,.65) 100%);z-index:1;transition:background .3s ease}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(1,24,72,.78) 0%,rgba(27,46,94,.72) 60%,rgba(46,74,140,.65) 100%);z-index:1}
 .dark .hero-overlay{background:linear-gradient(135deg,rgba(4,5,7,.85) 0%,rgba(13,18,30,.8) 60%,rgba(27,38,65,.75) 100%)}
 .hero-content{position:relative;z-index:2;max-width:var(--container);margin-inline:auto;padding-inline:var(--sp-lg);width:100%}
 @media(min-width:768px){.hero-content{padding-inline:var(--sp-xxl)}}
@@ -184,36 +175,278 @@ section{padding-block:var(--sp-xxl)}
 .hero-sub{color:rgba(255,255,255,.88);font-size:1.125rem;line-height:1.7;max-width:600px;margin-bottom:var(--sp-xxl)}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:var(--sp-md)}
 .hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--sp-md);margin-top:80px}
-.stat-card{background:rgba(255,255,255,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-card);padding:var(--sp-lg);transition:background .3s, border-color .3s}
-.stat-card:hover{background:rgba(255,255,255,.13)}
-.dark .stat-card{background:rgba(0,0,0,.4);border-color:rgba(255,255,255,.05)}
-.dark .stat-card:hover{background:rgba(0,0,0,.6)}
+.stat-card{
+  position:relative;
+  z-index:10;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:var(--r-card);
+  padding:var(--sp-lg);
+  display:block;
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s cubic-bezier(0.16,1,0.3,1),border-color 0.4s ease;
+}
+.stat-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,.45);
+  box-shadow:0 20px 40px rgba(0,0,0,.5), 0 0 15px rgba(255,255,255,.05);
+}
+.dark .stat-card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)}
 .stat-card .material-symbols-outlined{font-size:32px;color:var(--c-accent);margin-bottom:var(--sp-sm);display:block}
 .stat-card h3{font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:6px}
 .stat-card p{font-size:.875rem;color:rgba(255,255,255,.7);line-height:1.5}
-/* ── MODAL SYSTEM ── */
-.modal-backdrop{position:fixed;inset:0;background:rgba(1,24,72,.7);backdrop-filter:blur(6px);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s ease}
-.modal-backdrop.open{opacity:1;pointer-events:all}
-.modal-sheet{position:fixed;bottom:0;left:0;right:0;max-height:92svh;background:var(--c-surface);border-radius:var(--r-card) var(--r-card) 0 0;z-index:201;transform:translateY(100%);transition:transform .45s cubic-bezier(.16,1,.3,1);overflow-y:auto}
-.modal-sheet.open{transform:translateY(0)}
-.modal-header{display:flex;align-items:flex-start;justify-content:space-between;padding:var(--sp-xl) var(--sp-xl) var(--sp-md);border-bottom:1px solid var(--c-outline-var);position:sticky;top:0;background:var(--c-surface);z-index:1}
-.modal-close{background:var(--c-surface-container);border:none;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--c-on-surface-var);transition:background .2s,transform .2s;flex-shrink:0}
-.modal-close:hover{background:var(--c-outline-var);transform:rotate(90deg)}
-.modal-body{padding:var(--sp-xl)}
-.modal-icon{width:64px;height:64px;border-radius:var(--r-card);background:var(--c-secondary-container);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg)}
-.modal-icon .material-symbols-outlined{font-size:36px;color:var(--c-secondary);font-variation-settings:'FILL' 1}
-.modal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-md);margin:var(--sp-xl) 0}
-.modal-feat{background:var(--c-surface-container-low,var(--c-surface-low));border:1px solid var(--c-outline-var);border-radius:var(--r-card);padding:var(--sp-lg)}
-.modal-feat .material-symbols-outlined{color:var(--c-secondary);font-size:24px;margin-bottom:var(--sp-sm);display:block}
-.modal-feat h4{font-family:var(--font-head);font-size:1rem;font-weight:600;color:var(--c-on-surface);margin-bottom:6px}
-.modal-feat p{font-size:.9rem;color:var(--c-on-surface-var);line-height:1.5}
-.tag{display:inline-flex;align-items:center;gap:4px;background:var(--c-secondary-container);color:#284486;padding:4px 12px;border-radius:var(--r-full);font-size:.8rem;font-weight:600}
-@media(min-width:768px){.modal-sheet{left:50%;right:auto;width:min(780px,92vw);transform:translateX(-50%) translateY(100%);border-radius:var(--r-card);bottom:auto;top:50%;transform:translate(-50%,calc(-50% + 40px));max-height:88svh;opacity:0;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .3s ease}.modal-sheet.open{transform:translate(-50%,-50%);opacity:1}}</style>
+.tag{display:inline-flex;align-items:center;gap:6px;background:var(--c-secondary-container);color:var(--c-on-secondary-container);padding:6px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600}
+/* ── PROCESS STEPS ── */
+.process-step{}
+.process-step:hover .step-circle{}
+.process-step:hover .step-body{box-shadow:var(--sh-md);border-color:var(--c-outline)}
+/* ── LINK ARROW (replaces inline onmouseover) ── */
+.link-arrow{color:var(--c-secondary);display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.link-arrow:hover{color:var(--c-primary)}
+.link-arrow-icon{}
+
+/* ── SELECT DROPDOWN CHEVRON ── */
+select.form-field {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  background-size: 20px !important;
+  padding-right: 40px !important;
+}
+
+/* ── SERVICE CARD ICON HOVER ── */
+.card-icon {
+}
+
+/* ── MOB LANG BUTTONS ── */
+.mob-lang-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: rgba(255,255,255,.6);
+  padding: 6px 12px;
+  border-radius: var(--r-base);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: .9rem;
+  font-weight: 600;
+  text-align: center;
+}
+.mob-lang-btn[aria-pressed="true"] {
+  background: rgba(255,255,255,.2);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+}
+.mob-lang-btn[aria-pressed="false"]:hover {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  border-color: rgba(255,255,255,.1);
+}
+
+/* ── INACTIVE LANG BUTTONS HOVER (NAV) ── */
+.nav-lang button:not([aria-pressed="true"]):hover {
+  color: #fff;
+  background: rgba(255,255,255,.08);
+}
+
+/* ── CONTACT MAIL & TEL HOVER ── */
+#contact a[href^="mailto:"],
+#contact a[href^="tel:"] {
+  color: rgba(255,255,255,.9);
+  text-decoration: none;
+  font-size: 1rem;
+}
+#contact a[href^="mailto:"]:hover,
+#contact a[href^="mailto:"]:focus-visible,
+#contact a[href^="tel:"]:hover,
+#contact a[href^="tel:"]:focus-visible {
+  color: #fff !important;
+  text-decoration: underline !important;
+}
+
+/* ── FOOTER LINKS HOVER ── */
+
+/* ── ACCESSIBILITY CUSTOM PANEL ── */
+.a11y-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 199;
+}
+.a11y-panel {
+  position: fixed; top: 0; right: 0;
+  width: 320px; height: 100vh;
+  z-index: 200;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(197, 198, 208, 0.3);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+  display: flex; flex-direction: column;
+  color: var(--c-on-surface);
+}
+.dark .a11y-panel {
+  background: rgba(13, 18, 30, 0.98);
+  border-left-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.a11y-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--sp-xl) var(--sp-lg) var(--sp-md);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.dark .a11y-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+.a11y-close {
+  background: transparent; border: none; cursor: pointer;
+  color: var(--c-on-surface-var); display: flex; align-items: center;
+  justify-content: center; width: 36px; height: 36px; border-radius: 50%;
+}
+.a11y-close:hover {
+  background: var(--c-surface-container);
+}
+.dark .a11y-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.a11y-body {
+  padding: var(--sp-lg); display: flex; flex-direction: column; gap: var(--sp-lg);
+  overflow-y: auto; flex-grow: 1;
+}
+.a11y-group {
+  display: flex; flex-direction: column; gap: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: var(--sp-md);
+}
+.dark .a11y-group {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+.a11y-group-row {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.a11y-buttons {
+  display: flex; gap: 8px; width: 100%;
+}
+.a11y-buttons button {
+  flex: 1; text-align: center; padding: 8px; border: 1px solid var(--c-outline-var);
+  border-radius: var(--r-base); background: transparent; cursor: pointer;
+  font-family: var(--font-body); font-size: 0.875rem; font-weight: 600;
+  color: var(--c-on-surface);
+}
+.dark .a11y-buttons button {
+  border-color: rgba(255,255,255,0.15); color: #fff;
+}
+.a11y-buttons button.active {
+  background: var(--c-primary-container); color: var(--c-on-primary);
+  border-color: var(--c-primary-container);
+}
+.dark .a11y-buttons button.active {
+  background: var(--c-accent); color: #fff; border-color: var(--c-accent);
+}
+.a11y-switch {
+  width: 44px; height: 24px; border-radius: 12px;
+  background: rgba(0, 0, 0, 0.15); border: none; cursor: pointer;
+  position: relative; padding: 2px;
+}
+.dark .a11y-switch {
+  background: rgba(255, 255, 255, 0.15);
+}
+.a11y-switch[aria-checked="true"] {
+  background: var(--c-accent) !important;
+}
+.switch-handle {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #fff; display: block; position: absolute;
+  top: 2px; left: 2px;
+}
+.a11y-switch[aria-checked="true"] .switch-handle {
+  left: 22px;
+}
+
+.a11y-floating-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 198;
+  width: 102px;
+  height: 102px;
+  border-radius: 50%;
+  background: var(--c-primary);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.a11y-floating-btn .material-symbols-outlined {
+  font-size: 48px !important;
+}
+.a11y-floating-btn:hover,
+.a11y-floating-btn:focus-visible {
+  background: var(--c-accent);
+  color: #fff;
+  outline: 3px solid var(--c-accent);
+  outline-offset: 2px;
+}
+.dark .a11y-floating-btn {
+  background: var(--c-primary-container);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.dark .a11y-floating-btn:hover,
+.dark .a11y-floating-btn:focus-visible {
+  background: var(--c-accent);
+}
+
+/* ── ACCESSIBILITY STATE MODIFIERS ── */
+html.a11y-scale-125 {
+  font-size: 125% !important;
+}
+html.a11y-scale-150 {
+  font-size: 150% !important;
+}
+html.a11y-dyslexic,
+html.a11y-dyslexic *:not(.material-symbols-outlined) {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif !important;
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+}
+html.a11y-dyslexic .material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+}
+html.a11y-underline-links a {
+  text-decoration: underline !important;
+}
+
+/* High Contrast mode */
+html.a11y-high-contrast {
+  filter: contrast(1.4) brightness(1.05) !important;
+}
+html.a11y-high-contrast.dark {
+  filter: contrast(1.6) brightness(0.95) !important;
+}
+</style>
 <script>
   (function(){
-    var saved = localStorage.getItem('pz-theme');
-    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    var savedTheme = localStorage.getItem('pz-theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
+    }
+    var savedScale = localStorage.getItem('pz-a11y-scale');
+    if (savedScale && savedScale !== '100') {
+      document.documentElement.classList.add('a11y-scale-' + savedScale);
+    }
+    if (localStorage.getItem('pz-a11y-dyslexic') === 'true') {
+      document.documentElement.classList.add('a11y-dyslexic');
+    }
+    if (localStorage.getItem('pz-a11y-contrast') === 'true') {
+      document.documentElement.classList.add('a11y-high-contrast');
+    }
+    if (localStorage.getItem('pz-a11y-underline') === 'true') {
+      document.documentElement.classList.add('a11y-underline-links');
     }
   })();
 </script>
@@ -238,8 +471,8 @@ section{padding-block:var(--sp-xxl)}
       <div class="nav-lang" role="group" aria-label="Sélection de langue">
         <button aria-pressed="true" id="lang-fr">FR</button>
         <button aria-pressed="false" id="lang-en">EN</button>
+        <button aria-pressed="false" id="lang-ar">AR</button>
       </div>
-      <a href="#contact" class="btn nav-cta" style="font-size:.8rem;padding:10px 20px" data-i18n="nav-cta">Demander un devis</a>
     </div>
     <button class="nav-hamburger" id="hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
       <span class="material-symbols-outlined">menu</span>
@@ -247,14 +480,14 @@ section{padding-block:var(--sp-xxl)}
   </div>
   <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Navigation mobile">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;justify-content:flex-start" aria-label="Sélection de langue mobile">
-      <button aria-pressed="true" id="mobile-lang-fr" style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r-base);cursor:pointer;font-family:var(--font-body);font-size:.9rem;font-weight:600;transition:all .2s;text-align:center">FR</button>
-      <button aria-pressed="false" id="mobile-lang-en" style="background:transparent;border:1px solid transparent;color:rgba(255,255,255,.6);padding:6px 12px;border-radius:var(--r-base);cursor:pointer;font-family:var(--font-body);font-size:.9rem;font-weight:600;transition:all .2s;text-align:center">EN</button>
+      <button aria-pressed="true" id="mobile-lang-fr" class="mob-lang-btn">FR</button>
+      <button aria-pressed="false" id="mobile-lang-en" class="mob-lang-btn">EN</button>
+      <button aria-pressed="false" id="mobile-lang-ar" class="mob-lang-btn">AR</button>
     </div>
     <a href="#services" class="nav-link" data-i18n="nav-services">Services</a>
     <a href="#processus" class="nav-link" data-i18n="nav-processus">Processus</a>
     <a href="#expertise" class="nav-link" data-i18n="nav-expertise">Expertise</a>
     <a href="#contact" class="nav-link" data-i18n="nav-contact">Contact</a>
-    <a href="#contact" class="btn nav-cta" style="margin-top:8px;width:100%" data-i18n="nav-cta">Demander un devis</a>
     <button class="theme-toggle-mobile" id="mobile-theme-toggle" role="switch" aria-checked="false" aria-label="Activer le mode sombre" data-i18n-aria="theme-toggle">
       <span class="material-symbols-outlined" id="mobile-theme-icon">dark_mode</span>
       <span id="mobile-theme-text" data-i18n="theme-toggle-text">Mode sombre</span>
@@ -268,35 +501,37 @@ section{padding-block:var(--sp-xxl)}
   <video class="hero-video" autoplay muted loop playsinline aria-hidden="true" preload="auto">
     <source src="animation.mp4" type="video/mp4"/>
   </video>
+  <button class="video-control-btn" id="video-control-btn" aria-label="Mettre en pause la vidéo" style="position:absolute;bottom:var(--sp-lg);left:var(--sp-lg);z-index:10;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);backdrop-filter:blur(10px);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center">
+    <span class="material-symbols-outlined" style="font-size:20px">pause</span>
+  </button>
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow" data-reveal>Consulting · Design · Accessibilité</div>
-    <h1 class="t-h1 hero-title" id="hero-title" aria-label="Votre interface mérite d'être repensée."></h1>
+    <div class="hero-eyebrow" data-reveal>Développement · Design · Accessibilité</div>
+    <h1 class="t-h1 hero-title" id="hero-title" aria-label="Donnons vie à vos projets digitaux.">Donnons vie à vos projets digitaux.</h1>
     <p class="hero-sub t-body-lg" data-reveal data-delay="2">
-      We deliver authoritative, precise, and inclusive digital transformations. Our rigorous approach ensures your platform not only meets WCAG standards but exceeds executive expectations.
+      Nous concevons et développons des applications web et Android performantes, repensons vos interfaces existantes, et transformons vos plateformes en expériences accessibles conformes au RGAA européen.
     </p>
     <div class="hero-ctas" data-reveal data-delay="3">
       <a href="#services" class="btn btn-primary">
         Voir nos services
         <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
       </a>
-      <a href="#contact" class="btn btn-ghost" id="btn-audit-gratuit" data-i18n="hero-audit-btn">Audit gratuit</a>
     </div>
-    <div class="hero-stats" data-stagger>
-      <div class="stat-card">
-        <span class="material-symbols-outlined">verified_user</span>
-        <h3>WCAG 2.1 AA</h3>
-        <p>Rigorous accessibility standards applied to every pixel.</p>
+    <div class="hero-stats">
+      <div class="stat-card is-visible">
+        <span class="material-symbols-outlined">code</span>
+        <h3>Développement Web &amp; Android</h3>
+        <p>Création d’applications web et Android performantes, scalables et sécurisées.</p>
       </div>
-      <div class="stat-card">
-        <span class="material-symbols-outlined">architecture</span>
-        <h3>Architecture Moderne</h3>
-        <p>Scalable, stable grid systems for optimal information flow.</p>
+      <div class="stat-card is-visible">
+        <span class="material-symbols-outlined">design_services</span>
+        <h3>Refonte UX/UI</h3>
+        <p>Modernisation complète de vos interfaces, garantissant une navigation fluide et une architecture claire.</p>
       </div>
-      <div class="stat-card">
-        <span class="material-symbols-outlined">trending_up</span>
-        <h3>Executive Alignment</h3>
-        <p>Designs crafted to project digital mastery and authority.</p>
+      <div class="stat-card is-visible">
+        <span class="material-symbols-outlined">accessibility_new</span>
+        <h3>Accessibilité Numérique RGAA</h3>
+        <p>Transformation de vos plateformes en expériences conformes au RGAA, ouvertes à tous.</p>
       </div>
     </div>
   </div>
@@ -309,43 +544,43 @@ section{padding-block:var(--sp-xxl)}
   <div class="container" style="position:relative;z-index:1">
     <div style="text-align:center;margin-bottom:var(--sp-xxl)" data-reveal>
       <h2 class="t-h2" id="services-title" style="color:var(--c-primary);margin-bottom:var(--sp-md)">Nos Services</h2>
-      <p class="t-body-lg" style="color:var(--c-on-surface-var);max-width:560px;margin-inline:auto">Des solutions expertes conçues pour allier excellence technique, conformité stricte et expérience utilisateur sans compromis.</p>
+      <p class="t-body-lg" style="color:var(--c-on-surface-var);max-width:560px;margin-inline:auto">Des solutions pensées pour transformer vos idées en produits digitaux modernes, accessibles et efficaces — web, Android et au-delà.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-lg)" data-stagger>
-      <!-- Card 1 -->
-      <article class="card" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service: Refonte UX/UI">
-        <div style="width:48px;height:48px;border-radius:var(--r-card);background:var(--c-surface-container);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg);transition:background .3s" class="card-icon">
-          <span class="material-symbols-outlined" style="color:var(--c-primary);font-variation-settings:'FILL' 1">design_services</span>
+            <!-- Card 1 -->
+      <article class="card" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service: Développement Web & Mobile">
+        <div style="width:48px;height:48px;border-radius:var(--r-card);background:var(--c-surface-container);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg)" class="card-icon">
+          <span class="material-symbols-outlined" style="color:var(--c-primary);font-variation-settings:'FILL' 1">code</span>
         </div>
-        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Refonte UX/UI</h3>
-        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Modernisation complète de vos interfaces avec une approche centrée utilisateur, garantissant une architecture de l'information claire et une navigation fluide.</p>
-        <a href="#" data-modal="modal-uxui" class="t-label" style="color:var(--c-secondary);display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--c-primary)'" onmouseout="this.style.color='var(--c-secondary)'">
-          <span data-i18n="service1-link">En savoir plus</span> <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Développement Web & Android</h3>
+        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Création d’applications web et Android performantes, scalables et sécurisées, adaptées à vos besoins spécifiques.</p>
+        <a href="#contact" class="link-arrow">
+          <span data-i18n="service1-link">En savoir plus</span> <span class="material-symbols-outlined link-arrow-icon" style="font-size:16px">arrow_forward</span>
         </a>
       </article>
       <!-- Card 2 featured -->
-      <article class="card card-featured" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service phare: Audit Accessibilité Digitale">
+      <article class="card card-featured" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service phare: Refonte UX/UI">
         <div style="position:absolute;top:-14px;right:var(--sp-lg);background:var(--c-secondary);color:#fff;padding:4px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;letter-spacing:.05em;display:flex;align-items:center;gap:4px">
           <span class="material-symbols-outlined" style="font-size:15px;font-variation-settings:'FILL' 1">verified</span>Expertise Phare
         </div>
-        <div class="feat-icon" style="width:48px;height:48px;border-radius:var(--r-card);background:var(--c-surface-container);border:1px solid var(--c-outline-var);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg)">
-          <span class="material-symbols-outlined" style="color:var(--c-secondary);font-variation-settings:'FILL' 1">accessibility_new</span>
+        <div class="card-icon" style="width:48px;height:48px;border-radius:var(--r-card);background:var(--c-surface-container);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg)">
+          <span class="material-symbols-outlined" style="color:var(--c-secondary);font-variation-settings:'FILL' 1">design_services</span>
         </div>
-        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Audit Accessibilité Digitale</h3>
-        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Évaluation rigoureuse et mise en conformité WCAG 2.1 AA. Nous transformons les contraintes d'accessibilité en vecteurs d'excellence esthétique et fonctionnelle.</p>
-        <a href="#" data-modal="modal-audit" class="t-label" style="color:var(--c-secondary);display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--c-primary)'" onmouseout="this.style.color='var(--c-secondary)'">
-          <span data-i18n="service2-link">Voir la méthodologie</span> <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Refonte UX/UI</h3>
+        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Modernisation complète de vos interfaces avec une approche centrée utilisateur, garantissant une architecture de l'information claire et une navigation fluide.</p>
+        <a href="#contact" class="link-arrow">
+          <span data-i18n="service2-link">En savoir plus</span> <span class="material-symbols-outlined link-arrow-icon" style="font-size:16px">arrow_forward</span>
         </a>
       </article>
       <!-- Card 3 -->
-      <article class="card" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service: Conseil et Accompagnement">
-        <div style="width:48px;height:48px;border-radius:var(--r-card);background:var(--c-surface-container);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg);transition:background .3s">
-          <span class="material-symbols-outlined" style="color:var(--c-primary);font-variation-settings:'FILL' 1">forum</span>
+      <article class="card" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service: Accessibilité RGAA">
+        <div class="card-icon" style="width:48px;height:48px;border-radius:var(--r-card);background:var(--c-surface-container);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg)">
+          <span class="material-symbols-outlined" style="color:var(--c-primary);font-variation-settings:'FILL' 1">accessibility_new</span>
         </div>
-        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Conseil &amp; Accompagnement</h3>
-        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Stratégie digitale sur-mesure pour les comités de direction et product owners. Un pilotage précis pour sécuriser vos investissements digitaux.</p>
-        <a href="#" data-modal="modal-conseil" class="t-label" style="color:var(--c-secondary);display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--c-primary)'" onmouseout="this.style.color='var(--c-secondary)'">
-          <span data-i18n="service1-link">En savoir plus</span> <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Accessibilité Numérique RGAA</h3>
+        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Nous transformons vos sites et applications existants en plateformes conformes au Référentiel Général d'Amélioration de l'Accessibilité (RGAA), pour répondre aux exigences européennes et ouvrir votre contenu à tous.</p>
+        <a href="#contact" class="link-arrow">
+          <span data-i18n="service3-link">En savoir plus</span> <span class="material-symbols-outlined link-arrow-icon" style="font-size:16px">arrow_forward</span>
         </a>
       </article>
     </div>
@@ -357,54 +592,52 @@ section{padding-block:var(--sp-xxl)}
   <div class="container">
     <div style="text-align:center;max-width:700px;margin-inline:auto;margin-bottom:var(--sp-xxl)" data-reveal>
       <h2 class="t-h2" id="processus-title" style="color:var(--c-on-surface);margin-bottom:var(--sp-md)">Notre Processus</h2>
-      <p class="t-body-lg" style="color:var(--c-on-surface-var)">Une méthodologie rigoureuse, éprouvée et transparente pour transformer vos défis complexes en solutions digitales élégantes et accessibles.</p>
+      <p class="t-body-lg" style="color:var(--c-on-surface-var)">Une approche simple et transparente : nous écoutons vos besoins, concevons avec vous, développons avec rigueur et livrons dans les meilleures conditions.</p>
     </div>
     <div style="position:relative">
-      <div aria-hidden="true" style="display:none" class="timeline-line"></div>
-      <style>.timeline-line{display:block!important;position:absolute;top:40px;left:0;width:100%;height:2px;background:repeating-linear-gradient(90deg,var(--c-outline-var) 0,var(--c-outline-var) 8px,transparent 8px,transparent 16px);z-index:0}@media(max-width:1023px){.timeline-line{display:none!important}}</style>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-xl);position:relative;z-index:1" data-stagger>
         <!-- Step 1 -->
         <div style="display:flex;flex-direction:column;align-items:center;text-align:center" class="process-step" tabindex="0">
-          <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);transition:transform .3s;flex-shrink:0" class="step-circle">
+          <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);flex-shrink:0" class="step-circle">
             <span class="t-h2" style="color:#fff;font-size:1.5rem">01</span>
           </div>
-          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
-            <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">stethoscope</span>
-            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Diagnostic</h3>
-            <p class="t-body-md" style="color:var(--c-on-surface-var)">Analyse approfondie de votre écosystème, identification des points de friction et évaluation de l'accessibilité initiale.</p>
+          <div class="step-body" style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
+            <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">forum</span>
+            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Découverte</h3>
+            <p class="t-body-md" style="color:var(--c-on-surface-var)">Nous écoutons vos besoins, analysons votre contexte et définissons ensemble les objectifs et le périmètre de votre projet.</p>
           </div>
         </div>
         <!-- Step 2 -->
         <div style="display:flex;flex-direction:column;align-items:center;text-align:center" class="process-step" tabindex="0">
-          <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);transition:transform .3s;flex-shrink:0" class="step-circle">
+          <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);flex-shrink:0" class="step-circle">
             <span class="t-h2" style="color:#fff;font-size:1.5rem">02</span>
           </div>
-          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
-            <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">account_tree</span>
-            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Stratégie</h3>
-            <p class="t-body-md" style="color:var(--c-on-surface-var)">Définition de l'architecture de l'information, parcours utilisateurs et feuille de route technique pour un impact maximal.</p>
+          <div class="step-body" style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
+            <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">design_services</span>
+            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Conception</h3>
+            <p class="t-body-md" style="color:var(--c-on-surface-var)">Nous concevons l'architecture, les maquettes et le parcours utilisateur, et validons chaque étape avec vous avant de passer au développement.</p>
           </div>
         </div>
         <!-- Step 3 -->
         <div style="display:flex;flex-direction:column;align-items:center;text-align:center" class="process-step" tabindex="0">
-          <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);transition:transform .3s;flex-shrink:0" class="step-circle">
+          <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);flex-shrink:0" class="step-circle">
             <span class="t-h2" style="color:#fff;font-size:1.5rem">03</span>
           </div>
-          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
-            <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">design_services</span>
-            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Design</h3>
-            <p class="t-body-md" style="color:var(--c-on-surface-var)">Conception d'interfaces modernes, conformes aux normes WCAG, alliant esthétique corporate et clarté d'information.</p>
+          <div class="step-body" style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
+            <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">code</span>
+            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Développement</h3>
+            <p class="t-body-md" style="color:var(--c-on-surface-var)">Nous développons votre solution avec les technologies adaptées, en appliquant les bonnes pratiques de qualité, de performance et d’accessibilité.</p>
           </div>
         </div>
         <!-- Step 4 -->
         <div style="display:flex;flex-direction:column;align-items:center;text-align:center" class="process-step" tabindex="0">
-          <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);transition:transform .3s;flex-shrink:0" class="step-circle">
+          <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-primary);border:4px solid var(--c-surface);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);flex-shrink:0" class="step-circle">
             <span class="t-h2" style="color:#fff;font-size:1.5rem">04</span>
           </div>
-          <div style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
+          <div class="step-body" style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
             <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">rocket_launch</span>
-            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Livraison</h3>
-            <p class="t-body-md" style="color:var(--c-on-surface-var)">Déploiement rigoureux, tests d'assurance qualité exhaustifs et transfert de compétences pour une autonomie totale.</p>
+            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Livraison &amp; Suivi</h3>
+            <p class="t-body-md" style="color:var(--c-on-surface-var)">Nous livrons votre projet, assurons les tests finaux et restons disponibles pour vous accompagner après la mise en ligne.</p>
           </div>
         </div>
       </div>
@@ -420,22 +653,22 @@ section{padding-block:var(--sp-xxl)}
 <div class="container">
 <div style="text-align:center;margin-bottom:var(--sp-xxl)" data-reveal>
 <h2 class="t-h2" id="expertise-title" style="color:var(--c-primary);margin-bottom:var(--sp-md)">Notre Valeur Ajoutée</h2>
-<p class="t-body-lg" style="color:var(--c-on-surface-var);max-width:600px;margin-inline:auto">Une approche rigoureuse alliant excellence technique, conformité stricte et communication fluide pour les leaders de l'industrie.</p>
+<p class="t-body-lg" style="color:var(--c-on-surface-var);max-width:600px;margin-inline:auto">Ce qui nous distingue : une approche centrée sur vos besoins réels, un engagement sincère pour la qualité, et une communication fluide en trois langues.</p>
 </div>
 
 <!-- Row 1 -->
 <div style="display:grid;grid-template-columns:1fr;gap:var(--sp-xxl);margin-bottom:var(--sp-xxl)">
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-xl);align-items:center" data-reveal>
 <div>
-<span style="display:inline-flex;align-items:center;gap:6px;background:var(--c-secondary-container);color:#284486;padding:6px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">analytics</span>10+ Ans d'Expertise</span>
+<span class="tag" style="margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">code</span>Web &amp; Android</span>
 <div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-sm)">
-<span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px" aria-hidden="true">architecture</span>
-<h3 class="t-h3" style="color:var(--c-on-surface)" data-i18n="exp1-title">Expertise Technique &amp; Design</h3>
+<span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px" aria-hidden="true">devices</span>
+<h3 class="t-h3" style="color:var(--c-on-surface)">Applications Web &amp; Android</h3>
 </div>
-<p class="t-body-lg" style="color:var(--c-on-surface-var)">Nous fusionnons l'ingénierie logicielle de pointe avec des méthodologies de design rigoureuses. Notre approche garantit des architectures systèmes évolutives et des interfaces d'une clarté absolue.</p>
+<p class="t-body-lg" style="color:var(--c-on-surface-var)">Nous développons des applications web et Android modernes, performantes et sécurisées. De la page vitrine à l'application métier complexe, nous mettons tout en œuvre pour livrer un produit qui répond précisément à vos objectifs.</p>
 </div>
 <div style="border-radius:var(--r-card);overflow:hidden;border:1px solid var(--c-outline-var);height:320px">
-<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGeNCWzFYyiRHN3aTGxkE56DRaA100ZMtpOWvQIay8FuHUKYuexsLnyl5sFTmTG4627M4AESygK7z0C1uPN5lubikHvhf5nEX7axa0vaq2cgrwKjsuMqjrf4zsYKhN49K2CI9dq3CIfxJjwwWGnC-Q2C8c0BSg6-6-GonKPRcfe4blG-cWmSumtiyLj23_chAbc8sdc304ESBmINSUKU5ff0v6B33YCstnkQvI4qhca5uNl2tQqmrjuLOtrZ3rsJkqy4N-b6_Qkema" alt="Professionnels analysant des interfaces numériques complexes en laboratoire corporate." style="width:100%;height:100%;object-fit:cover"/>
+<img src="image1.png" alt="Développeurs travaillant sur des interfaces web et mobile modernes." loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;image-rendering:high-quality;transform:translateZ(0)"/>
 </div>
 </div>
 
@@ -443,31 +676,31 @@ section{padding-block:var(--sp-xxl)}
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-xl);align-items:center" data-reveal>
 <div style="order:2">
 <div style="border-radius:var(--r-card);overflow:hidden;border:1px solid var(--c-outline-var);height:320px">
-<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlV3S8tL_bLPuREkY2AXNcaQKlrMmu3z0Dhqg6Q4BBwU_AR-EfHYCAH8mVMihTZQsU74iKPkYR9-Q8qec1aLw7Ld6UqKSR2ENcrAlSLIkFoK1XVVXYW9pEH4akWaN9-PU2IdBoNEwTAKAw0p9sOWOg3X88XbDyCTUPKO4B3_K8evhWwqoZLVz2sF7Ozpyz0G05dL3GiWF2P_q_tQ4WAjolS8m-ClziKK14j4-0gYS6kmYSUwANAq_X9V7DhjBxRbj2IGlKxVvuCtKr" alt="Audit d'accessibilité numérique sur un clavier spécialisé avec grilles de contraste visibles." style="width:100%;height:100%;object-fit:cover"/>
+<img src="image2.png" alt="Mise en conformité accessibilité numérique RGAA sur une interface moderne." loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;image-rendering:high-quality;transform:translateZ(0)"/>
 </div>
 </div>
 <div style="order:1">
-<span style="display:inline-flex;align-items:center;gap:6px;background:var(--c-secondary-container);color:#284486;padding:6px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">verified</span>Garantie WCAG 2.1 AA</span>
+<span class="tag" style="margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">accessibility_new</span>Conformité RGAA</span>
 <div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-sm)">
 <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px" aria-hidden="true">accessibility_new</span>
-<h3 class="t-h3" style="color:var(--c-on-surface)" data-i18n="exp2-title">Spécialistes de l'Accessibilité</h3>
+<h3 class="t-h3" style="color:var(--c-on-surface)">Accessibilité Numérique</h3>
 </div>
-<p class="t-body-lg" style="color:var(--c-on-surface-var)">L'inclusion numérique est notre norme, pas une option. Nous intégrons les critères d'accessibilité dès la conception architecturale, assurant que vos plateformes sont universellement utilisables.</p>
+<p class="t-body-lg" style="color:var(--c-on-surface-var)">Nous accompagnons la mise en conformité de vos plateformes avec le RGAA — le référentiel européen d'accessibilité numérique. Notre objectif : rendre vos contenus accessibles au plus grand nombre, sans compromis sur l'esthétique.</p>
 </div>
 </div>
 
 <!-- Row 3 -->
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-xl);align-items:center" data-reveal>
 <div>
-<span style="display:inline-flex;align-items:center;gap:6px;background:var(--c-secondary-container);color:#284486;padding:6px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">public</span><span data-i18n="exp3-badge">Portée Internationale</span></span>
+<span class="tag" style="margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">translate</span>3 Langues</span>
 <div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-sm)">
-<span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px" aria-hidden="true">forum</span>
-<h3 class="t-h3" style="color:var(--c-on-surface)" data-i18n="exp3-title">Bilingue Français / Anglais</h3>
+<span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px" aria-hidden="true">language</span>
+<h3 class="t-h3" style="color:var(--c-on-surface)">Français · Arabe · Anglais</h3>
 </div>
-<p class="t-body-lg" style="color:var(--c-on-surface-var)" data-i18n="exp3-desc">Nous facilitons la collaboration transparente à l'échelle mondiale. Notre maîtrise native des deux langues garantit que les exigences techniques complexes sont traduites sans perte de nuance.</p>
+<p class="t-body-lg" style="color:var(--c-on-surface-var)">Nous communiquons et livrons nos services en français, en arabe et en anglais. Cette capacité trilingue nous permet d'accompagner une clientèle diverse et de garantir que chaque exigence technique est comprise et traduite sans perte de sens.</p>
 </div>
-<div style="border-radius:var(--r-card);overflow:hidden;border:1px solid var(--c-outline-var);height:320px">
-<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8zNfMTaXpF2llrNmdfrCoKQ_0Krey7Dl6BMYUTi9VQGOvflSbGz3hARSpbm7nzjhEu1PMfSu5kxqTmy7AIwHctgod2iixYVUujBNLHWbqSF_dxPdUp03MLbQb-Q6TzJfip2SLhzPqUHJUwQFeWPMTmszBNwzySpCtgt-EKU-boC6mBSUw8Qz06e7xXRFSYzyEG6wDFoLM9ZAKQLFoc2cVbGv8fnl55xx52r6Ge4UGLJ9AgwmoSEMMGMtCJVW_vuXYzUj4w2_mb7Hb" alt="Consultants internationaux dans une salle de réunion moderne discutant de stratégie bilingue." style="width:100%;height:100%;object-fit:cover"/>
+<div style="border-radius:var(--r-card);overflow:hidden;border:1px solid var(--c-outline-var);height:320px;display:flex;align-items:center;justify-content:center;background:var(--c-surface)">
+<img src="image3.png" alt="Équipe multilingue travaillant en collaboration sur un projet digital." loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;image-rendering:high-quality;transform:translateZ(0)"/>
 </div>
 </div>
 </div>
@@ -479,8 +712,8 @@ section{padding-block:var(--sp-xxl)}
 <div aria-hidden="true" style="position:absolute;top:-30%;right:-15%;width:60%;height:60%;border-radius:50%;background:rgba(74,144,217,.12);filter:blur(80px);pointer-events:none"></div>
 <div class="container" style="position:relative;z-index:1">
 <div style="margin-bottom:var(--sp-xl)" data-reveal>
-<h2 class="t-h1" id="contact-title" style="color:#fff;margin-bottom:var(--sp-md)">Initier le Dialogue.</h2>
-<p class="t-body-lg" style="color:rgba(255,255,255,.8);max-width:560px">Engage with our experts to redefine your digital architecture. Precision and authority begin with a single conversation.</p>
+<h2 class="t-h2" id="contact-title" style="color:#fff;margin-bottom:var(--sp-md)">Initier le Dialogue.</h2>
+<p class="t-body-lg" style="color:rgba(255,255,255,.8);max-width:560px">Engagez nos experts pour redéfinir votre architecture digitale. La précision et l’autorité commencent par une seule conversation.</p>
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--sp-xl)">
 <!-- Form -->
@@ -489,11 +722,11 @@ section{padding-block:var(--sp-xxl)}
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-md);margin-bottom:var(--sp-md)">
 <div>
 <label for="nom" class="t-label" style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Nom complet</label>
-<input type="text" id="nom" name="nom" required autocomplete="name" placeholder="Jean Dupont" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem;transition:border .2s" class="form-field"/>
+<input type="text" id="nom" name="nom" required autocomplete="name" placeholder="Jean Dupont" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem" class="form-field"/>
 </div>
 <div>
 <label for="email" class="t-label" style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Adresse Email</label>
-<input type="email" id="email" name="email" required autocomplete="email" placeholder="jean@entreprise.fr" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem;transition:border .2s" class="form-field"/>
+<input type="email" id="email" name="email" required autocomplete="email" placeholder="jean@entreprise.fr" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem" class="form-field"/>
 </div>
 </div>
 <div style="margin-bottom:var(--sp-md)">
@@ -508,7 +741,7 @@ section{padding-block:var(--sp-xxl)}
 </div>
 <div style="margin-bottom:var(--sp-lg)">
 <label for="message" class="t-label" style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Votre Message</label>
-<textarea id="message" name="message" required rows="5" placeholder="Décrivez vos objectifs et contraintes..." style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem;resize:vertical;transition:border .2s" class="form-field"></textarea>
+<textarea id="message" name="message" required rows="5" placeholder="Décrivez vos objectifs et contraintes..." style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem;resize:vertical" class="form-field"></textarea>
 </div>
 <div style="display:flex;justify-content:flex-end">
 <button type="submit" class="btn btn-primary" id="submit-btn">
@@ -529,32 +762,14 @@ Envoyer la demande
 <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
 <span class="material-symbols-outlined" style="font-size:20px;font-variation-settings:'FILL' 1">mail</span>
 </div>
-<a href="mailto:contact@primozayn.fr" style="color:rgba(255,255,255,.9);text-decoration:none;font-size:1rem" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">contact@primozayn.fr</a>
+<a href="mailto:contact.primozaynconsulting@gmail.com">contact.primozaynconsulting@gmail.com</a>
 </div>
 <div style="display:flex;align-items:center;gap:var(--sp-md)">
 <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
 <span class="material-symbols-outlined" style="font-size:20px;font-variation-settings:'FILL' 1">call</span>
 </div>
-<a href="tel:+33100000000" style="color:rgba(255,255,255,.9);text-decoration:none;font-size:1rem">+33 (0) 1 00 00 00 00</a>
+<a href="tel:0762966393">07 62 96 63 93</a>
 </div>
-</div>
-<div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-card);padding:var(--sp-lg)">
-<div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-sm)">
-<span class="material-symbols-outlined" style="color:var(--c-accent);font-variation-settings:'FILL' 1">location_on</span>
-<span class="t-label" style="color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.08em">Siège Social</span>
-</div>
-<p style="color:rgba(255,255,255,.85);font-size:1rem;line-height:1.6">8 Avenue des Champs-Élysées<br/>75008 Paris, France</p>
-</div>
-<a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-card);padding:var(--sp-lg);display:flex;align-items:center;justify-content:space-between;text-decoration:none;transition:background .2s,border .2s" onmouseover="this.style.background='rgba(255,255,255,.14)';this.style.borderColor='rgba(74,144,217,.5)'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.borderColor='rgba(255,255,255,.12)'">
-<div style="display:flex;align-items:center;gap:var(--sp-md)">
-<span class="material-symbols-outlined" style="color:#0a66c2;font-size:32px;font-variation-settings:'FILL' 1">public</span>
-<div>
-<span class="t-label" style="color:#fff;display:block;margin-bottom:2px">Réseau Professionnel</span>
-<span style="color:rgba(255,255,255,.7);font-size:.9rem">Suivez-nous sur LinkedIn</span>
-</div>
-</div>
-<span class="material-symbols-outlined" style="color:rgba(255,255,255,.5)">arrow_forward</span>
-</a>
 </div>
 </div>
 </div>
@@ -563,111 +778,118 @@ Envoyer la demande
 <!-- FOOTER -->
 <footer class="site-footer" role="contentinfo">
 <div class="container" style="padding-block:var(--sp-xxl)">
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--sp-xl);margin-bottom:var(--sp-xxl)">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--sp-xl);margin-bottom:var(--sp-xl)">
 <div style="grid-column:span 2" class="footer-brand">
 <span style="font-family:var(--font-head);font-size:1.1rem;font-weight:900;color:#fff;display:block;margin-bottom:var(--sp-md)">PRIMOZAYN CONSULTING</span>
-<p style="color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.6;max-width:260px">Precise. Authoritative. Inclusive.</p>
 </div>
 <div>
-<h4 class="t-label" style="color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--sp-md)">Légal</h4>
+<h4 class="t-label" style="text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--sp-md)" data-i18n="footer-legal">Légal</h4>
 <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--sp-sm)">
-<li><a href="privacy.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Politique de Confidentialité</a></li>
-<li><a href="terms.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Conditions d'Utilisation</a></li>
+<li><a href="privacy.html" data-i18n="footer-privacy">Politique de Confidentialité</a></li>
+<li><a href="terms.html" data-i18n="footer-terms">Conditions d'Utilisation</a></li>
 </ul>
 </div>
 <div>
-<h4 class="t-label" style="color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--sp-md)">Engagement</h4>
+<h4 class="t-label" style="text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--sp-md)" data-i18n="footer-engagement">Engagement</h4>
 <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--sp-sm)">
-<li><a href="accessibility.html" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Déclaration d'Accessibilité</a></li>
-<li><a href="#contact" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Bureaux Mondiaux</a></li>
-</ul>
-</div>
-<div>
-<h4 class="t-label" style="color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--sp-md)">Rejoindre</h4>
-<ul style="list-style:none;display:flex;flex-direction:column;gap:var(--sp-sm)">
-<li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .2s" onmouseover="this.style.color='var(--c-accent)'" onmouseout="this.style.color='rgba(255,255,255,.6)'">LinkedIn</a></li>
+<li><a href="accessibility.html" data-i18n="footer-a11y">Déclaration d'Accessibilité</a></li>
 </ul>
 </div>
 </div>
 <div style="border-top:1px solid rgba(255,255,255,.06);padding-top:var(--sp-xl);text-align:center">
-<p style="color:rgba(255,255,255,.3);font-size:.85rem">© 2024 PRIMOZAYN CONSULTING. All rights reserved. Precise. Authoritative. Inclusive.</p>
+<p style="font-size:.85rem" data-i18n="footer-copy">© 2026 PRIMOZAYN CONSULTING. Tous droits réservés.</p>
 </div>
 </div>
 </footer>
 
-<!-- ══ SERVICE MODALS ══ -->
-<div class="modal-backdrop" id="modal-backdrop" aria-hidden="true"></div>
-
-<!-- Modal: Refonte UX/UI -->
-<div class="modal-sheet" id="modal-uxui" role="dialog" aria-modal="true" aria-labelledby="modal-uxui-title">
-  <div class="modal-header">
-    <div>
-      <span class="tag" style="margin-bottom:10px"><span class="material-symbols-outlined" style="font-size:15px">design_services</span><span data-i18n="modal-tag-service">Service</span></span>
-      <h2 class="t-h2" id="modal-uxui-title" style="color:var(--c-primary)" data-i18n="modal-uxui-title">Refonte UX/UI</h2>
-    </div>
-    <button class="modal-close" data-close-modal aria-label="Fermer"><span class="material-symbols-outlined">close</span></button>
-  </div>
-  <div class="modal-body">
-    <div class="modal-icon"><span class="material-symbols-outlined">design_services</span></div>
-    <p class="t-body-lg" style="color:var(--c-on-surface-var);margin-bottom:var(--sp-xl)" data-i18n="modal-uxui-desc">Nous repensons intégralement vos interfaces digitales avec une méthodologie centrée utilisateur. De l'audit initial à la livraison finale, chaque décision de design est ancrée dans des données réelles et des standards d'accessibilité rigoureux.</p>
-    <div class="modal-grid">
-      <div class="modal-feat"><span class="material-symbols-outlined">search</span><h4 data-i18n="modal-uxui-f1-title">Audit UX Initial</h4><p data-i18n="modal-uxui-f1-desc">Analyse heuristique complète, tests utilisateurs et cartographie des parcours existants.</p></div>
-      <div class="modal-feat"><span class="material-symbols-outlined">dashboard_customize</span><h4 data-i18n="modal-uxui-f2-title">Design System</h4><p data-i18n="modal-uxui-f2-desc">Création d'une bibliothèque de composants cohérente, évolutive et documentée.</p></div>
-      <div class="modal-feat"><span class="material-symbols-outlined">devices</span><h4 data-i18n="modal-uxui-f3-title">Responsive First</h4><p data-i18n="modal-uxui-f3-desc">Prototypes validés sur mobile, tablette et desktop avec tests de performance.</p></div>
-      <div class="modal-feat"><span class="material-symbols-outlined">handshake</span><h4 data-i18n="modal-uxui-f4-title">Transfert de Compétences</h4><p data-i18n="modal-uxui-f4-desc">Formation de vos équipes et documentation exhaustive pour une autonomie durable.</p></div>
-    </div>
-    <a href="#contact" class="btn btn-primary" data-close-modal data-i18n="modal-cta">Demander un devis pour ce service</a>
-  </div>
-</div>
-
-<!-- Modal: Audit Accessibilité -->
-<div class="modal-sheet" id="modal-audit" role="dialog" aria-modal="true" aria-labelledby="modal-audit-title">
-  <div class="modal-header">
-    <div>
-      <span class="tag" style="margin-bottom:10px;background:#dae2ff;color:var(--c-secondary)"><span class="material-symbols-outlined" style="font-size:15px;font-variation-settings:'FILL' 1">verified</span><span data-i18n="modal-tag-flagship">Expertise Phare</span></span>
-      <h2 class="t-h2" id="modal-audit-title" style="color:var(--c-primary)" data-i18n="modal-audit-title">Audit Accessibilité Digitale</h2>
-    </div>
-    <button class="modal-close" data-close-modal aria-label="Fermer"><span class="material-symbols-outlined">close</span></button>
-  </div>
-  <div class="modal-body">
-    <div class="modal-icon"><span class="material-symbols-outlined">accessibility_new</span></div>
-    <p class="t-body-lg" style="color:var(--c-on-surface-var);margin-bottom:var(--sp-xl)" data-i18n="modal-audit-desc">Notre méthodologie d'audit WCAG 2.1 AA est la plus rigoureuse du marché. Nous combinons tests automatisés, audits manuels par experts et tests avec utilisateurs en situation de handicap pour produire un rapport d'impact actionnable en 72h.</p>
-    <div class="modal-grid">
-      <div class="modal-feat"><span class="material-symbols-outlined">fact_check</span><h4 data-i18n="modal-audit-f1-title">Audit WCAG 2.1 AA</h4><p data-i18n="modal-audit-f1-desc">Évaluation des 50 critères de succès applicables à votre contexte spécifique.</p></div>
-      <div class="modal-feat"><span class="material-symbols-outlined">record_voice_over</span><h4 data-i18n="modal-audit-f2-title">Tests Lecteurs d'Écran</h4><p data-i18n="modal-audit-f2-desc">NVDA, JAWS, VoiceOver — tests cross-platform avec protocoles standardisés.</p></div>
-      <div class="modal-feat"><span class="material-symbols-outlined">contrast</span><h4 data-i18n="modal-audit-f3-title">Contraste & Couleur</h4><p data-i18n="modal-audit-f3-desc">Vérification des ratios APCA, daltonisme et conditions de basse luminosité.</p></div>
-      <div class="modal-feat"><span class="material-symbols-outlined">assignment_turned_in</span><h4 data-i18n="modal-audit-f4-title">Rapport Exécutif</h4><p data-i18n="modal-audit-f4-desc">Livrable en 72h : niveau de conformité, criticité par critère, feuille de route corrective.</p></div>
-    </div>
-    <a href="#contact" class="btn btn-primary" data-select-audit data-close-modal data-i18n="modal-audit-cta">Demander un audit gratuit</a>
-  </div>
-</div>
-
-<!-- Modal: Conseil & Accompagnement -->
-<div class="modal-sheet" id="modal-conseil" role="dialog" aria-modal="true" aria-labelledby="modal-conseil-title">
-  <div class="modal-header">
-    <div>
-      <span class="tag" style="margin-bottom:10px"><span class="material-symbols-outlined" style="font-size:15px">forum</span><span data-i18n="modal-tag-service">Service</span></span>
-      <h2 class="t-h2" id="modal-conseil-title" style="color:var(--c-primary)" data-i18n="modal-conseil-title">Conseil & Accompagnement</h2>
-    </div>
-    <button class="modal-close" data-close-modal aria-label="Fermer"><span class="material-symbols-outlined">close</span></button>
-  </div>
-  <div class="modal-body">
-    <div class="modal-icon"><span class="material-symbols-outlined">forum</span></div>
-    <p class="t-body-lg" style="color:var(--c-on-surface-var);margin-bottom:var(--sp-xl)" data-i18n="modal-conseil-desc">Nous accompagnons les comités de direction, CTO et product owners dans la définition et l'exécution de leur stratégie digitale. Notre approche combine vision stratégique à long terme et pilotage opérationnel rigoureux pour sécuriser chaque investissement.</p>
-    <div class="modal-grid">
-      <div class="modal-feat"><span class="material-symbols-outlined">map</span><h4 data-i18n="modal-conseil-f1-title">Roadmap Stratégique</h4><p data-i18n="modal-conseil-f1-desc">Définition d'une feuille de route digitale alignée sur vos objectifs business et contraintes techniques.</p></div>
-      <div class="modal-feat"><span class="material-symbols-outlined">groups</span><h4 data-i18n="modal-conseil-f2-title">Coaching Exécutif</h4><p data-i18n="modal-conseil-f2-desc">Sessions de travail individuelles avec C-suite pour aligner vision digitale et culture d'entreprise.</p></div>
-      <div class="modal-feat"><span class="material-symbols-outlined">monitoring</span><h4 data-i18n="modal-conseil-f3-title">Pilotage OKR</h4><p data-i18n="modal-conseil-f3-desc">Mise en place d'indicateurs de performance clés et tableaux de bord décisionnels.</p></div>
-      <div class="modal-feat"><span class="material-symbols-outlined">school</span><h4 data-i18n="modal-conseil-f4-title">Formation Équipes</h4><p data-i18n="modal-conseil-f4-desc">Montée en compétences de vos équipes produit, design et développement.</p></div>
-    </div>
-    <a href="#contact" class="btn btn-primary" data-close-modal data-i18n="modal-cta">Demander un devis pour ce service</a>
-  </div>
 </div>
 </main>
+
+<!-- Volet d'Accessibilité -->
+<button class="a11y-floating-btn" id="a11y-toggle" aria-label="Options d'accessibilité" data-i18n-aria="a11y-toggle-label" title="Options d'accessibilité" data-i18n-title="a11y-toggle-label">
+  <span class="material-symbols-outlined">accessibility_new</span>
+</button>
+<div class="a11y-backdrop" id="a11y-backdrop" aria-hidden="true" style="display:none"></div>
+<aside class="a11y-panel" id="a11y-panel" aria-hidden="true" role="complementary" aria-label="Options d'accessibilité" data-i18n-aria="a11y-panel-aria" style="display:none">
+  <div class="a11y-header">
+    <div style="display:flex;align-items:center;gap:8px">
+      <span class="material-symbols-outlined" style="font-size:24px;color:var(--c-accent)">accessibility_new</span>
+      <h2 class="t-h3" style="margin:0;color:var(--c-primary)" data-i18n="a11y-title">Accessibilité</h2>
+    </div>
+    <button class="a11y-close" id="a11y-close" aria-label="Fermer le volet d'accessibilité" data-i18n-aria="a11y-close-aria">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+  <div class="a11y-body">
+    
+    <!-- Option 1: Taille du texte -->
+    <div class="a11y-group">
+      <h3 class="t-label" style="margin-bottom:8px" data-i18n="a11y-text-size">Taille du texte</h3>
+      <div class="a11y-buttons">
+        <button id="btn-scale-100" class="a11y-btn active" aria-pressed="true">100%</button>
+        <button id="btn-scale-125" class="a11y-btn" aria-pressed="false">125%</button>
+        <button id="btn-scale-150" class="a11y-btn" aria-pressed="false">150%</button>
+      </div>
+    </div>
+    
+    <!-- Option 2: Police DYS -->
+    <div class="a11y-group a11y-group-row">
+      <span class="t-label" data-i18n="a11y-dyslexic">Police Dyslexique</span>
+      <button id="btn-toggle-dyslexic" class="a11y-switch" role="switch" aria-checked="false" aria-label="Activer la police dyslexique" data-i18n-aria="a11y-dyslexic-aria">
+        <span class="switch-handle"></span>
+      </button>
+    </div>
+    
+    <!-- Option 3: Contraste renforcé -->
+    <div class="a11y-group a11y-group-row">
+      <span class="t-label" data-i18n="a11y-contrast">Contraste Élevé</span>
+      <button id="btn-toggle-contrast" class="a11y-switch" role="switch" aria-checked="false" aria-label="Activer le contraste élevé" data-i18n-aria="a11y-contrast-aria">
+        <span class="switch-handle"></span>
+      </button>
+    </div>
+    
+    <!-- Option 4: Souligner les liens -->
+    <div class="a11y-group a11y-group-row">
+      <span class="t-label" data-i18n="a11y-underline">Souligner les liens</span>
+      <button id="btn-toggle-underline" class="a11y-switch" role="switch" aria-checked="false" aria-label="Activer le soulignement des liens" data-i18n-aria="a11y-underline-aria">
+        <span class="switch-handle"></span>
+      </button>
+    </div>
+
+    <!-- Option 5: Suspendre la vidéo -->
+    <div class="a11y-group a11y-group-row">
+      <span class="t-label" data-i18n="a11y-video">Pause Vidéo Arrière-plan</span>
+      <button id="btn-toggle-video" class="a11y-switch" role="switch" aria-checked="false" aria-label="Mettre en pause la vidéo en arrière-plan" data-i18n-aria="a11y-video-aria">
+        <span class="switch-handle"></span>
+      </button>
+    </div>
+    
+    <!-- Option 6: Lecteur Audio (Speech Synthesis) -->
+    <div class="a11y-group" style="border-top:1px solid var(--c-outline-var);padding-top:16px;margin-top:16px">
+      <h3 class="t-label" style="margin-bottom:8px" data-i18n="a11y-reader">Lecteur Audio</h3>
+      <div style="display:flex;gap:8px">
+        <button id="btn-reader-play" class="btn btn-navy" style="flex:1;padding:8px;font-size:0.8rem;gap:4px" aria-label="Lire le texte" data-i18n-aria="a11y-reader-play">
+          <span class="material-symbols-outlined" style="font-size:16px">play_arrow</span>
+          <span data-i18n="a11y-reader-play">Lire le texte</span>
+        </button>
+        <button id="btn-reader-pause" class="btn btn-navy" style="flex:1;padding:8px;font-size:0.8rem;gap:4px;display:none" aria-label="Pause" data-i18n-aria="a11y-reader-pause">
+          <span class="material-symbols-outlined" style="font-size:16px">pause</span>
+          <span data-i18n="a11y-reader-pause">Pause</span>
+        </button>
+        <button id="btn-reader-stop" class="btn btn-ghost" style="padding:8px;font-size:0.8rem;color:var(--c-on-surface);border:1.5px solid var(--c-outline-var)" aria-label="Arrêter" data-i18n-aria="a11y-reader-stop">
+          <span class="material-symbols-outlined" style="font-size:16px">stop</span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Bouton Réinitialiser -->
+    <button id="btn-a11y-reset" class="btn btn-navy" style="width:100%;margin-top:16px;font-size:0.875rem" data-i18n="a11y-reset">Réinitialiser les réglages</button>
+
+  </div>
+</aside>
 <style>
 .form-field:focus{outline:3px solid var(--c-accent);outline-offset:2px;border-color:transparent!important}
 .form-field::placeholder{color:rgba(255,255,255,.35)}
-.process-step:hover .step-circle,.process-step:focus .step-circle{transform:scale(1.08)}
 @media(max-width:639px){
   .hero-ctas{flex-direction:column}
   .hero-stats{grid-template-columns:1fr}
@@ -675,6 +897,35 @@ Envoyer la demande
 }
 @media(min-width:640px) and (max-width:1023px){
   .hero-stats{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ── RTL STYLE OVERRIDES ── */
+[dir="rtl"], [dir="rtl"] *:not(.material-symbols-outlined) {
+  font-family: 'Cairo', sans-serif !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+}
+[dir="rtl"] .hero-eyebrow {
+  border-left: none;
+  border-right: 2px solid var(--c-accent);
+  padding-left: 0;
+  padding-right: var(--sp-md);
+}
+[dir="rtl"] .link-arrow-icon,
+[dir="rtl"] .btn span.material-symbols-outlined,
+[dir="rtl"] .hero-ctas span.material-symbols-outlined,
+[dir="rtl"] #submit-btn span.material-symbols-outlined {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+[dir="rtl"] .card-featured [style*="top:-14px"] {
+  right: auto !important;
+  left: var(--sp-lg) !important;
+}
+[dir="rtl"] select.form-field {
+  background-position: left 16px center !important;
+  padding-right: var(--sp-md) !important;
+  padding-left: 40px !important;
 }
 </style>
 <script>
@@ -710,74 +961,48 @@ Envoyer la demande
     ham.querySelector('.material-symbols-outlined').textContent='menu';
   }));
 
-  /* ── HERO WORD ANIMATION ── */
-  function splitWords(el,text){
-    const words=text.split(' ');
-    el.innerHTML=words.map((w,i)=>`<span class="word-wrap"><span class="word" style="animation-delay:${i*100}ms">${w}</span></span>`).join(' ');
-  }
-  const heroTitle=document.getElementById('hero-title');
-  if(heroTitle)splitWords(heroTitle,'Votre interface mérite d\'être repensée.');
 
-  /* ── INTERSECTION OBSERVER: reveal ── */
-  const prefersReduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  if(!prefersReduced){
-    const revealObs=new IntersectionObserver(entries=>{
-      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');revealObs.unobserve(e.target);}});
-    },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
-    document.querySelectorAll('[data-reveal]').forEach(el=>revealObs.observe(el));
-
-    /* stagger children */
-    document.querySelectorAll('[data-stagger]').forEach(parent=>{
-      Array.from(parent.children).forEach((child,i)=>{
-        child.setAttribute('data-reveal','');
-        child.setAttribute('data-delay',Math.min(i+1,4));
-        revealObs.observe(child);
-      });
-    });
-  } else {
-    document.querySelectorAll('[data-reveal],[data-stagger] > *').forEach(el=>el.classList.add('is-visible'));
-  }
 
   /* ══════════════════════════════════
      i18n SYSTEM
   ══════════════════════════════════ */
   const T = {
     fr:{
+      'a11y-toggle-label':'Options d\'accessibilité','a11y-toggle-text':'Accessibilité','a11y-title':'Accessibilité','a11y-panel-aria':'Options d\'accessibilité','a11y-close-aria':'Fermer le volet d\'accessibilité','a11y-text-size':'Taille du texte','a11y-dyslexic':'Police Dyslexique','a11y-dyslexic-aria':'Activer la police dyslexique','a11y-contrast':'Contraste Élevé','a11y-contrast-aria':'Activer le contraste élevé','a11y-underline':'Souligner les liens','a11y-underline-aria':'Activer le soulignement des liens','a11y-video':'Pause Vidéo Arrière-plan','a11y-video-aria':'Mettre en pause la vidéo en arrière-plan','a11y-reader':'Lecteur Audio','a11y-reader-play':'Lire le texte','a11y-reader-pause':'Pause','a11y-reader-stop':'Arrêter','a11y-reset':'Réinitialiser les réglages',
       'nav-services':'Services','nav-processus':'Processus','nav-expertise':'Expertise','nav-contact':'Contact','nav-cta':'Demander un devis',
-      'hero-eyebrow':'Consulting \u00b7 Design \u00b7 Accessibilit\u00e9',
-      'hero-title':"Votre interface m\u00e9rite d\u2019\u00eatre repens\u00e9e.",
-      'hero-sub':'Nous livrons des transformations digitales autorit\u00e9, pr\u00e9cises et inclusives. Notre approche rigoureuse garantit que votre plateforme d\u00e9passe les normes WCAG et les attentes des dirigeants.',
-      'hero-cta-primary':'Voir nos services','hero-audit-btn':'Audit gratuit',
-      'stat1-title':'WCAG 2.1 AA','stat1-desc':"Des normes d\u2019accessibilit\u00e9 rigoureuses appliqu\u00e9es \u00e0 chaque pixel de votre plateforme.",
-      'stat2-title':'Architecture Moderne','stat2-desc':"Syst\u00e8mes de grilles stables et \u00e9volutifs pour un flux d\u2019information optimal.",
-      'stat3-title':'Alignement Ex\u00e9cutif','stat3-desc':"Des designs con\u00e7us pour projeter ma\u00eetrise et autorit\u00e9 num\u00e9riques.",
-      'services-title':'Nos Services','services-sub':"Des solutions expertes con\u00e7ues pour allier excellence technique, conformit\u00e9 stricte et exp\u00e9rience utilisateur sans compromis.",
-      'service1-title':'Refonte UX/UI','service1-desc':"Modernisation compl\u00e8te de vos interfaces avec une approche centr\u00e9e utilisateur, garantissant une architecture de l\u2019information claire et une navigation fluide.",'service1-link':'En savoir plus',
-      'service2-badge':'Expertise Phare','service2-title':'Audit Accessibilit\u00e9 Digitale','service2-desc':"\u00c9valuation rigoureuse et mise en conformit\u00e9 WCAG 2.1 AA. Nous transformons les contraintes d\u2019accessibilit\u00e9 en vecteurs d\u2019excellence esth\u00e9tique et fonctionnelle.",'service2-link':'Voir la m\u00e9thodologie',
-      'service3-title':'Conseil \u0026 Accompagnement','service3-desc':"Strat\u00e9gie digitale sur-mesure pour les comit\u00e9s de direction et product owners. Un pilotage pr\u00e9cis pour s\u00e9curiser vos investissements digitaux.",'service3-link':'En savoir plus',
-      'processus-title':'Notre Processus','processus-sub':"Une m\u00e9thodologie rigoureuse, \u00e9prouv\u00e9e et transparente pour transformer vos d\u00e9fis complexes en solutions digitales \u00e9l\u00e9gantes et accessibles.",
-      'step1-title':'Diagnostic','step1-desc':"Analyse approfondie de votre \u00e9cosyst\u00e8me, identification des points de friction et \u00e9valuation de l\u2019accessibilit\u00e9 initiale.",
-      'step2-title':'Strat\u00e9gie','step2-desc':"D\u00e9finition de l\u2019architecture de l\u2019information, parcours utilisateurs et feuille de route technique pour un impact maximal.",
-      'step3-title':'Design','step3-desc':"Conception d\u2019interfaces modernes, conformes aux normes WCAG, alliant esth\u00e9tique corporate et clart\u00e9 d\u2019information.",
-      'step4-title':'Livraison','step4-desc':"D\u00e9ploiement rigoureux, tests d\u2019assurance qualit\u00e9 exhaustifs et transfert de comp\u00e9tences pour une autonomie totale.",
+      'hero-eyebrow':'Développement \u00b7 Design \u00b7 Accessibilité',
+      'hero-title':'Donnons vie \u00e0 vos projets digitaux.',
+      'hero-sub':'Nous concevons et développons des applications web et Android performantes, repensons vos interfaces existantes, et transformons vos plateformes en expériences accessibles conformes au RGAA européen.',
+      'hero-cta-primary':'Voir nos services',
+      'stat1-title':'Développement Web & Android','stat1-desc':'Création d’applications web et Android performantes, scalables et sécurisées.',
+      'stat2-title':'Refonte UX/UI','stat2-desc':'Modernisation complète de vos interfaces, garantissant une navigation fluide et une architecture claire.',
+      'stat3-title':'Accessibilité Numérique RGAA','stat3-desc':'Transformation de vos plateformes en expériences conformes au RGAA, ouvertes à tous.',
+      'services-title':'Nos Services & Expertises Digitales','services-sub':'Des prestations sur mesure pour concevoir et optimiser vos plateformes numériques. Nous allions performance technique, design UX/UI moderne et conformité stricte aux normes d\'accessibilité (RGAA).',
+      'service1-title':'Développement Web & Applications Android','service1-desc':'Conception et développement d\'applications web modernes (Single Page Applications, portails d\'entreprise) et d\'applications Android sur mesure. Nous garantissons un code performant, sécurisé, évolutif et parfaitement optimisé pour le référencement naturel (SEO).','service1-link':'En savoir plus',
+      'service2-badge':'Notre Spécialité','service2-title':'Design UX/UI & Ergonomie Web','service2-desc':'Création d\'interfaces élégantes et centrées sur l\'utilisateur. Nous repensons l\'ergonomie et l\'architecture de vos applications pour offrir un parcours utilisateur fluide, captivant et adapté à tous les écrans (Responsive Design).','service2-link':'En savoir plus',
+      'service3-title':'Accessibilité Numérique & Conformité RGAA','service3-desc':'Mise en conformité de vos plateformes existantes avec le RGAA (Référentiel Général d\'Amélioration de l\'Accessibilité). Nous rendons vos services numériques accessibles à tous, y compris aux personnes en situation de handicap.','service3-link':'En savoir plus',
+      'processus-title':'Notre Méthode de Travail','processus-sub':"Une collaboration structurée et transparente pour donner vie à vos projets numériques dans le respect des délais et des standards de qualité.",
+      'step1-title':'1. Analyse & Cadrage','step1-desc':"Nous étudions vos besoins, analysons vos objectifs commerciaux et définissons ensemble le cahier des charges précis du projet. C’est le moment où nous concevons la stratégie globale.",
+      'step2-title':'2. Conception & Design UX/UI','step2-desc':"Nous créons les maquettes graphiques et concevons l'arborescence du site. Nous validons avec vous le design visuel et le parcours utilisateur (UX) avant de commencer à coder.",
+      'step3-title':'3. Développement Technique','step3-desc':"Nos développeurs écrivent un code propre, rapide et sécurisé. Nous intégrons dès cette étape les critères d'accessibilité (RGAA) et les optimisations techniques pour le référencement (SEO).",
+      'step4-title':'4. Tests & Mise en ligne','step4-desc':"Nous testons rigoureusement le site sur différents navigateurs et smartphones. Une fois validé, nous le mettons en ligne, assurons le suivi de lancement et formons vos équipes.",
       'processus-cta':'D\u00e9marrer un projet',
-      'expertise-title':'Notre Valeur Ajout\u00e9e','expertise-sub':"Une approche rigoureuse alliant excellence technique, conformit\u00e9 stricte et communication fluide pour les leaders de l\u2019industrie.",
-      'exp1-badge':'10+ Ans d\u2019Expertise','exp1-title':'Expertise Technique \u0026 Design','exp1-desc':"Nous fusionnons l\u2019ing\u00e9nierie logicielle de pointe avec des m\u00e9thodologies de design rigoureuses. Notre approche garantit des architectures syst\u00e8mes \u00e9volutives et des interfaces d\u2019une clart\u00e9 absolue.",
-      'exp2-badge':'Garantie WCAG 2.1 AA','exp2-title':"Sp\u00e9cialistes de l\u2019Accessibilit\u00e9",'exp2-desc':"L\u2019inclusion num\u00e9rique est notre norme, pas une option. Nous int\u00e9grons les crit\u00e8res d\u2019accessibilit\u00e9 d\u00e8s la conception architecturale, assurant que vos plateformes sont universellement utilisables.",
-      'exp3-badge':'Port\u00e9e Internationale','exp3-title':'Bilingue Fran\u00e7ais / Anglais','exp3-desc':"Nous facilitons la collaboration transparente \u00e0 l\u2019\u00e9chelle mondiale. Notre ma\u00eetrise native des deux langues garantit que les exigences techniques complexes sont traduites sans perte de nuance.",
-      'contact-title':'Initier le Dialogue.','contact-sub':"Engagez nos experts pour red\u00e9finir votre architecture digitale. La pr\u00e9cision et l\u2019autorit\u00e9 commencent par une seule conversation.",
+      'expertise-title':'Notre Valeur Ajoutée','expertise-sub':'Ce qui nous distingue : une expertise technique pointue, un engagement total pour l\'inclusion numérique, et un accompagnement trilingue unique.',
+      'exp1-badge':'Technologie & Performance','exp1-title':'Ingénierie Web & Mobile sur Mesure','exp1-desc':'Nous concevons des plateformes web et applications mobiles (Android) robustes, rapides et évolutives. De la vitrine professionnelle aux outils métiers complexes, nous développons des architectures propres et optimisées pour le référencement (SEO).',
+      'exp2-badge':'Normes RGAA & WCAG','exp2-title':'Spécialistes en Accessibilité Numérique','exp2-desc':'L\'accessibilité n\'est pas une option après-coup, elle fait partie de notre ADN. Nous auditons et mettons en conformité vos sites selon les référentiels européens (RGAA) et internationaux (WCAG), pour garantir une expérience utilisateur inclusive sans compromettre le design graphique.',
+      'exp3-badge':'Trilingue','exp3-title':'Accompagnement en 3 Langues','exp3-desc':'Nous travaillons et communiquons couramment en Français, Anglais et Arabe. Cette capacité trilingue facilite les échanges internationaux, fluidifie le pilotage de vos projets multi-pays et assure la traduction parfaite de vos exigences techniques et fonctionnelles.',
+      'contact-title':'Discutons de Votre Projet','contact-sub':"Vous avez un projet de développement web, d'application Android, de refonte UX/UI ou de mise en conformité RGAA ? Contactez nos experts pour obtenir un diagnostic personnalisé.",
       'form-name':'Nom complet','form-email':'Adresse Email','form-type':'Type de Projet','form-msg':'Votre Message',
       'form-placeholder-name':'Jean Dupont','form-placeholder-email':'jean@entreprise.fr',
       'form-placeholder-type':'S\u00e9lectionnez une expertise','form-placeholder-msg':"D\u00e9crivez vos objectifs et contraintes...",
-      'form-opt-audit':"Audit d\u2019Accessibilit\u00e9 (WCAG)",'form-opt-arch':'Architecture Syst\u00e8me','form-opt-trans':'Transformation Digitale','form-opt-other':'Autre demande',
+      'form-opt-audit':"Audit & Mise en conformité RGAA",'form-opt-arch':'Développement Web / Android','form-opt-trans':'Refonte UX/UI & Design','form-opt-other':'Conseil / Autre demande',
       'form-submit':'Envoyer la demande','form-success':"\u2705 Message envoy\u00e9 avec succ\u00e8s. Nous vous r\u00e9pondrons sous 24h.",
-      'contact-direct':'Contact Direct','contact-address':'Si\u00e8ge Social',
-      'contact-linkedin-title':'R\u00e9seau Professionnel','contact-linkedin-sub':'Suivez-nous sur LinkedIn',
-      'footer-brand':'Pr\u00e9cis. Autoritaire. Inclusif.',
-      'footer-legal':'L\u00e9gal','footer-engagement':'Engagement','footer-join':'Rejoindre',
+      'contact-direct':'Contact Direct',
+      'footer-brand':'',
+      'footer-legal':'L\u00e9gal','footer-engagement':'Engagement','footer-join':'',
       'footer-privacy':'Politique de Confidentialit\u00e9','footer-terms':"Conditions d\u2019Utilisation",
-      'footer-a11y':"D\u00e9claration d\u2019Accessibilit\u00e9",'footer-offices':'Bureaux Mondiaux','footer-linkedin':'LinkedIn',
-      'footer-copy':"\u00a9 2024 PRIMOZAYN CONSULTING. Tous droits r\u00e9serv\u00e9s. Pr\u00e9cis. Autoritaire. Inclusif.",
+      'footer-a11y':"D\u00e9claration d\u2019Accessibilit\u00e9",
+      'footer-copy':"\u00a9 2026 PRIMOZAYN CONSULTING. Tous droits r\u00e9serv\u00e9s.",
       'theme-toggle':'Activer le mode sombre','theme-toggle-text':'Mode sombre',
       'modal-tag-service':'Service','modal-tag-flagship':'Expertise Phare',
       'modal-uxui-title':'Refonte UX/UI','modal-uxui-desc':"Nous repensons int\u00e9gralement vos interfaces digitales avec une m\u00e9thodologie centr\u00e9e utilisateur. De l\u2019audit initial \u00e0 la livraison finale, chaque d\u00e9cision de design est ancr\u00e9e dans des donn\u00e9es r\u00e9elles et des standards d\u2019accessibilit\u00e9 rigoureux.",
@@ -798,41 +1023,41 @@ Envoyer la demande
       'modal-cta':'Demander un devis pour ce service','modal-audit-cta':'Demander un audit gratuit'
     },
     en:{
+      'a11y-toggle-label':'Accessibility options','a11y-toggle-text':'Accessibility','a11y-title':'Accessibility','a11y-panel-aria':'Accessibility options','a11y-close-aria':'Close accessibility panel','a11y-text-size':'Text Size','a11y-dyslexic':'Dyslexic-friendly Font','a11y-dyslexic-aria':'Enable dyslexic font','a11y-contrast':'High Contrast','a11y-contrast-aria':'Enable high contrast','a11y-underline':'Underline links','a11y-underline-aria':'Enable link underlining','a11y-video':'Pause Background Video','a11y-video-aria':'Pause background video','a11y-reader':'Audio Reader','a11y-reader-play':'Read Text','a11y-reader-pause':'Pause','a11y-reader-stop':'Stop','a11y-reset':'Reset Settings',
       'nav-services':'Services','nav-processus':'Process','nav-expertise':'Expertise','nav-contact':'Contact','nav-cta':'Request a Quote',
-      'hero-eyebrow':'Consulting \u00b7 Design \u00b7 Accessibility',
-      'hero-title':'Your interface deserves to be reimagined.',
-      'hero-sub':'We deliver authoritative, precise, and inclusive digital transformations. Our rigorous approach ensures your platform exceeds WCAG standards and executive expectations.',
+      'hero-eyebrow':'Development \u00b7 Design \u00b7 Accessibility',
+      'hero-title':'Bringing your digital projects to life.',
+      'hero-sub':'We design and develop performant web and Android applications, redesign existing interfaces, and transform your platforms into accessible experiences compliant with the European RGAA.',
       'hero-cta-primary':'Our Services','hero-audit-btn':'Free Audit',
-      'stat1-title':'WCAG 2.1 AA','stat1-desc':'Rigorous accessibility standards applied to every pixel of your platform.',
-      'stat2-title':'Modern Architecture','stat2-desc':'Scalable, stable grid systems engineered for optimal information flow.',
-      'stat3-title':'Executive Alignment','stat3-desc':'Designs crafted to project digital mastery and organisational authority.',
-      'services-title':'Our Services','services-sub':'Expert solutions designed to combine technical excellence, strict compliance, and an uncompromising user experience.',
-      'service1-title':'UX/UI Redesign','service1-desc':'Complete modernisation of your interfaces with a user-centred approach, ensuring clear information architecture and fluid navigation.','service1-link':'Learn more',
-      'service2-badge':'Core Expertise','service2-title':'Digital Accessibility Audit','service2-desc':'Rigorous evaluation and WCAG 2.1 AA compliance. We transform accessibility constraints into vectors of aesthetic and functional excellence.','service2-link':'View methodology',
-      'service3-title':'Advisory & Support','service3-desc':'Custom digital strategy for executive committees and product owners. Precise steering to secure your digital investments.','service3-link':'Learn more',
-      'processus-title':'Our Process','processus-sub':'A rigorous, proven, and transparent methodology to transform your complex challenges into elegant, accessible digital solutions.',
-      'step1-title':'Diagnosis','step1-desc':'In-depth analysis of your ecosystem, friction point identification, and initial accessibility evaluation.',
-      'step2-title':'Strategy','step2-desc':'Definition of information architecture, user journeys, and technical roadmap for maximum impact.',
-      'step3-title':'Design','step3-desc':'Design of modern, WCAG-compliant interfaces combining corporate aesthetics with absolute information clarity.',
-      'step4-title':'Delivery','step4-desc':'Rigorous deployment, exhaustive quality assurance testing, and skills transfer for complete autonomy.',
+      'stat1-title':'Web & Android Development','stat1-desc':'Creation of performant, scalable and secure web and Android applications.',
+      'stat2-title':'UX/UI Redesign','stat2-desc':'Complete modernisation of your interfaces, ensuring fluid navigation and clear information architecture.',
+      'stat3-title':'RGAA Digital Accessibility','stat3-desc':'Transforming your platforms into RGAA-compliant experiences, open to everyone.',
+      'services-title':'Our Digital Services & Expertises','services-sub':'Tailored services to design, build, and optimize your digital platforms. We combine high technical performance, modern UX/UI design, and strict compliance with digital accessibility standards (RGAA).',
+      'service1-title':'Web & Android App Development','service1-desc':'Development of performant web applications and custom Android apps. We focus on writing clean, secure, and scalable code optimized for speed, search engines (SEO), and user experience.','service1-link':'Learn more',
+      'service2-badge':'Our Speciality','service2-title':'UX/UI Design & Digital Ergonomics','service2-desc':'Designing elegant, intuitive, and user-centered interfaces. We structure your information architecture and user journeys to ensure a seamless, engaging, and fully responsive experience.','service2-link':'Learn more',
+      'service3-title':'Digital Accessibility & RGAA Compliance','service3-desc':'Transforming your websites and software to comply with European accessibility standards (RGAA). We make your digital products inclusive and accessible to everyone, including users with disabilities.','service3-link':'Learn more',
+      'processus-title':'Our Workflow','processus-sub':"A structured and transparent collaboration to bring your digital projects to life, respecting deadlines and quality standards.",
+      'step1-title':'1. Analysis & Strategy','step1-desc':'We study your business goals, identify target audience needs, and establish a clear project roadmap and technical specifications.',
+      'step2-title':'2. UX/UI Design & Prototyping','step2-desc':'We design clean, modern mockups and define the user experience. We align on the visual design and layout structure before writing any code.',
+      'step3-title':'3. Coding & Optimization','step3-desc':'We build your solution with clean, performant, and secure code. Accessibility rules (WCAG) and search engine optimization (SEO) are integrated directly into the core code.',
+      'step4-title':'4. Quality Testing & Launch','step4-desc':'We thoroughly test the website on all browsers and devices. After your final approval, we launch the project, offer post-launch support, and train your team.',
       'processus-cta':'Start a Project',
-      'expertise-title':'Our Added Value','expertise-sub':'A rigorous approach combining technical excellence, strict compliance, and seamless communication for industry leaders.',
-      'exp1-badge':'10+ Years of Expertise','exp1-title':'Technical & Design Expertise','exp1-desc':'We fuse cutting-edge software engineering with rigorous design methodologies. Our approach guarantees scalable system architectures and interfaces of absolute clarity.',
-      'exp2-badge':'WCAG 2.1 AA Guarantee','exp2-title':'Accessibility Specialists','exp2-desc':'Digital inclusion is our standard, not an option. We integrate accessibility criteria from the architectural design stage, ensuring your platforms are universally usable.',
-      'exp3-badge':'International Reach','exp3-title':'Bilingual French / English','exp3-desc':'We facilitate seamless collaboration at a global scale. Our native command of both languages ensures complex technical requirements are translated without loss of nuance.',
-      'contact-title':'Start the Conversation.','contact-sub':'Engage with our experts to redefine your digital architecture. Precision and authority begin with a single conversation.',
+      'expertise-title':'Our Value Proposition','expertise-sub':'What makes us unique: high-performance engineering, deep commitment to digital inclusion, and trilingual support across borders.',
+      'exp1-badge':'Technology & Performance','exp1-title':'Custom Web & Mobile Engineering','exp1-desc':'We build robust, fast, and scalable web platforms and Android applications. From professional business websites to complex software systems, we develop clean architectures optimized for search engine rankings (SEO) and security.',
+      'exp2-badge':'WCAG & RGAA Standards','exp2-title':'Digital Accessibility Experts','exp2-desc':'Digital inclusion is embedded in our workflow. We audit and modify websites to comply with WCAG and European RGAA standards, ensuring your platforms are usable by everyone, including users with disabilities, with no compromise on aesthetics.',
+      'exp3-badge':'Trilingual Support','exp3-title':'French · English · Arabic Support','exp3-desc':'We manage projects and communicate fluently in French, English, and Arabic. This trilingual capability simplifies collaboration for international clients, ensures seamless project management across regions, and guarantees technical requirements are perfectly understood and delivered.',
+      'contact-title':'Let\'s Discuss Your Project','contact-sub':'Have a web development, Android app, UX/UI redesign, or RGAA/WCAG accessibility compliance project? Get in touch with our experts for a personalized assessment.',
       'form-name':'Full Name','form-email':'Email Address','form-type':'Project Type','form-msg':'Your Message',
       'form-placeholder-name':'John Smith','form-placeholder-email':'john@company.com',
       'form-placeholder-type':'Select an expertise','form-placeholder-msg':'Describe your objectives and constraints...',
-      'form-opt-audit':'Accessibility Audit (WCAG)','form-opt-arch':'System Architecture','form-opt-trans':'Digital Transformation','form-opt-other':'Other request',
+      'form-opt-audit':'Accessibility Audit & Compliance (WCAG)','form-opt-arch':'Web / Android Development','form-opt-trans':'UX/UI Redesign & Prototyping','form-opt-other':'Consulting / Other Request',
       'form-submit':'Send Request','form-success':'\u2705 Message sent successfully. We will reply within 24 hours.',
-      'contact-direct':'Direct Contact','contact-address':'Headquarters',
-      'contact-linkedin-title':'Professional Network','contact-linkedin-sub':'Follow us on LinkedIn',
-      'footer-brand':'Precise. Authoritative. Inclusive.',
-      'footer-legal':'Legal','footer-engagement':'Commitment','footer-join':'Connect',
+      'contact-direct':'Direct Contact',
+      'footer-brand':'',
+      'footer-legal':'Legal','footer-engagement':'Commitment','footer-join':'',
       'footer-privacy':'Privacy Policy','footer-terms':'Terms of Service',
-      'footer-a11y':'Accessibility Statement','footer-offices':'Global Offices','footer-linkedin':'LinkedIn',
-      'footer-copy':'\u00a9 2024 PRIMOZAYN CONSULTING. All rights reserved. Precise. Authoritative. Inclusive.',
+      'footer-a11y':'Accessibility Statement',
+      'footer-copy':'\u00a9 2026 PRIMOZAYN CONSULTING. All rights reserved.',
       'theme-toggle':'Toggle dark mode','theme-toggle-text':'Dark Mode',
       'modal-tag-service':'Service','modal-tag-flagship':'Core Expertise',
       'modal-uxui-title':'UX/UI Redesign','modal-uxui-desc':'We fully reimagine your digital interfaces with a user-centred methodology. From the initial audit to final delivery, every design decision is grounded in real data and rigorous accessibility standards.',
@@ -851,6 +1076,61 @@ Envoyer la demande
       'modal-conseil-f3-title':'OKR Management','modal-conseil-f3-desc':'Implementation of key performance indicators and executive decision dashboards.',
       'modal-conseil-f4-title':'Team Training','modal-conseil-f4-desc':'Skills development for your product, design and development teams.',
       'modal-cta':'Request a quote for this service','modal-audit-cta':'Request a free audit'
+    },
+    ar:{
+      'a11y-toggle-label':'خيارات تسهيل الوصول','a11y-toggle-text':'تسهيل الوصول','a11y-title':'تسهيل الوصول','a11y-panel-aria':'خيارات تسهيل الوصول','a11y-close-aria':'إغلاق لوحة تسهيل الوصول','a11y-text-size':'حجم الخط','a11y-dyslexic':'خط عسر القراءة','a11y-dyslexic-aria':'تفعيل خط عسر القراءة','a11y-contrast':'تباين عالٍ','a11y-contrast-aria':'تفعيل التباين العالي','a11y-underline':'تسطير الروابط','a11y-underline-aria':'تفعيل تسطير الروابط','a11y-video':'إيقاف فيديو الخلفية مؤقتاً','a11y-video-aria':'إيقاف تشغيل فيديو الخلفية مؤقتاً','a11y-reader':'القارئ الصوتي','a11y-reader-play':'قراءة النص','a11y-reader-pause':'إيقاف مؤقت','a11y-reader-stop':'إيقاف','a11y-reset':'إعادة تعيين الإعدادات',
+      'nav-services':'خدماتنا','nav-processus':'منهجية العمل','nav-expertise':'قيمتنا المضافة','nav-contact':'اتصل بنا','nav-cta':'طلب عرض سعر',
+      'hero-eyebrow':'تطوير · تصميم · تسهيل الوصول',
+      'hero-title':'نمنح مشاريعكم الرقمية حياة ونشاطاً.',
+      'hero-sub':'نقوم بتصميم وتطوير تطبيقات الويب وأندرويد عالية الأداء، وإعادة هيكلة الواجهات البرمجية، وتهيئة منصاتكم الرقمية لتتوافق بالكامل مع معايير إمكانية الوصول الأوروبية والعالمية (RGAA).',
+      'hero-cta-primary':'استعرض خدماتنا',
+      'stat1-title':'تطوير الويب وأندرويد','stat1-desc':'بناء تطبيقات ويب وهواتف ذكية سريعة، آمنة وقابلة للتوسع.',
+      'stat2-title':'إعادة تصميم واجهات المستخدم UX/UI','stat2-desc':'تحديث واجهاتكم الرقمية بالكامل مع ضمان تجربة تصفح مرنة وبنية معلومات واضحة.',
+      'stat3-title':'تسهيل الوصول الرقمي (RGAA)','stat3-desc':'تحويل منصاتكم الرقمية إلى تجارب شاملة ومتوافقة مع المعايير القانونية وإمكانية الوصول للجميع.',
+      'services-title':'خدماتنا وخبراتنا الرقمية','services-sub':'خدمات مخصصة لتصميم وتحسين منصاتكم الرقمية. نحن نجمع بين الأداء التقني العالي، وتصميم واجهات المستخدم الحديث (UX/UI)، والمطابقة الصارمة لمعايير إمكانية الوصول الرقمية (RGAA).',
+      'service1-title':'تطوير الويب وتطبيقات أندرويد','service1-desc':'برمجة وتطوير مواقع الويب الحديثة (تطبيقات الصفحة الواحدة، البوابات المؤسسية) وتطبيقات أندرويد مخصصة. نضمن لكم كوداً برمجياً سريعاً، آمناً، مهيأً بالكامل لمحركات البحث (SEO) وقابلاً للتطوير مستقبلاً.','service1-link':'اقرأ المزيد',
+      'service2-badge':'تخصصنا الأبرز','service2-title':'تصميم UX/UI وهندسة الواجهات','service2-desc':'ابتكار واجهات مستخدم جذابة وسهلة الاستخدام. نقوم بدراسة سلوك المستخدم وإعادة هيكلة مسارات التصفح لتوفير تجربة مرنة وتفاعلية متوافقة مع جميع الشاشات والأجهزة.','service2-link':'اقرأ المزيد',
+      'service3-title':'تسهيل الوصول الرقمي ومطابقة المعايير','service3-desc':'تهيئة وتعديل مواقعكم وتطبيقاتكم القائمة لتتوافق مع معايير إمكانية الوصول الرقمية الأوروبية (RGAA). نضمن وصول خدماتكم الرقمية إلى كافة شرائح المجتمع، بما في ذلك ذوو الاحتياجات الخاصة.','service3-link':'اقرأ المزيد',
+      'processus-title':'منهجية عملنا','processus-sub':"شراكة منظمة وشفافة تسير وفق خطوات محددة لضمان تسليم مشاريعكم الرقمية في المواعيد المحددة وبأعلى مستويات الجودة.",
+      'step1-title':'1. التحليل وتحديد المتطلبات','step1-desc':"ندرس أهداف مشروعكم واحتياجات فئاتكم المستهدفة بدقة لإنشاء وثيقة المواصفات الفنية ورسم خطة العمل الاستراتيجية.",
+      'step2-title':'2. التصميم وبناء النماذج','step2-desc':"نبتكر نماذج التصميم الهيكلية والواجهات الرسومية التفاعلية، ونناقش معكم مسارات تجربة المستخدم (UX) لاعتمادها قبل بدء البرمجة.",
+      'step3-title':'3. التطوير البرمجي والتحسين','step3-desc':"نكتب كوداً برمجياً نظيفاً وسريعاً وآمناً. كما ندمج في هذه المرحلة معايير تسهيل الوصول (RGAA) وقواعد التهيئة لمحركات البحث (SEO) لضمان أداء مثالي.",
+      'step4-title':'4. الاختبارات وإطلاق المشروع','step4-desc':"نخضع منصتكم لاختبارات شاملة للتأكد من ملاءمتها لكافة المتصفحات والهواتف. بعد موافقتكم النهائية، نطلق المشروع ونقوم بتدريب فريقكم مع تقديم الدعم المستمر.",
+      'processus-cta':'ابدأ مشروعك معنا',
+      'expertise-title':'قيمتنا المضافة','expertise-sub':'ما يميزنا عن غيرنا: عمق فني وتقني، التزام راسخ بالشمولية الرقمية، وتقديم خدماتنا بثلاث لغات لتسهيل التواصل والتعاون الدولي.',
+      'exp1-badge':'التقنية والأداء','exp1-title':'هندسة رقمية مخصصة للويب والهواتف','exp1-desc':'نطور منصات ويب وتطبيقات أندرويد متطورة تلبي احتياجات أعمالكم بدقة. نلتزم ببناء معماريات برمجية قوية ومرنة تسهل النمو والتوسع المستقبلي لشركتكم.',
+      'exp2-badge':'مطابقة المعايير','exp2-title':'خبراء إمكانية الوصول الرقمي','exp2-desc':'تسهيل الوصول ليس خياراً ثانوياً لدينا بل ركيزة أساسية. نعمل على تهيئة مواقعكم لتكون متوافقة مع متطلبات (RGAA)، مما يضمن وصولاً شاملاً وسهلاً دون التأثير على جمالية التصميم.',
+      'exp3-badge':'دعم ثلاثي اللغات','exp3-title':'دعم كامل بالعربية والفرنسية والإنجليزية','exp3-desc':'ندير المشاريع ونتواصل بطلاقة بثلاث لغات. تساعدنا هذه الميزة التنافسية على تسهيل التعاون مع مختلف العملاء الدوليين، وضمان نقل وتطبيق المتطلبات الفنية دون أي فجوات في الفهم.',
+      'contact-title':'لنناقش مشروعكم المقبل','contact-sub':"هل لديكم مشروع لتطوير موقع ويب، تطبيق أندرويد، إعادة تصميم واجهات، أو مطابقة معايير إمكانية الوصول؟ تواصلوا مع خبرائنا للحصول على استشارة مخصصة.",
+      'form-name':'الاسم الكامل','form-email':'البريد الإلكتروني','form-type':'نوع المشروع','form-msg':'رسالتكم',
+      'form-placeholder-name':'أحمد محمد','form-placeholder-email':'ahmed@company.com',
+      'form-placeholder-type':'اختر مجال المشروع...','form-placeholder-msg':"تحدث عن أهداف مشروعكم وتطلعاتكم...",
+      'form-opt-audit':"استشارة وتهيئة إمكانية الوصول (RGAA)",'form-opt-arch':'تطوير تطبيقات الويب وأندرويد','form-opt-trans':'إعادة تصميم واجهات المستخدم UX/UI','form-opt-other':'أخرى / استشارة عامة',
+      'form-submit':'إرسال الطلب','form-success':"✅ تم إرسال رسالتكم بنجاح. سنقوم بالرد عليكم في غضون 24 ساعة.",
+      'contact-direct':'اتصال مباشر',
+      'footer-brand':'',
+      'footer-legal':'معلومات قانونية','footer-engagement':'التزاماتنا','footer-join':'',
+      'footer-privacy':'سياسة الخصوصية','footer-terms':"شروط الاستخدام",
+      'footer-a11y':"إعلان إمكانية الوصول",
+      'footer-copy':"© 2026 PRIMOZAYN CONSULTING. جميع الحقوق محفوظة.",
+      'theme-toggle':'تفعيل الوضع الداكن','theme-toggle-text':'الوضع الداكن',
+      'modal-tag-service':'خدمة','modal-tag-flagship':'خبرة أساسية',
+      'modal-uxui-title':'إعادة تصميم واجهات المستخدم UX/UI','modal-uxui-desc':"نعيد تصور واجهاتكم الرقمية بالكامل بالاعتماد على دراسة سلوك المستخدم الفعلي ومطابقة أعلى معايير إمكانية الوصول.",
+      'modal-uxui-f1-title':'دراسة وتحليل تجربة المستخدم','modal-uxui-f1-desc':'تحليل متكامل للمسارات الحالية، وتحديد الصعوبات التي تواجه المستخدمين ورسم خرائط تجربة جديدة.',
+      'modal-uxui-f2-title':'نظام التصميم Design System','modal-uxui-f2-desc':"بناء مكتبة متكاملة من العناصر والمكونات البرمجية الموحدة لضمان سرعة التطوير وهوية بصرية متسقة.",
+      'modal-uxui-f3-title':'التصميم المتجاوب أولاً','modal-uxui-f3-desc':'اختبار وضمان توافق الواجهات مع الهواتف الذكية، الأجهزة اللوحية والحواسيب المكتبية.',
+      'modal-uxui-f4-title':'نقل المعرفة والتدريب','modal-uxui-f4-desc':'تدريب فرقكم وتوفير توثيق كامل لضمان استمرارية وإدارة وتطوير الواجهات مستقبلاً بشكل مستقل.',
+      'modal-audit-title':'تدقيق إمكانية الوصول الرقمي','modal-audit-desc':"منهجيتنا في التدقيق ومطابقة معايير (RGAA) هي الأكثر دقة وصرامة. نجمع بين الاختبارات البرمجية والمراجعة اليدوية والتقييم الفعلي من قِبل مستخدمين ذوي احتياجات خاصة.",
+      'modal-audit-f1-title':'مراجعة معايير RGAA / WCAG','modal-audit-f1-desc':"تقييم شامل لجميع معايير النجاح وتحديد نقاط عدم المطابقة في منصاتكم.",
+      'modal-audit-f2-title':"اختبار قارئات الشاشة",'modal-audit-f2-desc':'اختبار التوافق مع أشهر قارئات الشاشة (NVDA, JAWS, VoiceOver) لضمان تجربة صوتية سليمة.',
+      'modal-audit-f3-title':'الألوان والتباين','modal-audit-f3-desc':'فحص دقة تباين الألوان وملاءمتها للأشخاص المصابين بعمى الألوان أو في ظروف الإضاءة المنخفضة.',
+      'modal-audit-f4-title':'تقرير التوصيات الفنية','modal-audit-f4-desc':'تسليم تقرير مفصل يحدد مستويات المطابقة الحالية، ويوفر حلولاً برمجية مباشرة لمعالجة المشاكل.',
+      'modal-conseil-title':'الاستشارة والدعم الاستراتيجي','modal-conseil-desc':"نرافق الإدارات التنفيذية ومدراء التكنولوجيا ومالكي المنتجات في صياغة وتنفيذ استراتيجياتهم الرقمية بكفاءة عالية.",
+      'modal-conseil-f1-title':'خارطة الطريق الرقمية','modal-conseil-f1-desc':"رسم مسار تقني واضح يتماشى مع أهداف نمو شركتكم والجدوى الفنية والتجارية.",
+      'modal-conseil-f2-title':'التدريب والتوجيه التنفيذي','modal-conseil-f2-desc':"ورش عمل مخصصة للقادة لتعزيز ثقافة الابتكار الرقمي وبناء فرق عمل فعالة.",
+      'modal-conseil-f3-title':'إدارة الأداء والمؤشرات','modal-conseil-f3-desc':"وضع مؤشرات الأداء الرئيسية (OKRs) وتصميم لوحات تحكم لمتابعة سير أعمال التحول الرقمي.",
+      'modal-conseil-f4-title':'تأهيل الكفاءات','modal-conseil-f4-desc':'تطوير مهارات فرق العمل لديكم في مجالات البرمجة، التصميم وإدارة المنتجات الرقمية.',
+      'modal-cta':'طلب استشارة لهذا القسم','modal-audit-cta':'طلب تدقيق مجاني'
     }
   };
 
@@ -863,24 +1143,28 @@ Envoyer la demande
     currentLang = lang;
     localStorage.setItem('pz-lang', lang);
     document.documentElement.lang = lang;
-    document.title = lang==='fr'
-      ? 'PRIMOZAYN CONSULTING \u2014 Pr\u00e9cis. Autoritaire. Inclusif.'
-      : 'PRIMOZAYN CONSULTING \u2014 Precise. Authoritative. Inclusive.';
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    if (lang === 'fr') {
+      document.title = 'PRIMOZAYN CONSULTING — Développement Web, Android & Accessibilité RGAA';
+    } else if (lang === 'en') {
+      document.title = 'PRIMOZAYN CONSULTING — Web & Android Development, UX/UI & RGAA Accessibility';
+    } else {
+      document.title = 'PRIMOZAYN CONSULTING — تطوير الويب وأندرويد وتسهيل الوصول الرقمي';
+    }
     document.getElementById('lang-fr').setAttribute('aria-pressed', String(lang==='fr'));
     document.getElementById('lang-en').setAttribute('aria-pressed', String(lang==='en'));
+    document.getElementById('lang-ar').setAttribute('aria-pressed', String(lang==='ar'));
     const mobFr = document.getElementById('mobile-lang-fr');
     if (mobFr) {
       mobFr.setAttribute('aria-pressed', String(lang==='fr'));
-      mobFr.style.background = lang==='fr' ? 'rgba(255,255,255,.2)' : 'transparent';
-      mobFr.style.borderColor = lang==='fr' ? 'rgba(255,255,255,.3)' : 'transparent';
-      mobFr.style.color = lang==='fr' ? '#fff' : 'rgba(255,255,255,.6)';
     }
     const mobEn = document.getElementById('mobile-lang-en');
     if (mobEn) {
       mobEn.setAttribute('aria-pressed', String(lang==='en'));
-      mobEn.style.background = lang==='en' ? 'rgba(255,255,255,.2)' : 'transparent';
-      mobEn.style.borderColor = lang==='en' ? 'rgba(255,255,255,.3)' : 'transparent';
-      mobEn.style.color = lang==='en' ? '#fff' : 'rgba(255,255,255,.6)';
+    }
+    const mobAr = document.getElementById('mobile-lang-ar');
+    if (mobAr) {
+      mobAr.setAttribute('aria-pressed', String(lang==='ar'));
     }
 
     // Helper: set textContent (pure text elements)
@@ -909,12 +1193,11 @@ Envoyer la demande
     /* HERO */
     $t('.hero-eyebrow', 'hero-eyebrow');
     $t('.hero-sub', 'hero-sub');
-    // Hero title word-by-word
+    // Hero title
     const ht=document.getElementById('hero-title');
     if(ht&&t['hero-title']){
-      const txt=t['hero-title'];
-      ht.setAttribute('aria-label',txt);
-      ht.innerHTML=txt.split(' ').map((w,i)=>`<span class="word-wrap"><span class="word" style="animation-delay:${i*100}ms">${w}</span></span>`).join(' ');
+      ht.textContent=t['hero-title'];
+      ht.setAttribute('aria-label',t['hero-title']);
     }
     // Hero primary CTA (has icon child — update text node only)
     const heroCta=document.querySelector('#hero .hero-ctas a:first-child');
@@ -938,13 +1221,8 @@ Envoyer la demande
       const k=i+1;
       const h=card.querySelector('h3');
       const p=card.querySelector('p.t-body-md');
-      const a=card.querySelector('a[data-modal]');
       if(h&&t['service'+k+'-title']) h.textContent=t['service'+k+'-title'];
       if(p&&t['service'+k+'-desc'])  p.textContent=t['service'+k+'-desc'];
-      if(a&&t['service'+k+'-link']){
-        const tn=Array.from(a.childNodes).find(n=>n.nodeType===3&&n.textContent.trim());
-        if(tn) tn.textContent='\n          '+t['service'+k+'-link']+' ';
-      }
       // Badge for card 2 (featured)
       if(i===1){
         const badge=card.querySelector('[style*="top:-14px"]');
@@ -987,7 +1265,7 @@ Envoyer la demande
       // Text block: the child div that contains h3 (not the image div)
       const textDiv=Array.from(row.children).find(c=>c.querySelector('h3'));
       if(!textDiv) return;
-      const badge=textDiv.querySelector('span[style*="background:var(--c-secondary-container)"]');
+      const badge=textDiv.querySelector('.tag');
       const h=textDiv.querySelector('h3'), p=textDiv.querySelector('p.t-body-lg');
       if(badge&&t[bk]){
         const tn=Array.from(badge.childNodes).find(n=>n.nodeType===3&&n.textContent.trim());
@@ -1025,42 +1303,27 @@ Envoyer la demande
     // Contact Direct heading
     const cd=document.querySelector('#contact h3');
     if(cd&&t['contact-direct']) cd.textContent=t['contact-direct'];
-    // Address label
-    const addrLabel=document.querySelector('#contact .t-label[style*="letter-spacing:.08em"]');
-    if(addrLabel&&t['contact-address']) addrLabel.textContent=t['contact-address'];
-    // LinkedIn card text
-    const liTitle=document.querySelector('#contact .t-label[style*="color:#fff"]');
-    if(liTitle&&t['contact-linkedin-title']) liTitle.textContent=t['contact-linkedin-title'];
-    const liSub=document.querySelector('#contact span[style*="rgba(255,255,255,.7)"][style*="font-size:.9rem"]');
-    if(liSub&&t['contact-linkedin-sub']) liSub.textContent=t['contact-linkedin-sub'];
     // Placeholders
     const pn=document.getElementById('nom'); if(pn&&t['form-placeholder-name']) pn.placeholder=t['form-placeholder-name'];
     const pe=document.getElementById('email'); if(pe&&t['form-placeholder-email']) pe.placeholder=t['form-placeholder-email'];
     const pm=document.getElementById('message'); if(pm&&t['form-placeholder-msg']) pm.placeholder=t['form-placeholder-msg'];
 
     /* FOOTER */
-    const ftBrand=document.querySelector('footer p[style*="max-width:260px"]');
-    if(ftBrand&&t['footer-brand']) ftBrand.textContent=t['footer-brand'];
     document.querySelectorAll('footer h4').forEach((h,i)=>{
-      const keys=['footer-legal','footer-engagement','footer-join'];
+      const keys=['footer-legal','footer-engagement'];
       if(t[keys[i]]) h.textContent=t[keys[i]];
     });
     // Footer links by text content mapping
     const ftLinkMap={
-      'Politique de Confidentialit\u00e9':'footer-privacy','Privacy Policy':'footer-privacy',
-      "Conditions d\u2019Utilisation":'footer-terms',"Conditions d'Utilisation":'footer-terms','Terms of Service':'footer-terms',
-      "D\u00e9claration d\u2019Accessibilit\u00e9":'footer-a11y',"D\u00e9claration d'Accessibilit\u00e9":'footer-a11y','Accessibility Statement':'footer-a11y',
-      'Bureaux Mondiaux':'footer-offices','Global Offices':'footer-offices',
-      'LinkedIn':'footer-linkedin'
+      'Politique de Confidentialit\u00e9':'footer-privacy','Privacy Policy':'footer-privacy','سياسة الخصوصية':'footer-privacy',
+      "Conditions d\u2019Utilisation":'footer-terms',"Conditions d'Utilisation":'footer-terms','Terms of Service':'footer-terms','شروط الاستخدام':'footer-terms',
+      "D\u00e9claration d\u2019Accessibilit\u00e9":'footer-a11y',"D\u00e9claration d'Accessibilit\u00e9":'footer-a11y','Accessibility Statement':'footer-a11y','إعلان إمكانية الوصول':'footer-a11y'
     };
     document.querySelectorAll('footer a').forEach(a=>{
       const txt=a.textContent.trim();
       const key=ftLinkMap[txt];
       if(key&&t[key]) a.textContent=t[key];
     });
-    // Footer copyright
-    const ftCopy=document.querySelector('footer [style*="rgba(255,255,255,.3)"]');
-    if(ftCopy&&t['footer-copy']) ftCopy.textContent=t['footer-copy'];
   }
 
 
@@ -1068,82 +1331,12 @@ Envoyer la demande
   /* ── LANG TOGGLE (replace old stub) ── */
   document.getElementById('lang-fr').addEventListener('click', () => applyLang('fr'));
   document.getElementById('lang-en').addEventListener('click', () => applyLang('en'));
+  document.getElementById('lang-ar').addEventListener('click', () => applyLang('ar'));
   document.getElementById('mobile-lang-fr').addEventListener('click', () => applyLang('fr'));
   document.getElementById('mobile-lang-en').addEventListener('click', () => applyLang('en'));
+  document.getElementById('mobile-lang-ar').addEventListener('click', () => applyLang('ar'));
 
-  /* ── MODAL SYSTEM ── */
-  const backdrop = document.getElementById('modal-backdrop');
-  let activeModal = null;
-  let lastFocused = null;
 
-  function openModal(id) {
-    if (activeModal) closeModal();
-    const m = document.getElementById(id);
-    if (!m) return;
-    lastFocused = document.activeElement;
-    activeModal = m;
-    backdrop.classList.add('open');
-    m.classList.add('open');
-    backdrop.removeAttribute('aria-hidden');
-    document.body.style.overflow = 'hidden';
-    // focus first focusable
-    const focusable = m.querySelector('button,a,[tabindex]');
-    if (focusable) setTimeout(() => focusable.focus(), 50);
-  }
-
-  function closeModal() {
-    if (!activeModal) return;
-    activeModal.classList.remove('open');
-    backdrop.classList.remove('open');
-    backdrop.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    if (lastFocused) lastFocused.focus();
-    activeModal = null;
-  }
-
-  // Open triggers: [data-modal]
-  document.addEventListener('click', e => {
-    const trigger = e.target.closest('[data-modal]');
-    if (trigger) { e.preventDefault(); openModal(trigger.getAttribute('data-modal')); return; }
-    // Close triggers: [data-close-modal]
-    const closer = e.target.closest('[data-close-modal]');
-    if (closer) {
-      closeModal();
-      // if it's also a link, let smooth scroll handle it
-      if (closer.tagName === 'A') {
-        const href = closer.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          setTimeout(() => {
-            const t = document.querySelector(href);
-            if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 300);
-        }
-      }
-      // pre-select audit option
-      if (closer.hasAttribute('data-select-audit')) {
-        setTimeout(() => {
-          const sel = document.getElementById('projet');
-          if (sel) { sel.value = 'audit'; sel.dispatchEvent(new Event('change')); }
-        }, 400);
-      }
-      return;
-    }
-    // Click backdrop
-    if (e.target === backdrop) closeModal();
-  });
-
-  // ESC key
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && activeModal) closeModal();
-    // Trap focus inside modal
-    if (activeModal && e.key === 'Tab') {
-      const focusable = Array.from(activeModal.querySelectorAll('button,a,input,select,textarea,[tabindex]:not([tabindex="-1"])'));
-      if (!focusable.length) return;
-      const first = focusable[0], last = focusable[focusable.length-1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    }
-  });
 
   /* ── "Audit gratuit" hero button — pre-selects audit ── */
   const auditBtn = document.getElementById('btn-audit-gratuit');
@@ -1160,7 +1353,7 @@ Envoyer la demande
     if (sel) setTimeout(() => { sel.value = preselect; sel.dispatchEvent(new Event('change')); }, 800);
   }
 
-  /* ── INIT LANG ── */
+/* ── INIT LANG ── */
   applyLang(currentLang);
 
   /* ── CONTACT FORM ── */
@@ -1186,7 +1379,7 @@ Envoyer la demande
       const href=this.getAttribute('href');
       if(!href||href==='#')return;
       const target=document.querySelector(href);
-      if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});}
+      if(target){e.preventDefault();target.scrollIntoView({block:'start'});}
     });
   });
   /* ── THEME TOGGLE ── */
@@ -1211,40 +1404,239 @@ Envoyer la demande
   if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
   updateThemeUI();
 
-  /* Scroll Reveal Animations */
-  const revealObs = new IntersectionObserver((entries, obs) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('is-visible');
-        obs.unobserve(e.target);
+  /* ── ACCESSIBILITY CUSTOM PANEL JS ── */
+  const a11yPanel = document.getElementById('a11y-panel');
+  const a11yBackdrop = document.getElementById('a11y-backdrop');
+  const a11yToggle = document.getElementById('a11y-toggle');
+  const mobA11yToggle = document.getElementById('mobile-a11y-toggle');
+  const a11yClose = document.getElementById('a11y-close');
+  const heroVideo = document.querySelector('.hero-video');
+
+  // Toggle Panel open/close
+  function openA11yPanel() {
+    a11yPanel.style.display = 'flex';
+    a11yBackdrop.style.display = 'block';
+    a11yPanel.setAttribute('aria-hidden', 'false');
+    a11yBackdrop.setAttribute('aria-hidden', 'false');
+    // Focus close button inside panel
+    setTimeout(() => a11yClose.focus(), 50);
+  }
+
+  function closeA11yPanel() {
+    if (a11yPanel) a11yPanel.style.display = 'none';
+    if (a11yBackdrop) a11yBackdrop.style.display = 'none';
+    a11yPanel.setAttribute('aria-hidden', 'true');
+    a11yBackdrop.setAttribute('aria-hidden', 'true');
+  }
+
+  if (a11yToggle) a11yToggle.addEventListener('click', openA11yPanel);
+  if (mobA11yToggle) mobA11yToggle.addEventListener('click', openA11yPanel);
+  if (a11yClose) a11yClose.addEventListener('click', closeA11yPanel);
+  if (a11yBackdrop) a11yBackdrop.addEventListener('click', closeA11yPanel);
+
+  // Esc key closes panel
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && a11yPanel && a11yPanel.style.display === 'flex') {
+      closeA11yPanel();
+      if (a11yToggle) a11yToggle.focus();
+    }
+  });
+
+  // Toggles and State Handlers
+  // 1. Text Scale
+  const scaleBtns = {
+    '100': document.getElementById('btn-scale-100'),
+    '125': document.getElementById('btn-scale-125'),
+    '150': document.getElementById('btn-scale-150')
+  };
+
+  function setScale(scale) {
+    document.documentElement.classList.remove('a11y-scale-125', 'a11y-scale-150');
+    Object.values(scaleBtns).forEach(btn => {
+      if (btn) {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-  
-  document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
-  
-  // Stagger children if needed
-  document.querySelectorAll('[data-stagger] > *').forEach((child, i) => {
-    child.setAttribute('data-reveal', '');
-    child.style.transitionDelay = (i * 0.1) + 's';
-    revealObs.observe(child);
+
+    if (scale !== '100') {
+      document.documentElement.classList.add(`a11y-scale-${scale}`);
+    }
+    const currentBtn = scaleBtns[scale];
+    if (currentBtn) {
+      currentBtn.classList.add('active');
+      currentBtn.setAttribute('aria-pressed', 'true');
+    }
+    localStorage.setItem('pz-a11y-scale', scale);
+  }
+
+  Object.keys(scaleBtns).forEach(scale => {
+    const btn = scaleBtns[scale];
+    if (btn) btn.addEventListener('click', () => setScale(scale));
   });
+
+  // Helper switch state updater
+  function initSwitch(id, storageKey, className, targetEl, onToggleCallback) {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+    
+    let state = localStorage.getItem(storageKey) === 'true';
+    
+    const updateUI = () => {
+      btn.setAttribute('aria-checked', state);
+      if (targetEl) {
+        if (state) targetEl.classList.add(className);
+        else targetEl.classList.remove(className);
+      }
+      if (onToggleCallback) onToggleCallback(state);
+    };
+
+    btn.addEventListener('click', () => {
+      state = !state;
+      localStorage.setItem(storageKey, state);
+      updateUI();
+    });
+
+    updateUI();
+  }
+
+  // 2. Dyslexic Font
+  initSwitch('btn-toggle-dyslexic', 'pz-a11y-dyslexic', 'a11y-dyslexic', document.documentElement);
+
+  // 3. High Contrast
+  initSwitch('btn-toggle-contrast', 'pz-a11y-contrast', 'a11y-high-contrast', document.documentElement);
+
+  // 4. Underline links
+  initSwitch('btn-toggle-underline', 'pz-a11y-underline', 'a11y-underline-links', document.documentElement);
+
+  // 5. Video Play/Pause
+  let isVideoPaused = localStorage.getItem('pz-a11y-video-paused') === 'true';
+  const videoBtnInPanel = document.getElementById('btn-toggle-video');
+  const videoControlBtn = document.getElementById('video-control-btn');
+
+  function updateVideoState(paused) {
+    isVideoPaused = paused;
+    localStorage.setItem('pz-a11y-video-paused', paused);
+    
+    if (heroVideo) {
+      if (paused) heroVideo.pause();
+      else heroVideo.play().catch(() => {});
+    }
+
+    if (videoBtnInPanel) {
+      videoBtnInPanel.setAttribute('aria-checked', paused);
+    }
+    if (videoControlBtn) {
+      videoControlBtn.setAttribute('aria-label', paused ? 'Relancer la vidéo' : 'Mettre en pause la vidéo');
+      const icon = videoControlBtn.querySelector('span');
+      if (icon) icon.textContent = paused ? 'play_arrow' : 'pause';
+    }
+  }
+
+  if (videoBtnInPanel) {
+    videoBtnInPanel.addEventListener('click', () => {
+      updateVideoState(!isVideoPaused);
+    });
+  }
+  if (videoControlBtn) {
+    videoControlBtn.addEventListener('click', () => {
+      updateVideoState(!isVideoPaused);
+    });
+  }
+
+  // 6. Reset
+  const resetBtn = document.getElementById('btn-a11y-reset');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      localStorage.removeItem('pz-a11y-scale');
+      localStorage.removeItem('pz-a11y-dyslexic');
+      localStorage.removeItem('pz-a11y-contrast');
+      localStorage.removeItem('pz-a11y-underline');
+      localStorage.removeItem('pz-a11y-video-paused');
+      
+      setScale('100');
+      
+      const dysBtn = document.getElementById('btn-toggle-dyslexic');
+      if (dysBtn) { dysBtn.setAttribute('aria-checked', 'false'); document.documentElement.classList.remove('a11y-dyslexic'); }
+      
+      const contBtn = document.getElementById('btn-toggle-contrast');
+      if (contBtn) { contBtn.setAttribute('aria-checked', 'false'); document.documentElement.classList.remove('a11y-high-contrast'); }
+      
+      const undBtn = document.getElementById('btn-toggle-underline');
+      if (undBtn) { undBtn.setAttribute('aria-checked', 'false'); document.documentElement.classList.remove('a11y-underline-links'); }
+      
+      updateVideoState(false);
+    });
+  }
+
+  // 7. Audio Reader (Speech Synthesis)
+  const btnPlay = document.getElementById('btn-reader-play');
+  const btnPause = document.getElementById('btn-reader-pause');
+  const btnStop = document.getElementById('btn-reader-stop');
+  let synth = window.speechSynthesis;
+  let utterance = new SpeechSynthesisUtterance();
+
+  function updateReaderState() {
+    if (!synth) return;
+    if (synth.speaking && !synth.paused) {
+      if (btnPlay) btnPlay.style.display = 'none';
+      if (btnPause) btnPause.style.display = 'flex';
+      if (btnStop) btnStop.style.display = 'flex';
+    } else if (synth.paused) {
+      if (btnPlay) btnPlay.style.display = 'flex';
+      if (btnPause) btnPause.style.display = 'none';
+      if (btnStop) btnStop.style.display = 'flex';
+    } else {
+      if (btnPlay) btnPlay.style.display = 'flex';
+      if (btnPause) btnPause.style.display = 'none';
+      if (btnStop) btnStop.style.display = 'none';
+    }
+  }
+
+  if (btnPlay && btnPause && btnStop && synth) {
+    btnPlay.addEventListener('click', () => {
+      if (synth.paused) {
+        synth.resume();
+      } else {
+        // Read main content
+        const content = document.body.innerText;
+        utterance.text = content;
+        utterance.lang = window.currentLang || 'fr';
+        
+        utterance.onend = () => updateReaderState();
+        utterance.onpause = () => updateReaderState();
+        utterance.onresume = () => updateReaderState();
+        utterance.onstart = () => updateReaderState();
+        
+        synth.speak(utterance);
+      }
+      updateReaderState();
+    });
+
+    btnPause.addEventListener('click', () => {
+      synth.pause();
+      updateReaderState();
+    });
+
+    btnStop.addEventListener('click', () => {
+      synth.cancel();
+      updateReaderState();
+    });
+
+    // Reset state when language changes (by hooking into applyLang if we could, but a simple cancel is safer here)
+    window.addEventListener('beforeunload', () => synth.cancel());
+    synth.cancel();
+    updateReaderState();
+  }
+
+  // Initialize
+  const savedScale = localStorage.getItem('pz-a11y-scale') || '100';
+  setScale(savedScale);
+  updateVideoState(isVideoPaused);
 })();
 </script>
 </body>
 </html>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  updateVideoState(isVideoPaused);
