@@ -10,9 +10,30 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-<script>
-tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary":"#011848","primary-container":"#1b2e5e","secondary":"#415c9f","secondary-container":"#9ab4fe","on-primary":"#ffffff","on-primary-container":"#8597cd","on-secondary":"#ffffff","on-secondary-container":"#284486","surface":"#fbf8fd","surface-container":"#efedf2","surface-container-low":"#f5f3f8","surface-container-lowest":"#ffffff","on-surface":"#1b1b1f","on-surface-variant":"#45464f","outline":"#757680","outline-variant":"#c5c6d0","accent":"#4a90d9","accent-dark":"#3a80c9","error":"#ba1a1a"},borderRadius:{"sm":"4px","base":"8px","card":"16px","full":"9999px"},spacing:{"xs":"4px","sm":"8px","md":"16px","lg":"24px","xl":"32px","xxl":"64px","gutter":"24px","container-max":"1280px"},fontFamily:{sans:["Inter","sans-serif"],headline:["Plus Jakarta Sans","sans-serif"]}}}}
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta property="og:title" content="PRIMOZAYN CONSULTING — Développement Web, Android & Accessibilité RGAA"/>
+<meta property="og:description" content="Agence digitale spécialisée en développement web & Android, refonte UX/UI et mise en conformité accessibilité RGAA. Services en français, arabe et anglais."/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="fr_FR"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="PRIMOZAYN CONSULTING"/>
+<meta name="twitter:description" content="Développement Web & Android, Refonte UX/UI, Accessibilité RGAA."/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PRIMOZAYN CONSULTING",
+  "description": "Agence digitale spécialisée en développement web & Android, refonte UX/UI et mise en conformité accessibilité RGAA.",
+  "url": "https://primozayn.fr",
+  "email": "contact.primozaynconsulting@gmail.com",
+  "telephone": "+33762966393",
+  "knowsLanguage": ["fr", "en", "ar"],
+  "areaServed": "Worldwide",
+  "serviceType": ["Web Development", "Android Development", "UX/UI Design", "Digital Accessibility Audit", "RGAA Compliance"],
+  "sameAs": []
+}
 </script>
 <style>
 /* ── TOKEN SYSTEM ── */
@@ -48,7 +69,11 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary":"#011848","pr
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:auto}
+html{scroll-behavior:smooth}
+
+/* ── SKIP LINK (replaces Tailwind screen-reader-only class) ── */
+.skip-link{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link:focus{position:fixed;top:0;left:0;z-index:999;width:auto;height:auto;padding:var(--sp-md);margin:0;overflow:visible;clip:auto;white-space:normal;background:#fff;color:var(--c-primary);font-family:var(--font-body);font-size:.875rem;font-weight:600;letter-spacing:.05em;box-shadow:var(--sh-md)}
 body{font-family:var(--font-body);background:var(--c-surface);color:var(--c-on-surface);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--c-secondary-container);color:#284486}
 img{display:block;max-width:100%}
@@ -198,13 +223,14 @@ section{padding-block:var(--sp-xxl)}
 .stat-card p{font-size:.875rem;color:rgba(255,255,255,.7);line-height:1.5}
 .tag{display:inline-flex;align-items:center;gap:6px;background:var(--c-secondary-container);color:var(--c-on-secondary-container);padding:6px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600}
 /* ── PROCESS STEPS ── */
-.process-step{}
-.process-step:hover .step-circle{}
+.process-step:hover .step-circle{transform:scale(1.05);box-shadow:var(--sh-md)}
+.step-circle{transition:transform 0.3s ease, box-shadow 0.3s ease}
 .process-step:hover .step-body{box-shadow:var(--sh-md);border-color:var(--c-outline)}
 /* ── LINK ARROW (replaces inline onmouseover) ── */
 .link-arrow{color:var(--c-secondary);display:inline-flex;align-items:center;gap:6px;text-decoration:none}
 .link-arrow:hover{color:var(--c-primary)}
-.link-arrow-icon{}
+.link-arrow-icon{transition:transform 0.2s ease}
+.link-arrow:hover .link-arrow-icon{transform:translateX(3px)}
 
 /* ── SELECT DROPDOWN CHEVRON ── */
 select.form-field {
@@ -216,7 +242,12 @@ select.form-field {
 }
 
 /* ── SERVICE CARD ICON HOVER ── */
-.card-icon {
+.card-icon{
+  transition:transform 0.3s ease, background 0.3s ease;
+}
+.card:hover .card-icon {
+  transform:scale(1.1);
+  background:var(--c-secondary-container) !important;
 }
 
 /* ── MOB LANG BUTTONS ── */
@@ -263,8 +294,6 @@ select.form-field {
   color: #fff !important;
   text-decoration: underline !important;
 }
-
-/* ── FOOTER LINKS HOVER ── */
 
 /* ── ACCESSIBILITY CUSTOM PANEL ── */
 .a11y-backdrop {
@@ -428,6 +457,12 @@ html.a11y-high-contrast {
 html.a11y-high-contrast.dark {
   filter: contrast(1.6) brightness(0.95) !important;
 }
+
+/* Respect prefers-reduced-motion */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
+  .hero-video{display:none}
+}
 </style>
 <script>
   (function(){
@@ -452,7 +487,7 @@ html.a11y-high-contrast.dark {
 </script>
 </head>
 <body>
-<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-white focus:text-primary t-label" style="border-radius:0">Aller au contenu principal</a>
+<a href="#main" class="skip-link">Aller au contenu principal</a>
 
 <!-- ══ NAV ══ -->
 <header id="site-nav" role="banner">
@@ -498,7 +533,7 @@ html.a11y-high-contrast.dark {
 <!-- ══ HERO ══ -->
 <main id="main">
 <section id="hero" aria-label="Section héros">
-  <video class="hero-video" autoplay muted loop playsinline aria-hidden="true" preload="auto">
+  <video class="hero-video" autoplay muted loop playsinline aria-hidden="true" preload="metadata" poster="hero-poster.webp">
     <source src="animation.mp4" type="video/mp4"/>
   </video>
   <button class="video-control-btn" id="video-control-btn" aria-label="Mettre en pause la vidéo" style="position:absolute;bottom:var(--sp-lg);left:var(--sp-lg);z-index:10;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);backdrop-filter:blur(10px);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center">
@@ -506,8 +541,8 @@ html.a11y-high-contrast.dark {
   </button>
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow" data-reveal>Développement · Design · Accessibilité</div>
-    <h1 class="t-h1 hero-title" id="hero-title" aria-label="Donnons vie à vos projets digitaux.">Donnons vie à vos projets digitaux.</h1>
+    <div class="hero-eyebrow" data-reveal data-i18n="hero-eyebrow">Développement · Design · Accessibilité</div>
+    <h1 class="t-h1 hero-title" id="hero-title">Donnons vie à vos projets digitaux.</h1>
     <p class="hero-sub t-body-lg" data-reveal data-delay="2">
       Nous concevons et développons des applications web et Android performantes, repensons vos interfaces existantes, et transformons vos plateformes en expériences accessibles conformes au RGAA européen.
     </p>
@@ -543,42 +578,42 @@ html.a11y-high-contrast.dark {
   <div aria-hidden="true" style="position:absolute;top:40%;left:-10%;width:40%;height:40%;border-radius:50%;background:rgba(179,197,254,.15);filter:blur(80px);pointer-events:none"></div>
   <div class="container" style="position:relative;z-index:1">
     <div style="text-align:center;margin-bottom:var(--sp-xxl)" data-reveal>
-      <h2 class="t-h2" id="services-title" style="color:var(--c-primary);margin-bottom:var(--sp-md)">Nos Services</h2>
-      <p class="t-body-lg" style="color:var(--c-on-surface-var);max-width:560px;margin-inline:auto">Des solutions pensées pour transformer vos idées en produits digitaux modernes, accessibles et efficaces — web, Android et au-delà.</p>
+      <h2 class="t-h2" id="services-title" style="color:var(--c-primary);margin-bottom:var(--sp-md)">Nos Services &amp; Expertises Digitales</h2>
+      <p class="t-body-lg" style="color:var(--c-on-surface-var);max-width:560px;margin-inline:auto">Des prestations sur mesure pour concevoir et optimiser vos plateformes numériques. Nous allions performance technique, design UX/UI moderne et conformité stricte aux normes d'accessibilité (RGAA).</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-lg)" data-stagger>
             <!-- Card 1 -->
-      <article class="card" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service: Développement Web & Mobile">
+      <article class="card" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service: Développement Web &amp; Applications Android">
         <div style="width:48px;height:48px;border-radius:var(--r-card);background:var(--c-surface-container);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg)" class="card-icon">
           <span class="material-symbols-outlined" style="color:var(--c-primary);font-variation-settings:'FILL' 1">code</span>
         </div>
-        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Développement Web & Android</h3>
-        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Création d’applications web et Android performantes, scalables et sécurisées, adaptées à vos besoins spécifiques.</p>
+        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Développement Web &amp; Applications Android</h3>
+        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Conception et développement d'applications web modernes (Single Page Applications, portails d'entreprise) et d'applications Android sur mesure. Nous garantissons un code performant, sécurisé, évolutif et perfectly optimisé pour le référencement naturel (SEO).</p>
         <a href="#contact" class="link-arrow">
           <span data-i18n="service1-link">En savoir plus</span> <span class="material-symbols-outlined link-arrow-icon" style="font-size:16px">arrow_forward</span>
         </a>
       </article>
       <!-- Card 2 featured -->
-      <article class="card card-featured" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service phare: Refonte UX/UI">
+      <article class="card card-featured" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service phare: Design UX/UI &amp; Ergonomie Web">
         <div style="position:absolute;top:-14px;right:var(--sp-lg);background:var(--c-secondary);color:#fff;padding:4px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;letter-spacing:.05em;display:flex;align-items:center;gap:4px">
-          <span class="material-symbols-outlined" style="font-size:15px;font-variation-settings:'FILL' 1">verified</span>Expertise Phare
+          <span class="material-symbols-outlined" style="font-size:15px;font-variation-settings:'FILL' 1">verified</span>Notre Spécialité
         </div>
         <div class="card-icon" style="width:48px;height:48px;border-radius:var(--r-card);background:var(--c-surface-container);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg)">
           <span class="material-symbols-outlined" style="color:var(--c-secondary);font-variation-settings:'FILL' 1">design_services</span>
         </div>
-        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Refonte UX/UI</h3>
-        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Modernisation complète de vos interfaces avec une approche centrée utilisateur, garantissant une architecture de l'information claire et une navigation fluide.</p>
+        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Design UX/UI &amp; Ergonomie Web</h3>
+        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Création d'interfaces élégantes et centrées sur l'utilisateur. Nous repensons l'ergonomie et l'architecture de vos applications pour offrir un parcours utilisateur fluide, captivant et adapté à tous les écrans (Responsive Design).</p>
         <a href="#contact" class="link-arrow">
           <span data-i18n="service2-link">En savoir plus</span> <span class="material-symbols-outlined link-arrow-icon" style="font-size:16px">arrow_forward</span>
         </a>
       </article>
       <!-- Card 3 -->
-      <article class="card" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service: Accessibilité RGAA">
+      <article class="card" style="padding:var(--sp-xl);display:flex;flex-direction:column" aria-label="Service: Accessibilité Numérique &amp; Conformité RGAA">
         <div class="card-icon" style="width:48px;height:48px;border-radius:var(--r-card);background:var(--c-surface-container);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-lg)">
           <span class="material-symbols-outlined" style="color:var(--c-primary);font-variation-settings:'FILL' 1">accessibility_new</span>
         </div>
-        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Accessibilité Numérique RGAA</h3>
-        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Nous transformons vos sites et applications existants en plateformes conformes au Référentiel Général d'Amélioration de l'Accessibilité (RGAA), pour répondre aux exigences européennes et ouvrir votre contenu à tous.</p>
+        <h3 class="t-h3" style="color:var(--c-primary);margin-bottom:var(--sp-sm)">Accessibilité Numérique &amp; Conformité RGAA</h3>
+        <p class="t-body-md" style="color:var(--c-on-surface-var);flex-grow:1;margin-bottom:var(--sp-lg)">Mise en conformité de vos plateformes existantes avec le RGAA (Référentiel Général d'Amélioration de l'Accessibilité). Nous rendons vos services numériques accessibles à tous, y compris aux personnes en situation de handicap.</p>
         <a href="#contact" class="link-arrow">
           <span data-i18n="service3-link">En savoir plus</span> <span class="material-symbols-outlined link-arrow-icon" style="font-size:16px">arrow_forward</span>
         </a>
@@ -591,8 +626,8 @@ html.a11y-high-contrast.dark {
 <section id="processus" aria-labelledby="processus-title" style="background:var(--c-surface-lowest,#fff)">
   <div class="container">
     <div style="text-align:center;max-width:700px;margin-inline:auto;margin-bottom:var(--sp-xxl)" data-reveal>
-      <h2 class="t-h2" id="processus-title" style="color:var(--c-on-surface);margin-bottom:var(--sp-md)">Notre Processus</h2>
-      <p class="t-body-lg" style="color:var(--c-on-surface-var)">Une approche simple et transparente : nous écoutons vos besoins, concevons avec vous, développons avec rigueur et livrons dans les meilleures conditions.</p>
+      <h2 class="t-h2" id="processus-title" style="color:var(--c-on-surface);margin-bottom:var(--sp-md)">Notre Méthode de Travail</h2>
+      <p class="t-body-lg" style="color:var(--c-on-surface-var)">Une collaboration structurée et transparente pour donner vie à vos projets numériques dans le respect des délais et des standards de qualité.</p>
     </div>
     <div style="position:relative">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-xl);position:relative;z-index:1" data-stagger>
@@ -603,8 +638,8 @@ html.a11y-high-contrast.dark {
           </div>
           <div class="step-body" style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
             <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">forum</span>
-            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Découverte</h3>
-            <p class="t-body-md" style="color:var(--c-on-surface-var)">Nous écoutons vos besoins, analysons votre contexte et définissons ensemble les objectifs et le périmètre de votre projet.</p>
+            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">1. Analyse &amp; Cadrage</h3>
+            <p class="t-body-md" style="color:var(--c-on-surface-var)">Nous étudions vos besoins, analysons vos objectifs commerciaux et définissons ensemble le cahier des charges précis du projet. C’est le moment où nous concevons la stratégie globale.</p>
           </div>
         </div>
         <!-- Step 2 -->
@@ -614,8 +649,8 @@ html.a11y-high-contrast.dark {
           </div>
           <div class="step-body" style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
             <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">design_services</span>
-            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Conception</h3>
-            <p class="t-body-md" style="color:var(--c-on-surface-var)">Nous concevons l'architecture, les maquettes et le parcours utilisateur, et validons chaque étape avec vous avant de passer au développement.</p>
+            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">2. Conception &amp; Design UX/UI</h3>
+            <p class="t-body-md" style="color:var(--c-on-surface-var)">Nous créons les maquettes graphiques et concevons l'arborescence du site. Nous validons avec vous le design visuel et le parcours utilisateur (UX) avant de commencer à coder.</p>
           </div>
         </div>
         <!-- Step 3 -->
@@ -625,8 +660,8 @@ html.a11y-high-contrast.dark {
           </div>
           <div class="step-body" style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
             <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">code</span>
-            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Développement</h3>
-            <p class="t-body-md" style="color:var(--c-on-surface-var)">Nous développons votre solution avec les technologies adaptées, en appliquant les bonnes pratiques de qualité, de performance et d’accessibilité.</p>
+            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">3. Développement Technique</h3>
+            <p class="t-body-md" style="color:var(--c-on-surface-var)">Nos développeurs écrivent un code propre, rapide et sécurisé. Nous intégrons dès cette étape les critères d'accessibilité (RGAA) et les optimisations techniques pour le référencement (SEO).</p>
           </div>
         </div>
         <!-- Step 4 -->
@@ -636,8 +671,8 @@ html.a11y-high-contrast.dark {
           </div>
           <div class="step-body" style="background:var(--c-surface-lowest,#fff);padding:var(--sp-lg);border-radius:var(--r-card);border:1px solid var(--c-outline-var);box-shadow:var(--sh-sm);width:100%;flex-grow:1">
             <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px;margin-bottom:var(--sp-sm);display:block" aria-hidden="true">rocket_launch</span>
-            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">Livraison &amp; Suivi</h3>
-            <p class="t-body-md" style="color:var(--c-on-surface-var)">Nous livrons votre projet, assurons les tests finaux et restons disponibles pour vous accompagner après la mise en ligne.</p>
+            <h3 class="t-h3" style="color:var(--c-on-surface);margin-bottom:var(--sp-sm)">4. Tests &amp; Mise en ligne</h3>
+            <p class="t-body-md" style="color:var(--c-on-surface-var)">Nous testons rigoureusement le site sur différents navigateurs et smartphones. Une fois validé, nous le mettons en ligne, assurons le suivi de lancement et formons vos équipes.</p>
           </div>
         </div>
       </div>
@@ -649,26 +684,29 @@ html.a11y-high-contrast.dark {
 </section>
 
 <!-- EXPERTISE -->
-<section id="expertise" style="background:var(--c-surface-low)">
+<section id="expertise" style="background:var(--c-surface-low)" aria-labelledby="expertise-title">
 <div class="container">
 <div style="text-align:center;margin-bottom:var(--sp-xxl)" data-reveal>
 <h2 class="t-h2" id="expertise-title" style="color:var(--c-primary);margin-bottom:var(--sp-md)">Notre Valeur Ajoutée</h2>
-<p class="t-body-lg" style="color:var(--c-on-surface-var);max-width:600px;margin-inline:auto">Ce qui nous distingue : une approche centrée sur vos besoins réels, un engagement sincère pour la qualité, et une communication fluide en trois langues.</p>
+<p class="t-body-lg" style="color:var(--c-on-surface-var);max-width:600px;margin-inline:auto">Ce qui nous distingue : une expertise technique pointue, un engagement total pour l'inclusion numérique, et un accompagnement trilingue unique.</p>
 </div>
 
 <!-- Row 1 -->
 <div style="display:grid;grid-template-columns:1fr;gap:var(--sp-xxl);margin-bottom:var(--sp-xxl)">
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-xl);align-items:center" data-reveal>
 <div>
-<span class="tag" style="margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">code</span>Web &amp; Android</span>
+<span class="tag" style="margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">code</span>Technologie &amp; Performance</span>
 <div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-sm)">
 <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px" aria-hidden="true">devices</span>
-<h3 class="t-h3" style="color:var(--c-on-surface)">Applications Web &amp; Android</h3>
+<h3 class="t-h3" style="color:var(--c-on-surface)">Ingénierie Web &amp; Mobile sur Mesure</h3>
 </div>
-<p class="t-body-lg" style="color:var(--c-on-surface-var)">Nous développons des applications web et Android modernes, performantes et sécurisées. De la page vitrine à l'application métier complexe, nous mettons tout en œuvre pour livrer un produit qui répond précisément à vos objectifs.</p>
+<p class="t-body-lg" style="color:var(--c-on-surface-var)">Nous concevons des plateformes web et applications mobiles (Android) robustes, rapides et évolutives. De la vitrine professionnelle aux outils métiers complexes, nous développons des architectures propres et optimisées pour le référencement (SEO).</p>
 </div>
 <div style="border-radius:var(--r-card);overflow:hidden;border:1px solid var(--c-outline-var);height:320px">
+<picture>
+<source srcset="image1.webp" type="image/webp"/>
 <img src="image1.png" alt="Développeurs travaillant sur des interfaces web et mobile modernes." loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;image-rendering:high-quality;transform:translateZ(0)"/>
+</picture>
 </div>
 </div>
 
@@ -676,31 +714,37 @@ html.a11y-high-contrast.dark {
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-xl);align-items:center" data-reveal>
 <div style="order:2">
 <div style="border-radius:var(--r-card);overflow:hidden;border:1px solid var(--c-outline-var);height:320px">
+<picture>
+<source srcset="image2.webp" type="image/webp"/>
 <img src="image2.png" alt="Mise en conformité accessibilité numérique RGAA sur une interface moderne." loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;image-rendering:high-quality;transform:translateZ(0)"/>
+</picture>
 </div>
 </div>
 <div style="order:1">
-<span class="tag" style="margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">accessibility_new</span>Conformité RGAA</span>
+<span class="tag" style="margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">accessibility_new</span>Normes RGAA &amp; WCAG</span>
 <div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-sm)">
 <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px" aria-hidden="true">accessibility_new</span>
-<h3 class="t-h3" style="color:var(--c-on-surface)">Accessibilité Numérique</h3>
+<h3 class="t-h3" style="color:var(--c-on-surface)">Spécialistes en Accessibilité Numérique</h3>
 </div>
-<p class="t-body-lg" style="color:var(--c-on-surface-var)">Nous accompagnons la mise en conformité de vos plateformes avec le RGAA — le référentiel européen d'accessibilité numérique. Notre objectif : rendre vos contenus accessibles au plus grand nombre, sans compromis sur l'esthétique.</p>
+<p class="t-body-lg" style="color:var(--c-on-surface-var)">L'accessibilité n'est pas une option après-coup, elle fait partie de notre ADN. Nous auditons et mettons en conformité vos sites selon les référentiels européens (RGAA) et internationaux (WCAG), pour garantir une expérience utilisateur inclusive sans compromettre le design graphique.</p>
 </div>
 </div>
 
 <!-- Row 3 -->
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-xl);align-items:center" data-reveal>
 <div>
-<span class="tag" style="margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">translate</span>3 Langues</span>
+<span class="tag" style="margin-bottom:var(--sp-lg)"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">translate</span>Trilingue</span>
 <div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-sm)">
 <span class="material-symbols-outlined" style="color:var(--c-secondary);font-size:32px" aria-hidden="true">language</span>
-<h3 class="t-h3" style="color:var(--c-on-surface)">Français · Arabe · Anglais</h3>
+<h3 class="t-h3" style="color:var(--c-on-surface)">Accompagnement en 3 Langues</h3>
 </div>
-<p class="t-body-lg" style="color:var(--c-on-surface-var)">Nous communiquons et livrons nos services en français, en arabe et en anglais. Cette capacité trilingue nous permet d'accompagner une clientèle diverse et de garantir que chaque exigence technique est comprise et traduite sans perte de sens.</p>
+<p class="t-body-lg" style="color:var(--c-on-surface-var)">Nous travaillons et communiquons couramment en Français, Anglais et Arabe. Cette capacité trilingue facilite les échanges internationaux, fluidifie le pilotage de vos projets multi-pays et assure la traduction parfaite de vos exigences techniques et fonctionnelles.</p>
 </div>
 <div style="border-radius:var(--r-card);overflow:hidden;border:1px solid var(--c-outline-var);height:320px;display:flex;align-items:center;justify-content:center;background:var(--c-surface)">
+<picture>
+<source srcset="image3.webp" type="image/webp"/>
 <img src="image3.png" alt="Équipe multilingue travaillant en collaboration sur un projet digital." loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;image-rendering:high-quality;transform:translateZ(0)"/>
+</picture>
 </div>
 </div>
 </div>
@@ -712,13 +756,13 @@ html.a11y-high-contrast.dark {
 <div aria-hidden="true" style="position:absolute;top:-30%;right:-15%;width:60%;height:60%;border-radius:50%;background:rgba(74,144,217,.12);filter:blur(80px);pointer-events:none"></div>
 <div class="container" style="position:relative;z-index:1">
 <div style="margin-bottom:var(--sp-xl)" data-reveal>
-<h2 class="t-h2" id="contact-title" style="color:#fff;margin-bottom:var(--sp-md)">Initier le Dialogue.</h2>
-<p class="t-body-lg" style="color:rgba(255,255,255,.8);max-width:560px">Engagez nos experts pour redéfinir votre architecture digitale. La précision et l’autorité commencent par une seule conversation.</p>
+<h2 class="t-h2" id="contact-title" style="color:#fff;margin-bottom:var(--sp-md)">Discutons de Votre Projet</h2>
+<p class="t-body-lg" style="color:rgba(255,255,255,.8);max-width:560px">Vous avez un projet de développement web, d'application Android, de refonte UX/UI ou de mise en conformité RGAA ? Contactez nos experts pour obtenir un diagnostic personnalisé.</p>
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--sp-xl)">
 <!-- Form -->
 <div style="background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-card);padding:var(--sp-xl)" data-reveal>
-<form id="contact-form" novalidate>
+<form id="contact-form" action="https://formspree.io/f/xzdwjpoq" method="POST" novalidate>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-md);margin-bottom:var(--sp-md)">
 <div>
 <label for="nom" class="t-label" style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Nom complet</label>
@@ -733,10 +777,10 @@ html.a11y-high-contrast.dark {
 <label for="projet" class="t-label" style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Type de Projet</label>
 <select id="projet" name="projet" required style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem;appearance:none;cursor:pointer" class="form-field">
 <option value="" disabled selected style="color:#333">Sélectionnez une expertise</option>
-<option value="audit" style="color:#333">Audit d'Accessibilité (WCAG)</option>
-<option value="architecture" style="color:#333">Architecture Système</option>
-<option value="transformation" style="color:#333">Transformation Digitale</option>
-<option value="autre" style="color:#333">Autre demande</option>
+<option value="audit" style="color:#333">Audit &amp; Mise en conformité RGAA</option>
+<option value="architecture" style="color:#333">Développement Web / Android</option>
+<option value="transformation" style="color:#333">Refonte UX/UI &amp; Design</option>
+<option value="autre" style="color:#333">Conseil / Autre demande</option>
 </select>
 </div>
 <div style="margin-bottom:var(--sp-lg)">
@@ -773,6 +817,7 @@ Envoyer la demande
 </div>
 </div>
 </div>
+</div>
 </section>
 
 <!-- FOOTER -->
@@ -802,7 +847,6 @@ Envoyer la demande
 </div>
 </footer>
 
-</div>
 </main>
 
 <!-- Volet d'Accessibilité -->
@@ -810,7 +854,7 @@ Envoyer la demande
   <span class="material-symbols-outlined">accessibility_new</span>
 </button>
 <div class="a11y-backdrop" id="a11y-backdrop" aria-hidden="true" style="display:none"></div>
-<aside class="a11y-panel" id="a11y-panel" aria-hidden="true" role="complementary" aria-label="Options d'accessibilité" data-i18n-aria="a11y-panel-aria" style="display:none">
+<aside class="a11y-panel" id="a11y-panel" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Options d'accessibilité" data-i18n-aria="a11y-panel-aria" style="display:none">
   <div class="a11y-header">
     <div style="display:flex;align-items:center;gap:8px">
       <span class="material-symbols-outlined" style="font-size:24px;color:var(--c-accent)">accessibility_new</span>
@@ -879,6 +923,19 @@ Envoyer la demande
         <button id="btn-reader-stop" class="btn btn-ghost" style="padding:8px;font-size:0.8rem;color:var(--c-on-surface);border:1.5px solid var(--c-outline-var)" aria-label="Arrêter" data-i18n-aria="a11y-reader-stop">
           <span class="material-symbols-outlined" style="font-size:16px">stop</span>
         </button>
+      </div>
+      <!-- Speed control -->
+      <div style="margin-top:10px;display:flex;align-items:center;gap:8px">
+        <span class="material-symbols-outlined" style="font-size:16px;opacity:.6">speed</span>
+        <input id="reader-speed" type="range" min="0.5" max="2" step="0.25" value="1" style="flex:1;accent-color:var(--c-accent);height:4px" aria-label="Vitesse de lecture">
+        <span id="reader-speed-label" style="font-size:.75rem;min-width:32px;text-align:center;opacity:.7">1x</span>
+      </div>
+      <!-- Progress bar -->
+      <div id="reader-progress-wrap" style="margin-top:8px;display:none">
+        <div style="background:rgba(128,128,128,.2);border-radius:4px;height:4px;overflow:hidden">
+          <div id="reader-progress-bar" style="background:var(--c-accent);height:100%;width:0%;transition:width .3s ease;border-radius:4px"></div>
+        </div>
+        <p id="reader-status" style="font-size:.7rem;opacity:.6;margin-top:4px;text-align:center"></p>
       </div>
     </div>
     
@@ -1362,14 +1419,39 @@ Envoyer la demande
     form.addEventListener('submit',function(e){
       e.preventDefault();
       const btn=document.getElementById('submit-btn');
+      const t=T[currentLang]||T['fr'];
+      const successEl=document.getElementById('form-success');
       btn.disabled=true;
-      btn.textContent='Envoi en cours...';
-      setTimeout(()=>{
-        document.getElementById('form-success').style.display='block';
+      btn.textContent=currentLang==='ar'?'جارٍ الإرسال...':currentLang==='en'?'Sending...':'Envoi en cours...';
+      
+      const formData=new FormData(form);
+      fetch(form.action,{
+        method:'POST',
+        body:formData,
+        headers:{'Accept':'application/json'}
+      }).then(response=>{
+        if(response.ok){
+          successEl.style.display='block';
+          successEl.style.background='rgba(74,144,217,.2)';
+          successEl.style.borderColor='rgba(74,144,217,.4)';
+          successEl.textContent=t['form-success']||'\u2705 Message envoy\u00e9 avec succ\u00e8s.';
+          form.reset();
+        } else {
+          successEl.style.display='block';
+          successEl.style.background='rgba(186,26,26,.2)';
+          successEl.style.borderColor='rgba(186,26,26,.4)';
+          successEl.textContent=currentLang==='ar'?'\u274c خطأ في الإرسال. يرجى المحاولة مرة أخرى.':currentLang==='en'?'\u274c Error sending message. Please try again.':'\u274c Erreur lors de l\'envoi. Veuillez r\u00e9essayer.';
+        }
+      }).catch(()=>{
+        successEl.style.display='block';
+        successEl.style.background='rgba(186,26,26,.2)';
+        successEl.style.borderColor='rgba(186,26,26,.4)';
+        successEl.textContent=currentLang==='ar'?'\u274c خطأ في الاتصال. تحقق من الاتصال بالإنترنت.':currentLang==='en'?'\u274c Connection error. Please check your internet.':'\u274c Erreur de connexion. V\u00e9rifiez votre Internet.';
+      }).finally(()=>{
         btn.disabled=false;
-        btn.innerHTML='Envoyer la demande <span class="material-symbols-outlined" style="font-size:18px">send</span>';
-        form.reset();
-      },1200);
+        const submitText=t['form-submit']||'Envoyer la demande';
+        btn.innerHTML=submitText+' <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:\'FILL\' 1">send</span>';
+      });
     });
   }
 
@@ -1379,7 +1461,7 @@ Envoyer la demande
       const href=this.getAttribute('href');
       if(!href||href==='#')return;
       const target=document.querySelector(href);
-      if(target){e.preventDefault();target.scrollIntoView({block:'start'});}
+      if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});}
     });
   });
   /* ── THEME TOGGLE ── */
@@ -1412,12 +1494,26 @@ Envoyer la demande
   const a11yClose = document.getElementById('a11y-close');
   const heroVideo = document.querySelector('.hero-video');
 
+  // Focus trap helper
+  function trapFocus(e) {
+    if (e.key !== 'Tab' || !a11yPanel || a11yPanel.style.display !== 'flex') return;
+    const focusable = a11yPanel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (!focusable.length) return;
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  }
+
   // Toggle Panel open/close
   function openA11yPanel() {
     a11yPanel.style.display = 'flex';
     a11yBackdrop.style.display = 'block';
     a11yPanel.setAttribute('aria-hidden', 'false');
     a11yBackdrop.setAttribute('aria-hidden', 'false');
+    document.addEventListener('keydown', trapFocus);
     // Focus close button inside panel
     setTimeout(() => a11yClose.focus(), 50);
   }
@@ -1427,6 +1523,7 @@ Envoyer la demande
     if (a11yBackdrop) a11yBackdrop.style.display = 'none';
     a11yPanel.setAttribute('aria-hidden', 'true');
     a11yBackdrop.setAttribute('aria-hidden', 'true');
+    document.removeEventListener('keydown', trapFocus);
   }
 
   if (a11yToggle) a11yToggle.addEventListener('click', openA11yPanel);
@@ -1569,12 +1666,87 @@ Envoyer la demande
     });
   }
 
-  // 7. Audio Reader (Speech Synthesis)
+  // 7. Audio Reader (Speech Synthesis) — Enhanced
   const btnPlay = document.getElementById('btn-reader-play');
   const btnPause = document.getElementById('btn-reader-pause');
   const btnStop = document.getElementById('btn-reader-stop');
+  const speedSlider = document.getElementById('reader-speed');
+  const speedLabel = document.getElementById('reader-speed-label');
+  const progressWrap = document.getElementById('reader-progress-wrap');
+  const progressBar = document.getElementById('reader-progress-bar');
+  const readerStatus = document.getElementById('reader-status');
   let synth = window.speechSynthesis;
-  let utterance = new SpeechSynthesisUtterance();
+  let readerSections = [];
+  let currentSectionIdx = 0;
+  let readerRate = 1;
+  let cachedVoices = [];
+
+  // Load voices (async on some browsers)
+  function loadVoices() {
+    cachedVoices = synth.getVoices();
+  }
+  if (synth) {
+    loadVoices();
+    if (synth.onvoiceschanged !== undefined) synth.onvoiceschanged = loadVoices;
+  }
+
+  // Find the best matching voice for a language
+  function findVoice(lang) {
+    if (!cachedVoices.length) cachedVoices = synth.getVoices();
+    // Exact match first (e.g. 'ar', 'fr', 'en')
+    let voice = cachedVoices.find(v => v.lang.startsWith(lang));
+    // Arabic fallbacks: ar-SA, ar-EG, ar-XA, etc.
+    if (!voice && lang === 'ar') {
+      voice = cachedVoices.find(v => v.lang.startsWith('ar'));
+    }
+    // English fallback
+    if (!voice && lang === 'en') {
+      voice = cachedVoices.find(v => v.lang.startsWith('en'));
+    }
+    // French fallback
+    if (!voice && lang === 'fr') {
+      voice = cachedVoices.find(v => v.lang.startsWith('fr'));
+    }
+    return voice || null;
+  }
+
+  // Get readable sections from #main
+  function getSections() {
+    const mainEl = document.getElementById('main');
+    if (!mainEl) return [document.body.innerText];
+    const sections = mainEl.querySelectorAll('section, .content, footer');
+    const texts = [];
+    if (sections.length > 0) {
+      sections.forEach(s => {
+        const txt = s.innerText.trim();
+        if (txt.length > 10) texts.push(txt);
+      });
+    }
+    // Fallback: if no sections found, split by paragraphs
+    if (texts.length === 0) {
+      const fullText = mainEl.innerText;
+      // Split into chunks of ~500 chars at sentence boundaries
+      const sentences = fullText.split(/(?<=[.!?。])/g);
+      let chunk = '';
+      sentences.forEach(s => {
+        if ((chunk + s).length > 500 && chunk.length > 0) {
+          texts.push(chunk.trim());
+          chunk = s;
+        } else {
+          chunk += s;
+        }
+      });
+      if (chunk.trim()) texts.push(chunk.trim());
+    }
+    return texts.length ? texts : [mainEl.innerText];
+  }
+
+  // Status messages per language
+  const readerMessages = {
+    fr: { reading: 'Lecture section {n}/{t}', noVoice: 'Aucune voix disponible pour cette langue. Essayez Chrome pour plus de voix.', done: 'Lecture terminée' },
+    en: { reading: 'Reading section {n}/{t}', noVoice: 'No voice available for this language. Try Chrome for more voices.', done: 'Reading complete' },
+    ar: { reading: '\u0642\u0631\u0627\u0621\u0629 \u0627\u0644\u0642\u0633\u0645 {n}/{t}', noVoice: '\u0644\u0627 \u062a\u0648\u062c\u062f \u0623\u0635\u0648\u0627\u062a \u0645\u062a\u0627\u062d\u0629 \u0644\u0647\u0630\u0647 \u0627\u0644\u0644\u063a\u0629. \u062c\u0631\u0651\u0628 Chrome.', done: '\u0627\u0646\u062a\u0647\u062a \u0627\u0644\u0642\u0631\u0627\u0621\u0629' }
+  };
 
   function updateReaderState() {
     if (!synth) return;
@@ -1593,22 +1765,79 @@ Envoyer la demande
     }
   }
 
+  function speakSection(idx) {
+    if (idx >= readerSections.length) {
+      // Done reading all sections
+      const lang = document.documentElement.lang || 'fr';
+      const msgs = readerMessages[lang] || readerMessages.fr;
+      if (progressBar) progressBar.style.width = '100%';
+      if (readerStatus) readerStatus.textContent = msgs.done;
+      setTimeout(() => {
+        if (progressWrap) progressWrap.style.display = 'none';
+        updateReaderState();
+      }, 2000);
+      return;
+    }
+    currentSectionIdx = idx;
+    const lang = document.documentElement.lang || 'fr';
+    const msgs = readerMessages[lang] || readerMessages.fr;
+    const voice = findVoice(lang);
+    
+    const utt = new SpeechSynthesisUtterance(readerSections[idx]);
+    utt.lang = voice ? voice.lang : lang;
+    if (voice) utt.voice = voice;
+    utt.rate = readerRate;
+    utt.pitch = 1;
+    
+    // Update progress
+    const pct = Math.round(((idx + 1) / readerSections.length) * 100);
+    if (progressBar) progressBar.style.width = pct + '%';
+    if (readerStatus) readerStatus.textContent = msgs.reading.replace('{n}', idx + 1).replace('{t}', readerSections.length);
+    
+    utt.onend = () => {
+      speakSection(idx + 1);
+    };
+    utt.onerror = (e) => {
+      if (e.error !== 'canceled') speakSection(idx + 1);
+    };
+    utt.onpause = () => updateReaderState();
+    utt.onresume = () => updateReaderState();
+    utt.onstart = () => updateReaderState();
+    
+    synth.speak(utt);
+  }
+
+  // Speed slider
+  if (speedSlider) {
+    speedSlider.addEventListener('input', () => {
+      readerRate = parseFloat(speedSlider.value);
+      if (speedLabel) speedLabel.textContent = readerRate + 'x';
+    });
+  }
+
   if (btnPlay && btnPause && btnStop && synth) {
     btnPlay.addEventListener('click', () => {
       if (synth.paused) {
         synth.resume();
       } else {
-        // Read main content
-        const content = document.body.innerText;
-        utterance.text = content;
-        utterance.lang = window.currentLang || 'fr';
+        synth.cancel();
+        const lang = document.documentElement.lang || 'fr';
+        const voice = findVoice(lang);
+        const msgs = readerMessages[lang] || readerMessages.fr;
         
-        utterance.onend = () => updateReaderState();
-        utterance.onpause = () => updateReaderState();
-        utterance.onresume = () => updateReaderState();
-        utterance.onstart = () => updateReaderState();
+        // Check if a voice is available
+        if (!voice) {
+          if (readerStatus) readerStatus.textContent = msgs.noVoice;
+          if (progressWrap) progressWrap.style.display = 'block';
+          if (progressBar) progressBar.style.width = '0%';
+          return;
+        }
         
-        synth.speak(utterance);
+        readerSections = getSections();
+        currentSectionIdx = 0;
+        if (progressWrap) progressWrap.style.display = 'block';
+        if (progressBar) progressBar.style.width = '0%';
+        speakSection(0);
       }
       updateReaderState();
     });
@@ -1620,10 +1849,12 @@ Envoyer la demande
 
     btnStop.addEventListener('click', () => {
       synth.cancel();
+      readerSections = [];
+      currentSectionIdx = 0;
+      if (progressWrap) progressWrap.style.display = 'none';
       updateReaderState();
     });
 
-    // Reset state when language changes (by hooking into applyLang if we could, but a simple cancel is safer here)
     window.addEventListener('beforeunload', () => synth.cancel());
     synth.cancel();
     updateReaderState();
@@ -1637,6 +1868,3 @@ Envoyer la demande
 </script>
 </body>
 </html>
-
-
-  updateVideoState(isVideoPaused);
