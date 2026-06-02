@@ -143,8 +143,8 @@
       overflow: visible;
       clip: auto;
       white-space: normal;
-      background: #fff;
-      color: var(--c-primary);
+      background: #011848;
+      color: #ffffff;
       font-family: var(--font-body);
       font-size: .875rem;
       font-weight: 600;
@@ -710,57 +710,7 @@
       gap: var(--sp-md)
     }
 
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--sp-md);
-      margin-top: 80px
-    }
 
-    .stat-card {
-      position: relative;
-      z-index: 10;
-      background: rgba(255, 255, 255, .08);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, .15);
-      border-radius: var(--r-card);
-      padding: var(--sp-lg);
-      display: block;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(255, 255, 255, .45);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, .5), 0 0 15px rgba(255, 255, 255, .05);
-    }
-
-    .dark .stat-card {
-      background: rgba(255, 255, 255, .05);
-      border-color: rgba(255, 255, 255, .08)
-    }
-
-    .stat-card .material-symbols-outlined {
-      font-size: 32px;
-      color: var(--c-accent);
-      margin-bottom: var(--sp-sm);
-      display: block
-    }
-
-    .stat-card h3 {
-      font-family: var(--font-head);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 6px
-    }
-
-    .stat-card p {
-      font-size: .875rem;
-      color: rgba(255, 255, 255, .7);
-      line-height: 1.5
-    }
 
     .tag {
       display: inline-flex;
@@ -867,6 +817,15 @@
       color: rgba(255, 255, 255, .9);
       text-decoration: none;
       font-size: 1rem;
+      word-break: break-all;
+      overflow-wrap: anywhere;
+      min-width: 0;
+    }
+
+    @media(max-width:400px) {
+      #contact a[href^="mailto:"] {
+        font-size: .85rem;
+      }
     }
 
     #contact a[href^="mailto:"]:hover,
@@ -1192,21 +1151,24 @@
   </style>
   <script>
     (function () {
-      var savedTheme = localStorage.getItem('pz-theme');
+      function safeGetItem(key) {
+        try { return localStorage.getItem(key); } catch (e) { return null; }
+      }
+      var savedTheme = safeGetItem('pz-theme');
       if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
       }
-      var savedScale = localStorage.getItem('pz-a11y-scale');
+      var savedScale = safeGetItem('pz-a11y-scale');
       if (savedScale && savedScale !== '100') {
         document.documentElement.classList.add('a11y-scale-' + savedScale);
       }
-      if (localStorage.getItem('pz-a11y-dyslexic') === 'true') {
+      if (safeGetItem('pz-a11y-dyslexic') === 'true') {
         document.documentElement.classList.add('a11y-dyslexic');
       }
-      if (localStorage.getItem('pz-a11y-contrast') === 'true') {
+      if (safeGetItem('pz-a11y-contrast') === 'true') {
         document.documentElement.classList.add('a11y-high-contrast');
       }
-      if (localStorage.getItem('pz-a11y-underline') === 'true') {
+      if (safeGetItem('pz-a11y-underline') === 'true') {
         document.documentElement.classList.add('a11y-underline-links');
       }
     })();
@@ -1295,24 +1257,7 @@
             <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
           </a>
         </div>
-        <div class="hero-stats">
-          <div class="stat-card is-visible">
-            <span class="material-symbols-outlined">code</span>
-            <h3>Développement Web</h3>
-            <p>Création d’applications et plateformes web performantes, scalables et sécurisées.</p>
-          </div>
-          <div class="stat-card is-visible">
-            <span class="material-symbols-outlined">design_services</span>
-            <h3>Refonte UX/UI</h3>
-            <p>Modernisation complète de vos interfaces, garantissant une navigation fluide et une architecture claire.
-            </p>
-          </div>
-          <div class="stat-card is-visible">
-            <span class="material-symbols-outlined">accessibility_new</span>
-            <h3>Accessibilité Numérique RGAA</h3>
-            <p>Transformation de vos plateformes en expériences conformes au RGAA, ouvertes à tous.</p>
-          </div>
-        </div>
+
       </div>
     </section>
 
@@ -1616,80 +1561,102 @@
             web, de refonte UX/UI ou de mise en conformité RGAA ? Contactez nos experts pour obtenir un diagnostic
             personnalisé.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--sp-xl)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:var(--sp-xl)">
           <!-- Form -->
           <div
             style="background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-card);padding:var(--sp-xl)"
             data-reveal>
-            <form id="contact-form" action="https://formspree.io/f/xzdwjpoq" method="POST" novalidate>
-              <div
-                style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-md);margin-bottom:var(--sp-md)">
-                <div>
-                  <label for="nom" class="t-label"
-                    style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Nom complet</label>
-                  <input type="text" id="nom" name="nom" required autocomplete="name" aria-describedby="nom-error"
-                    placeholder="Jean Dupont"
-                    style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem"
-                    class="form-field" />
-                  <span id="nom-error" role="alert"
-                    style="display:none;font-size:.8rem;color:#fca5a5;margin-top:4px"></span>
+            <form id="contact-form" action="https://formspree.io/f/xzdwjpoq" method="POST" novalidate style="position:relative; min-height:360px;">
+              
+              <!-- Anti-spam Honeypot Field (Visually hidden) -->
+              <div style="display:none !important;" aria-hidden="true">
+                <label for="honeypot_field">Do not fill this field</label>
+                <input type="text" id="honeypot_field" name="honeypot_field" tabindex="-1" value="" />
+              </div>
+
+              <!-- Form Body (inputs + button) -->
+              <div id="form-body" style="transition: opacity 0.4s ease, transform 0.4s ease;">
+                <div
+                  style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-md);margin-bottom:var(--sp-md)">
+                  <div>
+                    <label for="nom" class="t-label"
+                      style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Nom complet</label>
+                    <input type="text" id="nom" name="nom" required autocomplete="name" aria-describedby="nom-error"
+                      placeholder="Jean Dupont"
+                      style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem"
+                      class="form-field" />
+                    <span id="nom-error" class="field-error-msg" style="display:none;"></span>
+                  </div>
+                  <div>
+                    <label for="email" class="t-label"
+                      style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Adresse Email</label>
+                    <input type="email" id="email" name="email" required autocomplete="email"
+                      aria-describedby="email-error" placeholder="jean@entreprise.fr"
+                      style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem"
+                      class="form-field" />
+                    <span id="email-error" class="field-error-msg" style="display:none;"></span>
+                  </div>
                 </div>
-                <div>
-                  <label for="email" class="t-label"
-                    style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Adresse Email</label>
-                  <input type="email" id="email" name="email" required autocomplete="email"
-                    aria-describedby="email-error" placeholder="jean@entreprise.fr"
-                    style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem"
-                    class="form-field" />
-                  <span id="email-error" role="alert"
-                    style="display:none;font-size:.8rem;color:#fca5a5;margin-top:4px"></span>
+                <div style="margin-bottom:var(--sp-md)">
+                  <label for="projet" class="t-label"
+                    style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Type de Projet</label>
+                  <select id="projet" name="projet" required aria-describedby="projet-error"
+                    style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem;appearance:none;cursor:pointer"
+                    class="form-field">
+                    <option value="" disabled selected style="color:#333">Sélectionnez une expertise</option>
+                    <option value="architecture" style="color:#333">Développement Web</option>
+                    <option value="transformation" style="color:#333">Refonte UX/UI &amp; Design</option>
+                    <option value="autre" style="color:#333">Conseil / Autre demande</option>
+                  </select>
+                  <span id="projet-error" class="field-error-msg" style="display:none;"></span>
+                </div>
+                <div style="margin-bottom:var(--sp-lg)">
+                  <label for="message" class="t-label"
+                    style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Votre Message</label>
+                  <textarea id="message" name="message" required aria-describedby="message-error" rows="5"
+                    placeholder="Décrivez vos objectifs et contraintes..."
+                    style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem;resize:vertical"
+                    class="form-field"></textarea>
+                  <span id="message-error" class="field-error-msg" style="display:none;"></span>
+                </div>
+                <div style="display:flex;justify-content:flex-end">
+                  <button type="submit" class="btn btn-primary" id="submit-btn">
+                    Envoyer la demande
+                    <span class="material-symbols-outlined"
+                      style="font-size:18px;font-variation-settings:'FILL' 1">send</span>
+                  </button>
                 </div>
               </div>
-              <div style="margin-bottom:var(--sp-md)">
-                <label for="projet" class="t-label"
-                  style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Type de Projet</label>
-                <select id="projet" name="projet" required aria-describedby="projet-error"
-                  style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem;appearance:none;cursor:pointer"
-                  class="form-field">
-                  <option value="" disabled selected style="color:#333">Sélectionnez une expertise</option>
-                  <option value="audit" style="color:#333">Audit &amp; Mise en conformité RGAA</option>
-                  <option value="architecture" style="color:#333">Développement Web</option>
-                  <option value="transformation" style="color:#333">Refonte UX/UI &amp; Design</option>
-                  <option value="autre" style="color:#333">Conseil / Autre demande</option>
-                </select>
-                <span id="projet-error" role="alert"
-                  style="display:none;font-size:.8rem;color:#fca5a5;margin-top:4px"></span>
-              </div>
-              <div style="margin-bottom:var(--sp-lg)">
-                <label for="message" class="t-label"
-                  style="color:rgba(255,255,255,.7);display:block;margin-bottom:var(--sp-xs)">Votre Message</label>
-                <textarea id="message" name="message" required aria-describedby="message-error" rows="5"
-                  placeholder="Décrivez vos objectifs et contraintes..."
-                  style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-base);padding:var(--sp-md);color:#fff;font-family:var(--font-body);font-size:1rem;resize:vertical"
-                  class="form-field"></textarea>
-                <span id="message-error" role="alert"
-                  style="display:none;font-size:.8rem;color:#fca5a5;margin-top:4px"></span>
-              </div>
-              <div style="display:flex;justify-content:flex-end">
-                <button type="submit" class="btn btn-primary" id="submit-btn">
-                  Envoyer la demande
-                  <span class="material-symbols-outlined"
-                    style="font-size:18px;font-variation-settings:'FILL' 1">send</span>
+
+              <!-- Premium Success Card -->
+              <div id="form-success" class="success-card" style="display:none; width:100%;" role="alert">
+                <div class="success-icon-badge">
+                  <span class="material-symbols-outlined">check_circle</span>
+                </div>
+                <h3 class="t-h3" style="color:#fff; margin-bottom:12px;" data-i18n="form-success-title">Message envoyé !</h3>
+                <p style="color:rgba(255,255,255,.8); font-size:1rem; margin-bottom:24px; max-width:320px;" data-i18n="form-success-desc">
+                  Merci, votre demande a bien été reçue. Nous vous répondrons sous 24 heures.
+                </p>
+                <button type="button" class="btn btn-ghost" id="btn-form-reset" style="padding: 10px 20px; font-size:0.875rem;" data-i18n="form-reset-btn">
+                  Envoyer un autre message
                 </button>
               </div>
-              <div id="form-success"
-                style="display:none;margin-top:var(--sp-md);padding:var(--sp-md);background:rgba(74,144,217,.2);border:1px solid rgba(74,144,217,.4);border-radius:var(--r-base);color:#fff;font-size:.9rem"
+
+              <!-- General Error Card -->
+              <div id="form-error-general"
+                style="display:none;margin-top:var(--sp-md);padding:var(--sp-md);background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:var(--r-base);color:#fecaca;font-size:.9rem;align-items:center;gap:8px;"
                 role="alert">
-                ✅ Message envoyé avec succès. Nous vous répondrons sous 24h.
+                <span class="material-symbols-outlined" style="color:#ef4444;font-size:20px">error</span>
+                <span id="error-general-text"></span>
               </div>
             </form>
           </div>
           <!-- Info -->
           <div style="display:flex;flex-direction:column;gap:var(--sp-md)" data-reveal data-delay="2">
             <div
-              style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-card);padding:var(--sp-lg)">
-              <h3 class="t-h3" style="color:#fff;margin-bottom:var(--sp-md)">Contact Direct</h3>
-              <div style="display:flex;align-items:center;gap:var(--sp-md);margin-bottom:var(--sp-md)">
+              style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-card);padding:var(--sp-lg);overflow:hidden">
+              <h3 class="t-h3" style="color:#fff;margin-bottom:var(--sp-md)" data-i18n="contact-direct">Contact Direct</h3>
+              <div style="display:flex;align-items:center;gap:var(--sp-md);margin-bottom:var(--sp-md);min-width:0;overflow:hidden">
                 <div
                   style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
                   <span class="material-symbols-outlined"
@@ -1869,23 +1836,119 @@
         flex-direction: column
       }
 
-      .hero-stats {
-        grid-template-columns: 1fr
-      }
+
 
       [style*="grid-column:span 2"] {
         grid-column: span 1
       }
     }
 
-    @media(min-width:640px) and (max-width:1023px) {
-      .hero-stats {
-        grid-template-columns: repeat(2, 1fr)
-      }
+    /* ── FORM PREMIUM CUSTOMIZATIONS ── */
+    .form-field[aria-invalid="true"] {
+      border-color: #fca5a5 !important;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25) !important;
+      animation: formShake 0.4s ease;
     }
+
+    .field-error-msg {
+      color: #fca5a5;
+      font-size: 0.8rem;
+      margin-top: 6px;
+      display: none;
+      align-items: center;
+      gap: 4px;
+      animation: formFadeIn 0.3s ease;
+    }
+
+    .field-error-msg::before {
+      content: 'error';
+      font-family: 'Material Symbols Outlined';
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    .success-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--sp-xl) var(--sp-lg);
+      animation: formSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      color: #ffffff;
+    }
+
+    .success-card h3 {
+      color: #ffffff !important;
+      margin-bottom: 12px;
+      font-family: var(--font-head);
+    }
+
+    .success-card p {
+      color: rgba(255, 255, 255, 0.8) !important;
+      font-size: 1rem;
+      margin-bottom: 24px;
+      max-width: 320px;
+      line-height: 1.6;
+    }
+
+    .success-icon-badge {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(74, 144, 217, 0.15);
+      border: 2px solid var(--c-accent);
+      color: var(--c-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--sp-lg);
+      animation: pulseBadge 2s infinite;
+    }
+
+    .success-icon-badge .material-symbols-outlined {
+      font-size: 36px;
+      font-variation-settings: 'FILL' 1;
+    }
+
+    @keyframes formShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+
+    @keyframes formFadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes formSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulseBadge {
+      0% { box-shadow: 0 0 0 0 rgba(74, 144, 217, 0.4); }
+      70% { box-shadow: 0 0 0 16px rgba(74, 144, 217, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(74, 144, 217, 0); }
+    }
+
+
   </style>
   <script>
     (function () {
+      const safeStorage = {
+        getItem(key) {
+          try { return localStorage.getItem(key); } catch (e) { return null; }
+        },
+        setItem(key, value) {
+          try { localStorage.setItem(key, value); } catch (e) { return false; }
+        },
+        removeItem(key) {
+          try { localStorage.removeItem(key); } catch (e) { return false; }
+        }
+      };
+
       /* ── NAV SCROLL ── */
       const nav = document.getElementById('site-nav');
       const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
@@ -1930,9 +1993,7 @@
           'hero-title': 'Donnons vie \u00e0 vos projets digitaux.',
           'hero-sub': 'Sites web, design UX/UI et accessibilité RGAA. On vous accompagne du premier clic au lancement.',
           'hero-cta-primary': 'Voir nos services',
-          'stat1-title': 'Développement Web', 'stat1-desc': 'Création d’applications et plateformes web performantes, scalables et sécurisées.',
-          'stat2-title': 'Refonte UX/UI', 'stat2-desc': 'Modernisation complète de vos interfaces, garantissant une navigation fluide et une architecture claire.',
-          'stat3-title': 'Accessibilité Numérique RGAA', 'stat3-desc': 'Transformation de vos plateformes en expériences conformes au RGAA, ouvertes à tous.',
+
           'services-title': 'Nos Services & Expertises Digitales', 'services-sub': 'Des prestations sur mesure pour concevoir et optimiser vos plateformes numériques. Nous allions performance technique, design UX/UI moderne et conformité stricte aux normes d\'accessibilité (RGAA).',
           'service1-title': 'Développement Web', 'service1-desc': 'Conception et développement d\'applications et de plateformes web modernes (Single Page Applications, portails d\'entreprise, sites vitrines et e-commerce). Nous garantissons un code performant, sécurisé, évolutif et parfaitement optimisé pour le référencement naturel (SEO).', 'service1-link': 'En savoir plus',
           'service2-badge': 'Notre Spécialité', 'service2-title': 'Design UX/UI & Ergonomie Web', 'service2-desc': 'Création d\'interfaces élégantes, simples et agréables à utiliser. Nous améliorons l\'organisation et le design de vos pages pour offrir une navigation facile, rapide et parfaitement adaptée à tous les écrans : ordinateurs, tablettes et téléphones.', 'service2-link': 'En savoir plus',
@@ -1951,8 +2012,11 @@
           'form-name': 'Nom complet', 'form-email': 'Adresse Email', 'form-type': 'Type de Projet', 'form-msg': 'Votre Message',
           'form-placeholder-name': 'Jean Dupont', 'form-placeholder-email': 'jean@entreprise.fr',
           'form-placeholder-type': 'S\u00e9lectionnez une expertise', 'form-placeholder-msg': "D\u00e9crivez vos objectifs et contraintes...",
-          'form-opt-audit': "Audit & Mise en conformité RGAA", 'form-opt-arch': 'Développement Web', 'form-opt-trans': 'Refonte UX/UI & Design', 'form-opt-other': 'Conseil / Autre demande',
-          'form-submit': 'Envoyer la demande', 'form-success': "\u2705 Message envoy\u00e9 avec succ\u00e8s. Nous vous r\u00e9pondrons sous 24h.",
+          'form-opt-arch': 'Développement Web', 'form-opt-trans': 'Refonte UX/UI & Design', 'form-opt-other': 'Conseil / Autre demande',
+          'form-submit': 'Envoyer la demande',
+          'form-success-title': 'Demande transmise',
+          'form-success-desc': 'Votre message a bien été envoyé. Notre équipe vous recontactera dans les plus brefs délais, généralement sous 24 heures.',
+          'form-reset-btn': 'Envoyer un nouveau message',
           'contact-direct': 'Contact Direct',
           'footer-brand': '',
           'footer-legal': 'L\u00e9gal',
@@ -1984,9 +2048,7 @@
           'hero-title': 'Bringing your digital projects to life.',
           'hero-sub': 'Websites, UX/UI design and RGAA accessibility. We guide you from first click to launch.',
           'hero-cta-primary': 'Our Services', 'hero-audit-btn': 'Free Audit',
-          'stat1-title': 'Web Development', 'stat1-desc': 'Fast, secure websites and web applications, optimized for Google.',
-          'stat2-title': 'UX/UI Redesign', 'stat2-desc': 'Modern, clear interfaces that work on every screen.',
-          'stat3-title': 'RGAA Accessibility', 'stat3-desc': 'Your sites accessible to everyone, compliant with EU standards.',
+
           'services-title': 'What we do', 'services-sub': 'From development to accessibility, we cover all your digital needs.',
           'service1-title': 'Web Development', 'service1-desc': 'We build fast, secure websites, online shops, and web applications optimized to rank high on search engines (SEO).', 'service1-link': 'Learn more',
           'service2-badge': 'Our Speciality', 'service2-title': 'UX/UI Design', 'service2-desc': 'We redesign your websites and pages to make them beautiful, easy to navigate, and perfectly adapted to all screens (mobiles, tablets, and computers).', 'service2-link': 'Learn more',
@@ -2005,8 +2067,11 @@
           'form-name': 'Full Name', 'form-email': 'Email Address', 'form-type': 'Project Type', 'form-msg': 'Your Message',
           'form-placeholder-name': 'John Smith', 'form-placeholder-email': 'john@company.com',
           'form-placeholder-type': 'Select an expertise', 'form-placeholder-msg': 'Describe your objectives and constraints...',
-          'form-opt-audit': 'Accessibility Audit & Compliance (RGAA)', 'form-opt-arch': 'Web Development', 'form-opt-trans': 'UX/UI Redesign & Prototyping', 'form-opt-other': 'Consulting / Other Request',
-          'form-submit': 'Send Request', 'form-success': '\u2705 Message sent successfully. We will reply within 24 hours.',
+          'form-opt-arch': 'Web Development', 'form-opt-trans': 'UX/UI Redesign & Prototyping', 'form-opt-other': 'Consulting / Other Request',
+          'form-submit': 'Send Request',
+          'form-success-title': 'Message Sent Successfully',
+          'form-success-desc': 'Thank you. Your inquiry has been received, and our team will get back to you within 24 hours.',
+          'form-reset-btn': 'Send another message',
           'contact-direct': 'Direct Contact',
           'footer-brand': '',
           'footer-legal': 'Legal',
@@ -2032,20 +2097,38 @@
           'modal-cta': 'Request a quote for this service', 'modal-audit-cta': 'Request a free audit'
         }
       };
-      let currentLang = localStorage.getItem('pz-lang') || 'fr';
+      const urlParams = new URLSearchParams(window.location.search);
+      let urlLang = urlParams.get('lang');
+      if (urlLang === 'en' || urlLang === 'fr') {
+        safeStorage.setItem('pz-lang', urlLang);
+      }
+      let currentLang = safeStorage.getItem('pz-lang') || 'fr';
       if (currentLang !== 'fr' && currentLang !== 'en') currentLang = 'fr';
 
       // Declare shared Audio Reader variables at the top of the closure to avoid TDZ ReferenceErrors
-      let synth = window.speechSynthesis;
+      let synth = window.speechSynthesis || null;
       let isReading = false;
       let isPaused = false;
       let readerSections = [];
       let readerElements = [];
       let currentSectionIdx = 0;
       let readerRate = 1;
+      let synthPrimed = false; // Track whether we've primed the audio context for iOS
 
       // Pre-declare Audio Reader elements to avoid TDZ ReferenceErrors when stopReader/updateReaderState run on load
       let btnPlay, btnPause, btnStop, speedSlider, speedLabel, progressWrap, progressBar, readerStatus;
+
+      // iOS Safari requires a user-gesture-triggered speak() to unlock the audio context.
+      // Prime it on the very first user interaction with the page.
+      function primeSynth() {
+        if (synthPrimed || !synth) return;
+        const primer = new SpeechSynthesisUtterance('');
+        primer.volume = 0;
+        synth.speak(primer);
+        synthPrimed = true;
+      }
+      document.addEventListener('click', primeSynth, { once: true });
+      document.addEventListener('touchstart', primeSynth, { once: true });
 
       function stopReader() {
         isReading = false;
@@ -2068,7 +2151,7 @@
         }
         const t = T[lang];
         currentLang = lang;
-        localStorage.setItem('pz-lang', lang);
+        safeStorage.setItem('pz-lang', lang);
         document.documentElement.lang = lang;
         if (lang === 'fr') {
           document.title = 'PrimoZayn — Développement Web & Accessibilité RGAA';
@@ -2124,13 +2207,7 @@
           const tn = Array.from(heroCta.childNodes).find(n => n.nodeType === 3 && n.textContent.trim());
           if (tn && t['hero-cta-primary']) tn.textContent = '\n        ' + t['hero-cta-primary'] + '\n        ';
         }
-        // Stat cards
-        document.querySelectorAll('.stat-card').forEach((c, i) => {
-          const h = c.querySelector('h3'), p = c.querySelector('p');
-          const k = i + 1;
-          if (h && t['stat' + k + '-title']) h.textContent = t['stat' + k + '-title'];
-          if (p && t['stat' + k + '-desc']) p.textContent = t['stat' + k + '-desc'];
-        });
+
 
         /* SERVICES */
         $t('#services-title', 'services-title');
@@ -2205,10 +2282,9 @@
         const sel = document.getElementById('projet');
         if (sel) {
           if (sel.options[0] && t['form-placeholder-type']) sel.options[0].text = t['form-placeholder-type'];
-          if (sel.options[1] && t['form-opt-audit']) sel.options[1].text = t['form-opt-audit'];
-          if (sel.options[2] && t['form-opt-arch']) sel.options[2].text = t['form-opt-arch'];
-          if (sel.options[3] && t['form-opt-trans']) sel.options[3].text = t['form-opt-trans'];
-          if (sel.options[4] && t['form-opt-other']) sel.options[4].text = t['form-opt-other'];
+          if (sel.options[1] && t['form-opt-arch']) sel.options[1].text = t['form-opt-arch'];
+          if (sel.options[2] && t['form-opt-trans']) sel.options[2].text = t['form-opt-trans'];
+          if (sel.options[3] && t['form-opt-other']) sel.options[3].text = t['form-opt-other'];
         }
         // Submit button
         const submitBtn = document.getElementById('submit-btn');
@@ -2216,12 +2292,8 @@
           const tn = Array.from(submitBtn.childNodes).find(n => n.nodeType === 3 && n.textContent.trim());
           if (tn && t['form-submit']) tn.textContent = '\n' + t['form-submit'] + '\n';
         }
-        // Success message
-        const succ = document.getElementById('form-success');
-        if (succ && t['form-success']) succ.textContent = t['form-success'];
-        // Contact Direct heading
-        const cd = document.querySelector('#contact h3');
-        if (cd && t['contact-direct']) cd.textContent = t['contact-direct'];
+
+
         // Placeholders
         const pn = document.getElementById('nom'); if (pn && t['form-placeholder-name']) pn.placeholder = t['form-placeholder-name'];
         const pe = document.getElementById('email'); if (pe && t['form-placeholder-email']) pe.placeholder = t['form-placeholder-email'];
@@ -2254,20 +2326,7 @@
 
 
 
-      /* ── "Audit gratuit" hero button — pre-selects audit ── */
-      const auditBtn = document.getElementById('btn-audit-gratuit');
-      if (auditBtn) {
-        auditBtn.addEventListener('click', e => {
-          sessionStorage.setItem('pz-preselect', 'audit');
-        });
-      }
-      // On page load: apply preselect if flagged
-      const preselect = sessionStorage.getItem('pz-preselect');
-      if (preselect) {
-        sessionStorage.removeItem('pz-preselect');
-        const sel = document.getElementById('projet');
-        if (sel) setTimeout(() => { sel.value = preselect; sel.dispatchEvent(new Event('change')); }, 800);
-      }
+
 
       /* ── INIT LANG ── */
       applyLang(currentLang);
@@ -2278,19 +2337,76 @@
         const FORM_ERRORS = {
           nom: { fr: 'Veuillez saisir votre nom complet.', en: 'Please enter your full name.' },
           email: { fr: 'Veuillez saisir une adresse e-mail valide.', en: 'Please enter a valid email address.' },
+          emailTypo: { fr: 'Orthographe suspecte. Vouliez-vous dire {c} ?', en: 'Spelling typo? Did you mean {c}?' },
           projet: { fr: 'Veuillez sélectionner un type de projet.', en: 'Please select a project type.' },
-          message: { fr: 'Veuillez décrire votre projet (min. 10 caractères).', en: 'Please describe your project (min. 10 chars).' }
+          message: { fr: 'Veuillez décrire votre projet (min. 10 caractères).', en: 'Please describe your project (min. 10 chars).' },
+          spam: { fr: 'Limite de soumission atteinte. Veuillez réessayer dans une heure.', en: 'Submission limit reached. Please try again in an hour.' }
         };
+
+        const emailTypos = {
+          'gamil.com': 'gmail.com',
+          'gmaill.com': 'gmail.com',
+          'gamil.fr': 'gmail.com',
+          'hotamil.com': 'hotmail.com',
+          'hotmial.com': 'hotmail.com',
+          'yaho.com': 'yahoo.com',
+          'yahooo.com': 'yahoo.com',
+          'wanado.fr': 'wanadoo.fr',
+          'outlok.com': 'outlook.com'
+        };
+
         function showFieldError(id, msg) {
           const el = document.getElementById(id), errEl = document.getElementById(id + '-error');
-          if (el) { el.setAttribute('aria-invalid', 'true'); el.style.borderColor = 'rgba(220,38,38,0.8)'; }
-          if (errEl) { errEl.textContent = msg; errEl.style.display = 'block'; }
+          if (el) { 
+            el.setAttribute('aria-invalid', 'true');
+            el.style.borderColor = 'rgba(239, 68, 68, 0.8)';
+          }
+          if (errEl) { errEl.textContent = msg; errEl.style.display = 'flex'; }
         }
+
+        function showFieldWarning(id, msg) {
+          const el = document.getElementById(id), errEl = document.getElementById(id + '-error');
+          if (el) { 
+            el.setAttribute('aria-invalid', 'true');
+            el.style.borderColor = 'rgba(245, 158, 11, 0.8)'; // amber
+          }
+          if (errEl) { 
+            errEl.textContent = msg; 
+            errEl.style.display = 'flex'; 
+            errEl.style.color = '#fcd34d'; // lighter amber
+          }
+        }
+
         function clearFieldError(id) {
           const el = document.getElementById(id), errEl = document.getElementById(id + '-error');
-          if (el) { el.setAttribute('aria-invalid', 'false'); el.style.borderColor = 'rgba(255,255,255,.2)'; }
-          if (errEl) { errEl.textContent = ''; errEl.style.display = 'none'; }
+          if (el) { 
+            el.setAttribute('aria-invalid', 'false'); 
+            el.style.borderColor = 'rgba(255,255,255,.2)'; 
+          }
+          if (errEl) { 
+            errEl.textContent = ''; 
+            errEl.style.display = 'none'; 
+            errEl.style.color = '#fca5a5';
+          }
         }
+
+        // Rate-limiting checker
+        function checkRateLimit() {
+          const now = Date.now();
+          const attempts = JSON.parse(safeStorage.getItem('pz-form-attempts') || '[]');
+          
+          // Filter out attempts older than 1 hour
+          const recentAttempts = attempts.filter(t => now - t < 3600000);
+          
+          if (recentAttempts.length >= 3) {
+            return false;
+          }
+          
+          recentAttempts.push(now);
+          safeStorage.setItem('pz-form-attempts', JSON.stringify(recentAttempts));
+          return true;
+        }
+
         function validateForm() {
           let valid = true;
           const l = currentLang === 'en' ? 'en' : 'fr';
@@ -2298,52 +2414,162 @@
           const email = document.getElementById('email');
           const projet = document.getElementById('projet');
           const message = document.getElementById('message');
-          if (!nom.value.trim() || nom.value.trim().length < 2) { showFieldError('nom', FORM_ERRORS.nom[l]); valid = false; } else clearFieldError('nom');
-          const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!email.value.trim() || !emailRx.test(email.value.trim())) { showFieldError('email', FORM_ERRORS.email[l]); valid = false; } else clearFieldError('email');
-          if (!projet.value) { showFieldError('projet', FORM_ERRORS.projet[l]); valid = false; } else clearFieldError('projet');
-          if (!message.value.trim() || message.value.trim().length < 10) { showFieldError('message', FORM_ERRORS.message[l]); valid = false; } else clearFieldError('message');
+
+          if (!nom.value.trim() || nom.value.trim().length < 2) { 
+            showFieldError('nom', FORM_ERRORS.nom[l]); 
+            valid = false; 
+          } else {
+            clearFieldError('nom');
+          }
+
+          // Robust email regex checking
+          const emailRx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          const emailVal = email.value.trim();
+          if (!emailVal || !emailRx.test(emailVal)) { 
+            showFieldError('email', FORM_ERRORS.email[l]); 
+            valid = false; 
+          } else {
+            clearFieldError('email');
+            
+            // Check for typos in common domains
+            const domain = emailVal.split('@')[1];
+            if (domain && emailTypos[domain.toLowerCase()]) {
+              const suggestedDomain = emailTypos[domain.toLowerCase()];
+              const suggestion = emailVal.split('@')[0] + '@' + suggestedDomain;
+              showFieldWarning('email', FORM_ERRORS.emailTypo[l].replace('{c}', suggestion));
+              // Don't mark completely invalid, but warn
+            }
+          }
+
+          if (!projet.value) { 
+            showFieldError('projet', FORM_ERRORS.projet[l]); 
+            valid = false; 
+          } else {
+            clearFieldError('projet');
+          }
+
+          if (!message.value.trim() || message.value.trim().length < 10) { 
+            showFieldError('message', FORM_ERRORS.message[l]); 
+            valid = false; 
+          } else {
+            clearFieldError('message');
+          }
+
           return valid;
         }
+
         ['nom', 'email', 'projet', 'message'].forEach(id => {
           const el = document.getElementById(id);
           if (el) el.addEventListener('input', () => clearFieldError(id));
         });
+
+        // Add reset handler
+        const resetBtn = document.getElementById('btn-form-reset');
+        if (resetBtn) {
+          resetBtn.addEventListener('click', () => {
+            const formBody = document.getElementById('form-body');
+            const successEl = document.getElementById('form-success');
+            const generalErr = document.getElementById('form-error-general');
+            
+            if (successEl) successEl.style.display = 'none';
+            if (generalErr) generalErr.style.display = 'none';
+            
+            if (formBody) {
+              formBody.style.display = 'block';
+              formBody.style.opacity = '1';
+              formBody.style.transform = 'translateY(0)';
+            }
+            form.reset();
+          });
+        }
+
         form.addEventListener('submit', function (e) {
           e.preventDefault();
+
+          const formBody = document.getElementById('form-body');
+          const successEl = document.getElementById('form-success');
+          const generalErr = document.getElementById('form-error-general');
+          const t = T[currentLang] || T['fr'];
+
+          if (generalErr) generalErr.style.display = 'none';
+
           if (!validateForm()) {
             const first = form.querySelector('[aria-invalid="true"]');
             if (first) first.focus();
             return;
           }
+
+          // Anti-spam HoneyPot Check
+          const honeypot = document.getElementById('honeypot_field');
+          if (honeypot && honeypot.value !== '') {
+            // Fake a successful submission for spam bots so they move on
+            if (formBody) formBody.style.opacity = '0';
+            setTimeout(() => {
+              if (formBody) formBody.style.display = 'none';
+              if (successEl) successEl.style.display = 'flex';
+            }, 400);
+            return;
+          }
+
+          // Anti-spam Rate limiting check
+          if (!checkRateLimit()) {
+            const l = currentLang === 'en' ? 'en' : 'fr';
+            if (generalErr) {
+              generalErr.style.display = 'flex';
+              document.getElementById('error-general-text').textContent = FORM_ERRORS.spam[l];
+            }
+            return;
+          }
+
           const btn = document.getElementById('submit-btn');
-          const t = T[currentLang] || T['fr'];
-          const successEl = document.getElementById('form-success');
           btn.disabled = true;
           btn.textContent = currentLang === 'en' ? 'Sending...' : 'Envoi en cours...';
+
           const formData = new FormData(form);
+          
+          // Ensure that the 'projet' value sent to Formspree is the exact localized text of the selected option
+          const projetSelect = document.getElementById('projet');
+          if (projetSelect && projetSelect.selectedIndex >= 0) {
+            const selectedText = projetSelect.options[projetSelect.selectedIndex].text;
+            formData.set('projet', selectedText);
+          }
+          
+          // Ensure name, email, and message are set to the exact raw text entered by the user
+          const nomField = document.getElementById('nom');
+          if (nomField) formData.set('nom', nomField.value);
+          
+          const emailField = document.getElementById('email');
+          if (emailField) formData.set('email', emailField.value);
+          
+          const messageField = document.getElementById('message');
+          if (messageField) formData.set('message', messageField.value);
+
           fetch(form.action, {
             method: 'POST',
             body: formData,
             headers: { 'Accept': 'application/json' }
           }).then(response => {
             if (response.ok) {
-              successEl.style.display = 'block';
-              successEl.style.background = 'rgba(74,144,217,.2)';
-              successEl.style.borderColor = 'rgba(74,144,217,.4)';
-              successEl.textContent = t['form-success'] || '\u2705 Message envoy\u00e9 avec succ\u00e8s.';
-              form.reset();
+              // Fade out form content beautifully
+              if (formBody) {
+                formBody.style.opacity = '0';
+                formBody.style.transform = 'translateY(-10px)';
+              }
+              setTimeout(() => {
+                if (formBody) formBody.style.display = 'none';
+                if (successEl) successEl.style.display = 'flex';
+              }, 400);
             } else {
-              successEl.style.display = 'block';
-              successEl.style.background = 'rgba(186,26,26,.2)';
-              successEl.style.borderColor = 'rgba(186,26,26,.4)';
-              successEl.textContent = currentLang === 'en' ? '\u274c Error sending message. Please try again.' : '\u274c Erreur lors de l\'envoi. Veuillez r\u00e9essayer.';
+              if (generalErr) {
+                generalErr.style.display = 'flex';
+                document.getElementById('error-general-text').textContent = currentLang === 'en' ? 'Error sending message. Please try again later.' : 'Erreur lors de l\'envoi. Veuillez réessayer plus tard.';
+              }
             }
           }).catch(() => {
-            successEl.style.display = 'block';
-            successEl.style.background = 'rgba(186,26,26,.2)';
-            successEl.style.borderColor = 'rgba(186,26,26,.4)';
-            successEl.textContent = currentLang === 'en' ? '\u274c Connection error. Please check your internet.' : '\u274c Erreur de connexion. V\u00e9rifiez votre Internet.';
+            if (generalErr) {
+              generalErr.style.display = 'flex';
+              document.getElementById('error-general-text').textContent = currentLang === 'en' ? 'Connection error. Please check your internet connection.' : 'Erreur de connexion. Veuillez vérifier votre connexion internet.';
+            }
           }).finally(() => {
             btn.disabled = false;
             const submitText = t['form-submit'] || 'Envoyer la demande';
@@ -2375,7 +2601,7 @@
 
       function toggleTheme() {
         const isDark = document.documentElement.classList.toggle('dark');
-        localStorage.setItem('pz-theme', isDark ? 'dark' : 'light');
+        safeStorage.setItem('pz-theme', isDark ? 'dark' : 'light');
         updateThemeUI();
       }
 
@@ -2479,7 +2705,7 @@
           currentBtn.classList.add('active');
           currentBtn.setAttribute('aria-pressed', 'true');
         }
-        localStorage.setItem('pz-a11y-scale', scale);
+        safeStorage.setItem('pz-a11y-scale', scale);
       }
 
       Object.keys(scaleBtns).forEach(scale => {
@@ -2492,7 +2718,7 @@
         const btn = document.getElementById(id);
         if (!btn) return;
 
-        let state = localStorage.getItem(storageKey) === 'true';
+        let state = safeStorage.getItem(storageKey) === 'true';
 
         const updateUI = () => {
           btn.setAttribute('aria-checked', state);
@@ -2505,7 +2731,7 @@
 
         btn.addEventListener('click', () => {
           state = !state;
-          localStorage.setItem(storageKey, state);
+          safeStorage.setItem(storageKey, state);
           updateUI();
         });
 
@@ -2522,13 +2748,14 @@
       initSwitch('btn-toggle-underline', 'pz-a11y-underline', 'a11y-underline-links', document.documentElement);
 
       // 5. Video Play/Pause
-      let isVideoPaused = localStorage.getItem('pz-a11y-video-paused') === 'true';
+      let isVideoPaused = safeStorage.getItem('pz-a11y-video-paused') === 'true' ||
+                          (safeStorage.getItem('pz-a11y-video-paused') === null && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
       const videoBtnInPanel = document.getElementById('btn-toggle-video');
       const videoControlBtn = document.getElementById('video-control-btn');
 
       function updateVideoState(paused) {
         isVideoPaused = paused;
-        localStorage.setItem('pz-a11y-video-paused', paused);
+        safeStorage.setItem('pz-a11y-video-paused', paused);
 
         if (heroVideo) {
           if (paused) heroVideo.pause();
@@ -2539,7 +2766,11 @@
           videoBtnInPanel.setAttribute('aria-checked', paused);
         }
         if (videoControlBtn) {
-          videoControlBtn.setAttribute('aria-label', paused ? 'Relancer la vidéo' : 'Mettre en pause la vidéo');
+          const isEn = (currentLang === 'en');
+          videoControlBtn.setAttribute('aria-label', paused 
+            ? (isEn ? 'Resume background video' : 'Relancer la vidéo') 
+            : (isEn ? 'Pause background video' : 'Mettre en pause la vidéo')
+          );
           const icon = videoControlBtn.querySelector('span');
           if (icon) icon.textContent = paused ? 'play_arrow' : 'pause';
         }
@@ -2560,11 +2791,12 @@
       const resetBtn = document.getElementById('btn-a11y-reset');
       if (resetBtn) {
         resetBtn.addEventListener('click', () => {
-          localStorage.removeItem('pz-a11y-scale');
-          localStorage.removeItem('pz-a11y-dyslexic');
-          localStorage.removeItem('pz-a11y-contrast');
-          localStorage.removeItem('pz-a11y-underline');
-          localStorage.removeItem('pz-a11y-video-paused');
+          stopReader();
+          safeStorage.removeItem('pz-a11y-scale');
+          safeStorage.removeItem('pz-a11y-dyslexic');
+          safeStorage.removeItem('pz-a11y-contrast');
+          safeStorage.removeItem('pz-a11y-underline');
+          safeStorage.removeItem('pz-a11y-video-paused');
 
           setScale('100');
 
@@ -2602,8 +2834,9 @@
       }
 
       // Find the best matching voice for a language
+      // Always re-fetch voices from the API to avoid stale empty cache on mobile
       function findVoice(lang) {
-        if (!cachedVoices.length && synth) cachedVoices = synth.getVoices();
+        if (synth) cachedVoices = synth.getVoices();
         // Exact match first
         let voice = cachedVoices.find(v => v.lang.startsWith(lang));
         // English fallback
@@ -2650,7 +2883,27 @@
           }
         });
 
-        return texts.length ? texts : [mainEl.innerText];
+        // Split long sections into sentence-sized chunks to avoid Chrome Android 15-second cutoff
+        const chunked = [];
+        const chunkedElements = [];
+        texts.forEach((text, i) => {
+          if (text.length > 300) {
+            // Split on sentence boundaries (period, exclamation, question mark followed by space or end)
+            const sentences = text.match(/[^.!?]+[.!?]+[\s]*/g) || [text];
+            sentences.forEach(s => {
+              const trimmed = s.trim();
+              if (trimmed.length > 0) {
+                chunked.push(trimmed);
+                chunkedElements.push(readerElements[i]);
+              }
+            });
+          } else {
+            chunked.push(text);
+            chunkedElements.push(readerElements[i]);
+          }
+        });
+        readerElements = chunkedElements;
+        return chunked.length ? chunked : [mainEl.innerText];
       }
 
       // Status messages per language
@@ -2746,6 +2999,9 @@
 
       if (btnPlay && btnPause && btnStop && synth) {
         btnPlay.addEventListener('click', () => {
+          // Prime the audio context on first interaction (iOS Safari requirement)
+          primeSynth();
+
           const lang = document.documentElement.lang || 'fr';
           const voice = findVoice(lang);
           const msgs = readerMessages[lang] || readerMessages.fr;
@@ -2761,14 +3017,20 @@
           if (isPaused) {
             isReading = true;
             isPaused = false;
+            // Try native resume first (works on desktop), fall back to re-speak (mobile)
+            try {
+              if (synth.paused) {
+                synth.resume();
+                updateReaderState();
+                return;
+              }
+            } catch(e) { /* resume not supported, fall through */ }
             speakSection(currentSectionIdx);
           } else {
             stopReader();
             isReading = true;
             isPaused = false;
             readerSections = getSections();
-            readerElements = []; // Reset elements array
-            readerSections = getSections(); // Populate arrays
             currentSectionIdx = 0;
             if (progressWrap) progressWrap.style.display = 'block';
             if (progressBar) progressBar.style.width = '0%';
@@ -2778,8 +3040,16 @@
         });
 
         btnPause.addEventListener('click', () => {
-          isReading = false;
           isPaused = true;
+          isReading = false;
+          // Try native pause first (works on some browsers), fall back to cancel
+          try {
+            if (synth.speaking && !synth.paused) {
+              synth.pause();
+              updateReaderState();
+              return;
+            }
+          } catch(e) { /* pause not supported */ }
           if (synth) synth.cancel();
           updateReaderState();
         });
@@ -2791,10 +3061,21 @@
         window.addEventListener('beforeunload', () => stopReader());
         synth.cancel();
         updateReaderState();
+      } else if (btnPlay && !synth) {
+        // Feature detection fallback: show a message when SpeechSynthesis is not available
+        btnPlay.addEventListener('click', () => {
+          const lang = document.documentElement.lang || 'fr';
+          const msg = lang === 'en'
+            ? 'Audio reader is not supported on this browser. Please try Chrome, Safari, or Firefox.'
+            : 'Le lecteur audio n\'est pas pris en charge par ce navigateur. Essayez Chrome, Safari ou Firefox.';
+          if (readerStatus) readerStatus.textContent = msg;
+          if (progressWrap) progressWrap.style.display = 'block';
+          if (progressBar) progressBar.style.width = '0%';
+        });
       }
 
       // Initialize
-      const savedScale = localStorage.getItem('pz-a11y-scale') || '100';
+      const savedScale = safeStorage.getItem('pz-a11y-scale') || '100';
       setScale(savedScale);
       updateVideoState(isVideoPaused);
     })();
