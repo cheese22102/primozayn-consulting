@@ -343,6 +343,20 @@
       border-color: var(--c-accent);
     }
 
+    .featured-badge {
+      background: var(--c-secondary);
+      color: #ffffff;
+    }
+
+    .dark .featured-badge {
+      background: #1e293b;
+      color: #ffffff;
+    }
+
+    .dark .step-circle span {
+      color: #011848 !important;
+    }
+
     .dark #hero .btn-primary {
       background: rgba(13, 18, 30, .8);
       border: 1px solid rgba(82, 136, 214, .4);
@@ -380,7 +394,7 @@
     }
 
     .dark #site-nav {
-      background: rgba(4, 5, 7, .82)
+      background: rgba(13, 18, 30, .85)
     }
 
     #site-nav.scrolled {
@@ -389,7 +403,7 @@
     }
 
     .dark #site-nav.scrolled {
-      background: rgba(4, 5, 7, .96);
+      background: rgba(13, 18, 30, .96);
       box-shadow: 0 2px 20px rgba(0, 0, 0, .5)
     }
 
@@ -571,7 +585,7 @@
     }
 
     .dark .mobile-menu {
-      background: rgba(4, 5, 7, .98)
+      background: rgba(13, 18, 30, .98)
     }
 
     .mobile-menu.open {
@@ -602,7 +616,7 @@
     }
 
     .dark .site-footer {
-      background: rgba(4, 5, 7, 1);
+      background: rgba(13, 18, 30, 1);
     }
 
     .site-footer h4 {
@@ -1106,6 +1120,248 @@
       --c-outline-var: #ffffff;
     }
 
+    /* High Contrast Overrides */
+    html.a11y-high-contrast #contact {
+      color: var(--c-on-surface) !important;
+    }
+    html.a11y-high-contrast #contact h3 {
+      color: var(--c-on-surface) !important;
+    }
+    html.a11y-high-contrast #contact a {
+      color: var(--c-on-surface) !important;
+    }
+    html.a11y-high-contrast #contact a:hover {
+      color: var(--c-accent) !important;
+    }
+    html.a11y-high-contrast .contact-info-card {
+      background: var(--c-surface) !important;
+      border: 2px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .contact-icon-circle {
+      background: var(--c-surface) !important;
+      border: 2px solid var(--c-outline) !important;
+      color: var(--c-on-surface) !important;
+    }
+    html.a11y-high-contrast a {
+      text-decoration: underline !important;
+    }
+    html.a11y-high-contrast section {
+      background: var(--c-surface) !important;
+    }
+    html.a11y-high-contrast #hero {
+      background: var(--c-surface) !important;
+    }
+    html.a11y-high-contrast .hero-video,
+    html.a11y-high-contrast .hero-overlay,
+    html.a11y-high-contrast .video-control-btn {
+      display: none !important;
+    }
+    html.a11y-high-contrast .hero-eyebrow,
+    html.a11y-high-contrast .hero-title,
+    html.a11y-high-contrast .hero-sub {
+      color: var(--c-on-surface) !important;
+    }
+    html.a11y-high-contrast .card {
+      background: var(--c-surface) !important;
+      color: var(--c-on-surface) !important;
+      border: 2px solid var(--c-outline) !important;
+      box-shadow: none !important;
+    }
+    html.a11y-high-contrast .card-featured {
+      border-width: 3px !important;
+      border-color: var(--c-primary) !important;
+    }
+    html.a11y-high-contrast .card-icon {
+      background: var(--c-surface) !important;
+      border: 2px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .card-icon span {
+      color: var(--c-on-surface) !important;
+    }
+    html.a11y-high-contrast .step-body {
+      background: var(--c-surface) !important;
+      border: 2px solid var(--c-outline) !important;
+      box-shadow: none !important;
+    }
+    html.a11y-high-contrast .step-body h3,
+    html.a11y-high-contrast .step-body p,
+    html.a11y-high-contrast .step-body span {
+      color: var(--c-on-surface) !important;
+    }
+    html.a11y-high-contrast input[type="range"] {
+      border: 1px solid var(--c-outline) !important;
+      background: var(--c-surface) !important;
+    }
+    html.a11y-high-contrast .form-field[aria-invalid="true"] {
+      border: 3px solid #cc0000 !important;
+    }
+    html.a11y-high-contrast .field-error-msg {
+      color: #cc0000 !important;
+      font-weight: bold !important;
+    }
+    html.a11y-high-contrast.dark .form-field[aria-invalid="true"] {
+      border: 3px solid #ff3333 !important;
+    }
+    html.a11y-high-contrast.dark .field-error-msg {
+      color: #ff3333 !important;
+    }
+    html.a11y-high-contrast #site-nav,
+    html.a11y-high-contrast #site-nav.scrolled {
+      background: var(--c-surface) !important;
+      border-bottom: 2px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .nav-logo {
+      color: var(--c-on-surface) !important;
+    }
+    html.a11y-high-contrast .nav-link {
+      color: var(--c-on-surface) !important;
+      text-decoration: underline !important;
+    }
+    html.a11y-high-contrast .nav-link:hover,
+    html.a11y-high-contrast .nav-link.active {
+      color: var(--c-accent) !important;
+      outline: 2px solid var(--c-accent) !important;
+    }
+    html.a11y-high-contrast .theme-toggle,
+    html.a11y-high-contrast .nav-hamburger {
+      color: var(--c-on-surface) !important;
+      border: 2px solid var(--c-outline) !important;
+      background: transparent !important;
+    }
+    html.a11y-high-contrast .nav-lang {
+      background: transparent !important;
+      border: 2px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .nav-lang button {
+      color: var(--c-on-surface) !important;
+    }
+    html.a11y-high-contrast .nav-lang button[aria-pressed="true"] {
+      background: var(--c-outline) !important;
+      color: var(--c-surface) !important;
+    }
+    html.a11y-high-contrast .mobile-menu {
+      background: var(--c-surface) !important;
+      border-top: 2px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .mobile-menu a,
+    html.a11y-high-contrast .mobile-menu button {
+      color: var(--c-on-surface) !important;
+    }
+    html.a11y-high-contrast .mobile-menu a:hover,
+    html.a11y-high-contrast .mobile-menu button:hover {
+      background: var(--c-outline) !important;
+      color: var(--c-surface) !important;
+    }
+    html.a11y-high-contrast .site-footer {
+      background: var(--c-surface) !important;
+      border-top: 2px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .site-footer h4,
+    html.a11y-high-contrast .site-footer p {
+      color: var(--c-on-surface) !important;
+    }
+    html.a11y-high-contrast .site-footer a {
+      color: var(--c-on-surface) !important;
+      text-decoration: underline !important;
+    }
+    html.a11y-high-contrast .site-footer a:hover {
+      color: var(--c-accent) !important;
+    }
+    html.a11y-high-contrast .step-circle {
+      background: var(--c-primary) !important;
+      border: 4px solid var(--c-surface) !important;
+      outline: 2px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .step-circle span {
+      color: var(--c-on-primary) !important;
+    }
+    html.a11y-high-contrast .featured-badge {
+      background: var(--c-primary) !important;
+      color: var(--c-on-primary) !important;
+      border: 1.5px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast #contact label.t-label {
+      color: var(--c-on-surface) !important;
+    }
+    html.a11y-high-contrast .form-field {
+      background: var(--c-surface) !important;
+      color: var(--c-on-surface) !important;
+      border: 2px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .form-field::placeholder {
+      color: var(--c-on-surface-var) !important;
+    }
+    html.a11y-high-contrast .btn-primary {
+      background: var(--c-primary) !important;
+      color: var(--c-on-primary) !important;
+      outline: 2px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .btn-primary:hover {
+      background: var(--c-accent) !important;
+      color: var(--c-surface) !important;
+    }
+    html.a11y-high-contrast .btn-ghost {
+      border: 2px solid var(--c-outline) !important;
+      color: var(--c-on-surface) !important;
+    }
+    html.a11y-high-contrast .btn-ghost:hover {
+      background: var(--c-outline) !important;
+      color: var(--c-surface) !important;
+    }
+    /* Accessibility Panel overrides */
+    html.a11y-high-contrast .a11y-panel {
+      background: var(--c-surface) !important;
+      color: var(--c-on-surface) !important;
+      border-left: 2px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .a11y-header {
+      border-bottom: 2px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .a11y-close {
+      color: var(--c-on-surface) !important;
+      border: 1px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .a11y-close:hover {
+      background: var(--c-outline) !important;
+      color: var(--c-surface) !important;
+    }
+    html.a11y-high-contrast .a11y-group {
+      border-bottom: 2px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .a11y-buttons button {
+      border: 2px solid var(--c-outline) !important;
+      color: var(--c-on-surface) !important;
+      background: var(--c-surface) !important;
+    }
+    html.a11y-high-contrast .a11y-buttons button.active {
+      background: var(--c-primary) !important;
+      color: var(--c-on-primary) !important;
+      border-color: var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .a11y-switch {
+      background: var(--c-surface) !important;
+      border: 2px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .a11y-switch[aria-checked="true"] {
+      background: var(--c-primary) !important;
+    }
+    html.a11y-high-contrast .switch-handle {
+      background: var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .a11y-switch[aria-checked="true"] .switch-handle {
+      background: var(--c-surface) !important;
+    }
+    html.a11y-high-contrast .a11y-floating-btn {
+      background: var(--c-surface) !important;
+      color: var(--c-on-surface) !important;
+      border: 3px solid var(--c-outline) !important;
+    }
+    html.a11y-high-contrast .a11y-floating-btn:hover,
+    html.a11y-high-contrast .a11y-floating-btn:focus-visible {
+      background: var(--c-outline) !important;
+      color: var(--c-surface) !important;
+    }
+
     /* Audio Reader reading visual highlight style - Premium High Contrast Yellow/Blue */
     .a11y-reading-highlight {
       background-color: #ffff00 !important;
@@ -1302,8 +1558,8 @@
           <!-- Card 2 featured -->
           <article class="card card-featured" style="padding:var(--sp-xl);display:flex;flex-direction:column"
             aria-label="Service phare: Design UX/UI &amp; Ergonomie Web">
-            <div
-              style="position:absolute;top:-14px;right:var(--sp-lg);background:var(--c-secondary);color:#fff;padding:4px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;letter-spacing:.05em;display:flex;align-items:center;gap:4px">
+            <div class="featured-badge"
+              style="position:absolute;top:-14px;right:var(--sp-lg);padding:4px 14px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;letter-spacing:.05em;display:flex;align-items:center;gap:4px">
               <span class="material-symbols-outlined"
                 style="font-size:15px;font-variation-settings:'FILL' 1">verified</span>Notre Spécialité
             </div>
@@ -1653,11 +1909,11 @@
           </div>
           <!-- Info -->
           <div style="display:flex;flex-direction:column;gap:var(--sp-md)" data-reveal data-delay="2">
-            <div
+            <div class="contact-info-card"
               style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-card);padding:var(--sp-lg);overflow:hidden">
               <h3 class="t-h3" style="color:#fff;margin-bottom:var(--sp-md)" data-i18n="contact-direct">Contact Direct</h3>
               <div style="display:flex;align-items:center;gap:var(--sp-md);margin-bottom:var(--sp-md);min-width:0;overflow:hidden">
-                <div
+                <div class="contact-icon-circle"
                   style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
                   <span class="material-symbols-outlined"
                     style="font-size:20px;font-variation-settings:'FILL' 1">mail</span>
@@ -1665,7 +1921,7 @@
                 <a href="mailto:contact.primozaynconsulting@gmail.com">contact.primozaynconsulting@gmail.com</a>
               </div>
               <div style="display:flex;align-items:center;gap:var(--sp-md)">
-                <div
+                <div class="contact-icon-circle"
                   style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
                   <span class="material-symbols-outlined"
                     style="font-size:20px;font-variation-settings:'FILL' 1">call</span>
