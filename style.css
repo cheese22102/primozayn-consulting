@@ -198,3 +198,49 @@ textarea { min-height: 9rem; resize: vertical; }
   .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+/* ===== Affichage sur téléphone ===== */
+.menu-btn { display: none; }
+@media (max-width: 700px) {
+  .js-menu .menu-btn { display: inline-flex; align-items: center; min-height: 44px; padding: .5rem 1.1rem; border: 2px solid var(--fg); border-radius: 999px; background: transparent; color: var(--fg); font: 700 1rem var(--font); cursor: pointer; }
+  .js-menu .site-header nav { flex-basis: 100%; }
+  .js-menu .site-header nav ul:not(.is-open) { display: none; }
+  .js-menu .site-header nav ul.is-open { flex-direction: column; gap: 0; border-top: 1px solid var(--line); padding-top: .5rem; }
+  .js-menu .site-header nav ul.is-open a { display: block; padding-block: .75rem; font-size: 1.125rem; border-bottom: 0; }
+  .site-header .wrap { padding-block: .9rem; }
+
+  body { font-size: 1rem; }
+  section { padding-block: 3rem; }
+  .section-head { margin-bottom: 2rem; gap: .7rem; }
+  .section-head > p:not(.label) { font-size: 1rem; }
+  .label, .offer-group { font-size: .75rem; letter-spacing: .08em; }
+
+  .hero { padding-block: 2rem 3rem; }
+  .hero-text { gap: 1.2rem; }
+  .hero h1 { font-size: 2.6rem; }
+  .hero-text > p:not(.label) { font-size: 1.0625rem; }
+  .badge { flex-direction: column; align-items: flex-start; border-radius: 14px; font-size: .95rem; padding: .7rem .9rem; gap: .4rem; }
+  .badge > span[aria-hidden] { display: none; }
+  .actions { flex-direction: column; }
+  .actions .btn { width: 100%; }
+  .hero .wrap { gap: 2rem; }
+  .checklist { padding: 1.25rem; }
+  .checklist .ref { display: none; }
+  .checklist li { align-items: center; }
+
+  .grid-3, .offers-2 { gap: 1.25rem; }
+  .point { padding-top: 1rem; }
+  .offer { padding: 1.4rem; gap: .9rem; }
+  .price { font-size: 2rem; }
+  .offers + .offer-group { margin-top: 2.5rem; }
+
+  .steps { gap: 1.5rem; }
+  .steps li { grid-template-columns: 3rem 1fr; column-gap: 1rem; row-gap: .3rem; }
+  .steps li::before { grid-row: span 2; font-size: 2.4rem; }
+
+  .faq summary { font-size: 1rem; padding: 1rem 0; }
+  .contact .wrap { gap: 2.5rem; }
+  .direct h3 { font-size: 1.6rem; }
+  .direct dd { font-size: 1.05rem; }
+  .site-footer ul { flex-direction: column; gap: .6rem; }
+}

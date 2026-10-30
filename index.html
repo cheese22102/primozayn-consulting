@@ -23,6 +23,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"PrimoZayn","url":"https://primozayn.com/","telephone":"+33762966393","email":"contact.primozaynconsulting@gmail.com","areaServed":"FR","address":{"@type":"PostalAddress","addressLocality":"Élancourt","postalCode":"78990","addressCountry":"FR"},"knowsLanguage":["fr","en","ar"],"description":"Création de sites vitrines, d'applications web et mobiles conformes au RGAA, audit et mise en conformité accessibilité numérique."}
 </script>
+<script src="menu.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu principal</a>
@@ -30,8 +31,9 @@
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html">Primo<span>Zayn</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal" hidden>Menu</button>
     <nav aria-label="Navigation principale">
-      <ul role="list">
+      <ul role="list" id="menu-principal">
         <li><a href="#offres">Offres</a></li>
         <li><a href="#methode">Méthode</a></li>
         <li><a href="#questions">Questions</a></li>
