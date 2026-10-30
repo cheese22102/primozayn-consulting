@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://primozayn.fr/sitemap.xml
+Sitemap: https://primozayn.com/sitemap.xml
