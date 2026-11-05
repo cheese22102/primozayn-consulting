@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dar – Paiements</title>
+<style>
+  :root{--blue:#1C6BD0;--ink:#12294A;--cream:#FCF8F0;--sand:#EDE4D3;--safran:#F2B632;--muted:#55667D}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;background:var(--cream);color:var(--ink);font:18px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;display:flex;align-items:center;justify-content:center;padding:24px 16px}
+  main{width:100%;max-width:460px;background:#fff;border:1.5px solid var(--sand);border-radius:24px;padding:32px 24px;text-align:center}
+  .logo{font-size:2.4rem;font-weight:800;line-height:1.1;margin:0}
+  .logo span{color:var(--blue)}
+  .bar{width:56px;height:4px;border-radius:2px;background:var(--safran);margin:14px auto 22px}
+  .badge{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:var(--blue);color:#fff;font-size:34px;margin-bottom:14px}
+  h1{font-size:1.45rem;line-height:1.3;margin:0 0 10px}
+  p{margin:.5rem 0;color:var(--ink)}
+  ol{text-align:left;margin:18px auto 6px;padding:0;list-style:none;counter-reset:s;max-width:360px}
+  li{counter-increment:s;display:flex;gap:12px;align-items:flex-start;margin:10px 0;font-size:1rem}
+  li::before{content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;background:var(--sand);font-weight:700;text-align:center;line-height:28px}
+  .note{font-size:.92rem;color:var(--muted);margin-top:18px}
+  .btn{display:inline-block;margin-top:20px;min-height:48px;padding:12px 28px;border-radius:999px;background:var(--blue);color:#fff;font-weight:700;font-size:1.05rem;text-decoration:none}
+  .btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+  .small{font-size:.9rem;color:var(--muted);margin-top:10px}
+  .ok,.resume{display:none}
+  body[data-r="ok"] .ok,body[data-r="reprendre"] .resume{display:block}
+  body:not([data-r="ok"]):not([data-r="reprendre"]) .ok{display:block}
+</style>
+</head>
+<body>
+<main>
+  <p class="logo" lang="ar">Dar <span>دار</span></p>
+  <div class="bar" aria-hidden="true"></div>
+
+  <section class="ok">
+    <div class="badge" aria-hidden="true">✓</div>
+    <h1>Merci, c'est bien reçu</h1>
+    <p>Vous pouvez fermer cette page et retourner dans l'application Dar.</p>
+    <ol>
+      <li><span>Ouvrez l'application Dar.</span></li>
+      <li><span>Allez dans <strong>Profil</strong>, puis <strong>Mes paiements</strong>.</span></li>
+      <li><span>L'état se met à jour tout seul : « Prêt » ou « En vérification ».</span></li>
+    </ol>
+    <a class="btn" href="dar://paiements">Ouvrir l'application Dar</a>
+    <p class="small">Le bouton ne fait rien ? Ouvrez Dar vous-même depuis votre écran d'accueil.</p>
+    <p class="note">La vérification par Stripe peut prendre quelques minutes. Vous serez payé automatiquement après chaque commande livrée.</p>
+  </section>
+
+  <section class="resume">
+    <h1>Configuration à reprendre</h1>
+    <p>La page de Stripe a expiré ou a été interrompue. Aucune information n'est perdue.</p>
+    <ol>
+      <li><span>Retournez dans l'application Dar.</span></li>
+      <li><span>Ouvrez <strong>Profil</strong>, puis <strong>Mes paiements</strong>.</span></li>
+      <li><span>Touchez <strong>Reprendre</strong>.</span></li>
+    </ol>
+    <a class="btn" href="dar://paiements">Ouvrir l'application Dar</a>
+  </section>
+</main>
+<script>
+  var r = new URLSearchParams(location.search).get('retour');
+  if (r === 'ok' || r === 'reprendre') document.body.setAttribute('data-r', r);
+</script>
+</body>
+</html>
